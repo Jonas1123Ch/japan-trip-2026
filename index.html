@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#7e5f50">
+<title>名古屋・伊勢志摩・大阪｜9天8夜旅行行程</title>
+<style>
+:root{
+  --bg:#f7f3ee;
+  --paper:#fffdf9;
+  --ink:#2f2a27;
+  --muted:#7c726c;
+  --line:#eadfd8;
+  --rose:#d9a7a0;
+  --rose-soft:#f3d8d6;
+  --accent:#7e5f50;
+  --accent2:#9c7563;
+  --green:#567a68;
+  --blue:#55758d;
+  --gold:#a9824e;
+  --shadow:0 16px 42px rgba(75,54,42,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at top right,rgba(217,167,160,.18),transparent 30rem),
+    var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.65;
+}
+a{color:inherit}
+.container{max-width:1050px;margin:auto;padding:18px 18px 80px}
+.hero{
+  border-radius:30px;
+  background:linear-gradient(145deg,#77594c 0%,#94705f 48%,#af8877 100%);
+  color:white;
+  padding:30px 26px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  width:260px;height:260px;border-radius:50%;
+  right:-95px;top:-105px;
+  border:1px solid rgba(255,255,255,.25);
+  box-shadow:0 0 0 35px rgba(255,255,255,.04),0 0 0 70px rgba(255,255,255,.03);
+}
+.kicker{font-size:13px;letter-spacing:.14em;opacity:.78;text-transform:uppercase}
+h1{font-size:clamp(27px,5vw,44px);line-height:1.2;margin:7px 0 8px}
+.subtitle{font-size:15px;opacity:.9;margin:0;max-width:700px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;position:relative;z-index:2}
+.pill{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);padding:7px 11px;border-radius:999px;font-size:13px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px;position:relative;z-index:2}
+button,.btn{
+  appearance:none;border:0;border-radius:12px;padding:10px 14px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;
+}
+.btn-light{background:white;color:var(--accent)}
+.btn-ghost{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);color:#fff}
+
+.summary{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 10px
+}
+.summary-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:14px 15px;box-shadow:0 8px 24px rgba(67,52,42,.04)
+}
+.summary-card b{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:3px}
+.summary-card strong{font-size:17px}
+
+.daynav{
+  position:sticky;top:0;z-index:20;
+  margin:14px -18px 16px;padding:10px 18px;
+  background:rgba(247,243,238,.92);backdrop-filter:blur(10px);
+  overflow:auto;white-space:nowrap;border-bottom:1px solid rgba(234,223,216,.75)
+}
+.daynav a{
+  display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+  min-width:73px;margin-right:6px;padding:8px 9px;border-radius:13px;text-decoration:none;
+  background:#fff;border:1px solid var(--line);font-size:12px;color:var(--muted)
+}
+.daynav a b{color:var(--ink);font-size:13px}
+.section-title{display:flex;align-items:end;justify-content:space-between;margin:24px 2px 10px}
+.section-title h2{margin:0;font-size:22px}
+.section-title span{font-size:12px;color:var(--muted)}
+.days{display:grid;gap:14px}
+.day{
+  background:var(--paper);border:1px solid var(--line);border-radius:24px;box-shadow:0 10px 30px rgba(70,51,40,.05);overflow:hidden;
+  scroll-margin-top:95px;
+}
+.dayhead{
+  display:grid;grid-template-columns:92px 1fr auto;gap:13px;align-items:center;
+  padding:17px 18px;border-bottom:1px solid var(--line);
+}
+.daynum{
+  background:var(--rose-soft);border-radius:16px;padding:10px 8px;text-align:center;color:#6e4f47
+}
+.daynum b{display:block;font-size:20px;line-height:1.1}
+.daynum span{font-size:12px}
+.daytitle h3{margin:0;font-size:19px}
+.daytitle p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.tag{font-size:11px;font-weight:800;padding:5px 8px;border-radius:999px;background:#f1ece8;color:#695c55}
+.tag.move{background:#fff0ec;color:#a25747}
+.tag.usj{background:#eaf1f7;color:#456981}
+.tag.shop{background:#f4efe3;color:#856a3e}
+
+.timeline{padding:12px 18px 5px}
+.item{
+  display:grid;grid-template-columns:86px 16px 1fr;gap:10px;padding:11px 0;position:relative
+}
+.item:not(:last-child):before{
+  content:"";position:absolute;left:93px;top:32px;bottom:-8px;width:1px;background:#dfd3cc
+}
+.time{font-size:12px;color:var(--muted);padding-top:2px;font-weight:700}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--rose);margin-top:7px;position:relative;z-index:2;box-shadow:0 0 0 4px var(--paper)}
+.item.transport .dot{background:var(--blue)}
+.item.food .dot{background:var(--gold)}
+.item.hotel .dot{background:var(--green)}
+.content strong{font-size:15px}
+.content p{margin:2px 0;color:#5f5651;font-size:14px}
+.maps{
+  display:inline-block;margin-top:5px;font-size:12px;color:#6e5548;text-decoration:none;border-bottom:1px dashed #b99a89
+}
+.note{
+  margin:3px 18px 18px;padding:12px 14px;border-radius:14px;background:#faf6f1;border:1px dashed #ddc9bd;font-size:13px;color:#655a55
+}
+.hotelbar{
+  margin:5px 18px 18px;padding:13px 14px;border-radius:15px;background:#edf5f0;border:1px solid #d7e8de;display:flex;gap:10px;align-items:flex-start
+}
+.hotelbar b{font-size:13px;color:#4f715f;min-width:58px}
+.hotelbar div{font-size:14px}
+
+.quick{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px
+}
+.quick-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px}
+.quick-card h3{margin:0 0 8px;font-size:16px}
+.quick-card p{font-size:13px;color:var(--muted);margin:0}
+.quick-card strong{color:var(--ink)}
+
+.footer{margin-top:28px;padding:20px 4px;color:var(--muted);font-size:12px;text-align:center}
+.only-print{display:none}
+@media(max-width:760px){
+  .container{padding:12px 12px 65px}
+  .hero{border-radius:23px;padding:24px 18px}
+  .summary{grid-template-columns:1fr 1fr}
+  .daynav{margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px}
+  .dayhead{grid-template-columns:72px 1fr}
+  .tags{grid-column:1/-1;justify-content:flex-start}
+  .daynum b{font-size:18px}
+  .item{grid-template-columns:68px 14px 1fr;gap:8px}
+  .item:not(:last-child):before{left:74px}
+  .quick{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff}
+  .container{max-width:none;padding:0}
+  .hero{box-shadow:none;border-radius:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .actions,.daynav{display:none}
+  .day{break-inside:avoid;box-shadow:none}
+  .only-print{display:block}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <section class="hero">
+    <div class="kicker">Japan Family & Friends Trip · 2026</div>
+    <h1>名古屋・伊勢志摩・大阪<br>9天8夜慢旅行</h1>
+    <p class="subtitle">10/17（六）— 10/25（日）｜夫妻＋3歲女兒＋兩組同行朋友｜以移動順暢、親子友善與購物玩樂平衡為主。</p>
+    <div class="hero-meta">
+      <span class="pill">👨‍👩‍👧 親子同行</span>
+      <span class="pill">👥 6 大人＋1 幼兒</span>
+      <span class="pill">🚆 3 個主要移動日</span>
+      <span class="pill">🎢 USJ 萬聖節</span>
+    </div>
+    <div class="actions">
+      <button class="btn-light" onclick="shareTrip()">分享行程</button>
+      <button class="btn-ghost" onclick="window.print()">列印 / 存成 PDF</button>
+    </div>
+  </section>
+
+  <section class="summary">
+    <div class="summary-card"><b>名古屋</b><strong>10/17–10/19</strong></div>
+    <div class="summary-card"><b>伊勢</b><strong>10/19–10/20</strong></div>
+    <div class="summary-card"><b>鳥羽</b><strong>10/20–10/21</strong></div>
+    <div class="summary-card"><b>大阪</b><strong>10/21–10/25</strong></div>
+  </section>
+
+  <nav class="daynav" aria-label="每日行程快速導覽">
+    <a href="#day1"><b>Day 1</b>10/17 六</a>
+    <a href="#day2"><b>Day 2</b>10/18 日</a>
+    <a href="#day3"><b>Day 3</b>10/19 一</a>
+    <a href="#day4"><b>Day 4</b>10/20 二</a>
+    <a href="#day5"><b>Day 5</b>10/21 三</a>
+    <a href="#day6"><b>Day 6</b>10/22 四</a>
+    <a href="#day7"><b>Day 7</b>10/23 五</a>
+    <a href="#day8"><b>Day 8</b>10/24 六</a>
+    <a href="#day9"><b>Day 9</b>10/25 日</a>
+  </nav>
+
+  <div class="section-title"><h2>每日行程</h2><span>依你提供的最新版表格整理</span></div>
+  <main class="days">
+
+    <article class="day" id="day1">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 1</b><span>10/17（六）</span></div>
+        <div class="daytitle"><h3>台北 → 名古屋｜抵達日</h3><p>機場移動＋名古屋夜景散步</p></div>
+        <div class="tags"><span class="tag move">移動日</span><span class="tag">輕鬆走</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item transport"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>桃園機場 Check-in</strong><p>準備出發前往名古屋。</p></div></div>
+        <div class="item food"><div class="time">午餐</div><div class="dot"></div><div class="content"><strong>飛機上不安排午餐</strong><p>建議登機前先準備簡單點心，尤其是小朋友。</p></div></div>
+        <div class="item transport"><div class="time">14:37 / 15:07</div><div class="dot"></div><div class="content"><strong>名鐵 μSKY 特急</strong><p>中部國際機場 → 名古屋市區，依實際出關時間選班次。</p></div></div>
+        <div class="item"><div class="time">晚餐後</div><div class="dot"></div><div class="content"><strong>綠洲21／中部電力 MIRAI TOWER 周邊散步</strong><p>抵達第一天不塞太滿，以夜景與城市散步收尾。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Oasis+21+Nagoya">Google Maps ↗</a></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>名古屋納屋橋大和 Roynet DEL style 飯店</div></div>
+    </article>
+
+    <article class="day" id="day2">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 2</b><span>10/18（日）</span></div>
+        <div class="daytitle"><h3>名古屋｜大須・東山・榮</h3><p>親子景點＋逛街日</p></div>
+        <div class="tags"><span class="tag">親子</span><span class="tag shop">購物</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>大須商店街／大須觀音</strong><p>先走街區、吃小吃，再視體力前往下一站。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Osu+Kannon+Nagoya">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">上午～中午</div><div class="dot"></div><div class="content"><strong>東山動植物園</strong><p>3 歲小朋友的重點行程。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Higashiyama+Zoo+and+Botanical+Gardens">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>Alpen NAGOYA・榮商圈</strong><p>運動用品、百貨與榮一帶購物。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Alpen+NAGOYA">Google Maps ↗</a></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>名古屋納屋橋大和 Roynet DEL style 飯店</div></div>
+    </article>
+
+    <article class="day" id="day3">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 3</b><span>10/19（一）</span></div>
+        <div class="daytitle"><h3>名古屋 → 伊勢｜島風號</h3><p>搭行李移動，下午伊勢神宮</p></div>
+        <div class="tags"><span class="tag move">移動日・帶行李</span><span class="tag">Shimakaze</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item transport"><div class="time">10:25–11:40</div><div class="dot"></div><div class="content"><strong>島風號 Shimakaze</strong><p>近鐵名古屋 → 伊勢市。Premium Seat 為目前搶票目標。</p></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>伊勢神宮・內宮</strong><p>抵達後安排伊勢代表性景點。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ise+Jingu+Naiku">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>厄除町商店</strong><p>接續內宮周邊散步與採買。</p></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>EXPERIENCE ISE MIYAMACHI HOTEL</div></div>
+    </article>
+
+    <article class="day" id="day4">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 4</b><span>10/20（二）</span></div>
+        <div class="daytitle"><h3>伊勢 → 二見浦 → 鳥羽</h3><p>海女小屋體驗＋鳥羽入住</p></div>
+        <div class="tags"><span class="tag move">移動日・帶行李</span><span class="tag">海女小屋</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>伊勢 → 二見浦</strong><p>二見興玉神社、夫婦岩、富士見橋、境內青蛙像。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Futami+Okitama+Shrine">Google Maps ↗</a></div></div>
+        <div class="item transport"><div class="time">中午前</div><div class="dot"></div><div class="content"><strong>搭 CAN 巴士前往鳥羽站</strong><p>抵達後前往鳥羽站 1 號出口集合。</p></div></div>
+        <div class="item transport"><div class="time">12:45</div><div class="dot"></div><div class="content"><strong>海女小屋接駁車</strong><p>鳥羽站 1 號出口出發。</p></div></div>
+        <div class="item food"><div class="time">午餐</div><div class="dot"></div><div class="content"><strong>海女小屋 はちまんかまど</strong><p>海女文化與炭烤海鮮體驗。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hachiman+Kamado+Toba">Google Maps ↗</a></div></div>
+        <div class="item transport"><div class="time">15:15</div><div class="dot"></div><div class="content"><strong>海女小屋接駁車返回鳥羽站</strong><p>回到鳥羽站 1 號出口。</p></div></div>
+        <div class="item food"><div class="time">晚餐</div><div class="dot"></div><div class="content"><strong>大助－鳥羽</strong><p>晚餐安排依現場／訂位狀況調整。</p></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>龜之井酒店 鳥羽</div></div>
+    </article>
+
+    <article class="day" id="day5">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 5</b><span>10/21（三）</span></div>
+        <div class="daytitle"><h3>鳥羽 → 伊勢 → 大阪難波</h3><p>外宮參拜後移動大阪</p></div>
+        <div class="tags"><span class="tag move">移動日・帶行李</span><span class="tag">伊勢志摩 Liner</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item transport"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>鳥羽 → 伊勢</strong><p>回到伊勢市區。</p></div></div>
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>伊勢神宮・外宮</strong><p>外宮參拜。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ise+Jingu+Geku">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">中午</div><div class="dot"></div><div class="content"><strong>伊勢外宮表參道</strong><p>午餐與散步採買。</p></div></div>
+        <div class="item transport"><div class="time">15:49–17:40</div><div class="dot"></div><div class="content"><strong>伊勢志摩 Liner → 大阪難波</strong><p>車程約 1 小時 51 分。</p></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>ESLEAD HOTEL Namba East</div></div>
+    </article>
+
+    <article class="day" id="day6">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 6</b><span>10/22（四）</span></div>
+        <div class="daytitle"><h3>日本環球影城｜萬聖節</h3><p>已排定遊樂設施時段</p></div>
+        <div class="tags"><span class="tag usj">USJ</span><span class="tag">萬聖節</span><span class="tag">親子＋大人</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item"><div class="time">11:30–12:30</div><div class="dot"></div><div class="content"><strong>任天堂園區</strong><p>進入 SUPER NINTENDO WORLD。</p></div></div>
+        <div class="item"><div class="time">11:30–12:00</div><div class="dot"></div><div class="content"><strong>瑪利歐：庫巴挑戰</strong><p>依實際預約／快速通關時段進場。</p></div></div>
+        <div class="item"><div class="time">12:00–12:30</div><div class="dot"></div><div class="content"><strong>耀西冒險</strong><p>親子較友善的園區設施。</p></div></div>
+        <div class="item"><div class="time">12:30–13:00</div><div class="dot"></div><div class="content"><strong>瘋狂礦車</strong><p>Donkey Kong 區域行程。</p></div></div>
+        <div class="item"><div class="time">14:00–14:30</div><div class="dot"></div><div class="content"><strong>小小兵：大壞蛋之路</strong><p>Minion 主題設施。</p></div></div>
+        <div class="item"><div class="time">16:00–16:30</div><div class="dot"></div><div class="content"><strong>鷹馬的飛行</strong><p>哈利波特園區設施。</p></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>ESLEAD HOTEL Namba East</div></div>
+    </article>
+
+    <article class="day" id="day7">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 7</b><span>10/23（五）</span></div>
+        <div class="daytitle"><h3>大阪梅田｜購物散步日</h3><p>整天保留較彈性的商圈行程</p></div>
+        <div class="tags"><span class="tag shop">購物</span><span class="tag">彈性日</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>大阪梅田商圈逛街</strong><p>依同行者需求安排百貨、商場與午餐。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Umeda+Osaka">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>大阪梅田商圈續逛</strong><p>保留充足休息與購物時間。</p></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>ESLEAD HOTEL Namba East</div></div>
+    </article>
+
+    <article class="day" id="day8">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 8</b><span>10/24（六）</span></div>
+        <div class="daytitle"><h3>難波・心齋橋・teamLab</h3><p>市區景點＋螃蟹道樂＋夜間藝術</p></div>
+        <div class="tags"><span class="tag shop">購物</span><span class="tag">已排餐廳</span><span class="tag">teamLab</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>難波八阪神社</strong><p>著名獅子殿拍照景點。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Namba+Yasaka+Shrine">Google Maps ↗</a></div></div>
+        <div class="item food"><div class="time">12:00</div><div class="dot"></div><div class="content"><strong>蟹道樂 道頓堀中店</strong><p>午餐。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kani+Doraku+Dotonbori+Naka">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>心齋橋商圈</strong><p>最後一個完整購物日下午。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Shinsaibashi+Osaka">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">18:00</div><div class="dot"></div><div class="content"><strong>teamLab Botanical Garden Osaka</strong><p>大阪植物園夜間數位藝術體驗。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=teamLab+Botanical+Garden+Osaka">Google Maps ↗</a></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>ESLEAD HOTEL Namba East</div></div>
+    </article>
+
+    <article class="day" id="day9">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 9</b><span>10/25（日）</span></div>
+        <div class="daytitle"><h3>大阪 → 關西機場 → 台北</h3><p>最後採買＋回台灣</p></div>
+        <div class="tags"><span class="tag move">移動日・回台灣</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>木津市場</strong><p>最後一天早上安排市場走走與採買。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kizu+Wholesale+Market+Osaka">Google Maps ↗</a></div></div>
+        <div class="item transport"><div class="time">下午～傍晚</div><div class="dot"></div><div class="content"><strong>難波 → 關西國際機場</strong><p>預計搭南海電鐵 Rapi:t，班次之後依航班倒推確認。</p></div></div>
+        <div class="item transport"><div class="time">返台</div><div class="dot"></div><div class="content"><strong>關西機場 → 台北</strong><p>結束 9 天 8 夜旅行。</p></div></div>
+      </div>
+    </article>
+
+  </main>
+
+  <div class="section-title"><h2>旅行重點快速看</h2><span>方便同行朋友先抓大方向</span></div>
+  <section class="quick">
+    <div class="quick-card"><h3>🚆 三個主要移動日</h3><p><strong>10/19</strong> 名古屋→伊勢（島風號）<br><strong>10/20</strong> 伊勢→二見浦→鳥羽<br><strong>10/21</strong> 鳥羽／伊勢→大阪難波</p></div>
+    <div class="quick-card"><h3>👧 親子重點</h3><p>東山動植物園、二見浦、海女小屋、USJ 耀西冒險。行程中保留購物日與彈性日，避免每天高強度。</p></div>
+    <div class="quick-card"><h3>🎟 已有時間軸的行程</h3><p>島風號 10:25、海女小屋接駁 12:45／15:15、伊勢志摩 Liner 15:49、USJ 時段、蟹道樂 12:00、teamLab 18:00。</p></div>
+  </section>
+
+  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V2｜之後可持續依最新版行程表更新</div>
+</div>
+
+<script>
+async function shareTrip(){
+  const data={title:document.title,text:"名古屋・伊勢志摩・大阪 9天8夜行程",url:location.href};
+  try{
+    if(navigator.share){await navigator.share(data);}
+    else{
+      await navigator.clipboard.writeText(location.href);
+      alert("網址已複製！");
+    }
+  }catch(e){}
+}
+</script>
+</body>
+</html>
