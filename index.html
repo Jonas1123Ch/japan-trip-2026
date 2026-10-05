@@ -153,6 +153,27 @@ button,.btn{
 .quick-card p{font-size:13px;color:var(--muted);margin:0}
 .quick-card strong{color:var(--ink)}
 
+.weather-wrap{margin-top:18px;position:relative;z-index:2}
+.weather-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px;font-size:12px;opacity:.9}
+.weather-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.weather-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:15px;padding:11px 12px;min-height:92px}
+.weather-card b{display:block;font-size:13px;margin-bottom:4px}
+.weather-main{font-size:16px;font-weight:800}
+.weather-sub{font-size:11px;opacity:.82;margin-top:3px;line-height:1.45}
+.spot-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+.spot-card{border:1px solid #eadfd8;background:#fcf9f5;border-radius:12px;padding:10px 11px}
+.spot-card b{display:block;font-size:13px}
+.spot-card span{display:block;margin-top:2px;color:#746963;font-size:12px;line-height:1.5}
+.spot-card a{display:inline-block;margin-top:5px;color:#6e5548;font-size:11px;text-decoration:none;border-bottom:1px dashed #b99a89}
+.luggage-note{margin-top:9px;padding:10px 11px;border-radius:12px;background:#f7f2ff;border:1px solid #e6dcf4;font-size:12px;color:#625b70;line-height:1.55}
+.packing{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 10px 30px rgba(70,51,40,.05)}
+.pack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pack-group{border:1px solid var(--line);border-radius:15px;padding:12px 13px;background:#fff}
+.pack-group h3{font-size:14px;margin:0 0 7px}
+.pack-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#5f5651;padding:4px 0}
+.pack-item input{margin-top:4px;accent-color:#7e5f50}
+.pack-tip{margin-top:12px;font-size:12px;color:var(--muted)}
+
 .footer{margin-top:28px;padding:20px 4px;color:var(--muted);font-size:12px;text-align:center}
 .only-print{display:none}
 @media(max-width:760px){
@@ -166,6 +187,9 @@ button,.btn{
   .item{grid-template-columns:68px 14px 1fr;gap:8px}
   .item:not(:last-child):before{left:74px}
   .quick{grid-template-columns:1fr}
+  .weather-grid{grid-template-columns:1fr}
+  .spot-list{grid-template-columns:1fr}
+  .pack-grid{grid-template-columns:1fr}
 }
 @media print{
   body{background:#fff}
@@ -182,12 +206,13 @@ button,.btn{
   <section class="hero">
     <div class="kicker">Japan Family & Friends Trip · 2026</div>
     <h1>名古屋・伊勢志摩・大阪<br>9天8夜慢旅行</h1>
-    <p class="subtitle">10/17（六）— 10/25（日）｜夫妻＋3歲女兒＋兩組同行朋友｜以移動順暢、親子友善與購物玩樂平衡為主。</p>
-    <div class="hero-meta">
-      <span class="pill">👨‍👩‍👧 親子同行</span>
-      <span class="pill">👥 6 大人＋1 幼兒</span>
-      <span class="pill">🚆 3 個主要移動日</span>
-      <span class="pill">🎢 USJ 萬聖節</span>
+    <div class="weather-wrap">
+      <div class="weather-head"><b>🌤 旅行期間天氣</b><span id="weather-updated">接近出發會自動更新</span></div>
+      <div class="weather-grid">
+        <div class="weather-card" id="wx-nagoya"><b>名古屋｜10/17–10/18</b><div class="weather-main">載入中…</div><div class="weather-sub">10 月平年：約 23°C / 15°C</div></div>
+        <div class="weather-card" id="wx-mie"><b>三重・伊勢鳥羽｜10/19–10/21</b><div class="weather-main">載入中…</div><div class="weather-sub">鳥羽 10 月平年：約 22°C / 15°C</div></div>
+        <div class="weather-card" id="wx-osaka"><b>大阪｜10/21–10/25</b><div class="weather-main">載入中…</div><div class="weather-sub">10 月平年：約 24°C / 16°C</div></div>
+      </div>
     </div>
     <div class="actions">
       <button class="btn-light" onclick="shareTrip()">分享行程</button>
@@ -225,7 +250,15 @@ button,.btn{
       </header>
       <div class="timeline">
         <div class="item transport"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>桃園機場 Check-in</strong><p>準備出發前往名古屋。</p></div></div>
-        <div class="item food"><div class="time">午餐</div><div class="dot"></div><div class="content"><strong>飛機上不安排午餐</strong><p>建議登機前先準備簡單點心，尤其是小朋友。</p></div></div>
+        <div class="item food"><div class="time">午餐</div><div class="dot"></div><div class="content"><strong>飛機上不供餐</strong><p>登機前先備小點心；抵達中部國際機場後再正式吃午餐。</p></div></div>
+        <div class="item food"><div class="time">13:30～</div><div class="dot"></div><div class="content"><strong>中部國際機場午餐｜依當下排隊選擇</strong><p>從 T2 抵達後，若想快點吃可先走到 FLIGHT OF DREAMS；想吃名古屋代表料理則前往 T1 4F Sky Town。</p>
+          <div class="spot-list">
+            <div class="spot-card"><b>まるや本店｜鰻魚飯三吃</b><span>T1 4F｜10:00–21:30。第一餐就想吃名古屋名物可選這家。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Maruya+Honten+Centrair">Google Maps ↗</a></div>
+            <div class="spot-card"><b>矢場とん｜味噌豬排</b><span>T1 4F｜內用約 10:00 起。份量足、名古屋感很強。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Misokatsu+Yabaton+Centrair">Google Maps ↗</a></div>
+            <div class="spot-card"><b>若鯱家｜咖哩烏龍麵</b><span>T1 4F｜6:30–22:00。帶小孩也相對好處理。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Wakashachiya+Centrair">Google Maps ↗</a></div>
+            <div class="spot-card"><b>寿製麵｜讚岐烏龍</b><span>FLIGHT OF DREAMS 2F｜10:00–18:30。離 T2 較近、適合不想繞去 T1 時。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kotobuki+Seimen+Flight+of+Dreams">Google Maps ↗</a></div>
+          </div>
+        </div></div>
         <div class="item transport"><div class="time">抵達後</div><div class="dot"></div><div class="content"><strong>名鐵 μSKY 特急</strong><p>中部國際機場 → 名鐵名古屋，依實際出關時間選最近班次。</p><div class="transit-note"><b>🚆 交通：</b>中部國際機場站 → 名鐵名古屋站｜μSKY 全車指定席｜約 29–37 分｜成人 ¥1,430（基本車資 ¥980＋μticket ¥450）。到站後再買即可，不需先綁死班次。</div></div></div>
         <div class="item hotel"><div class="time">入住</div><div class="dot"></div><div class="content"><strong>名古屋納屋橋大和 Roynet DEL style 飯店</strong><p>放行李、稍作休息。</p><div class="transit-note"><b>🚇 交通：</b>名鐵名古屋站 → 飯店可步行約 15 分；或從名古屋站搭地下鐵東山線 1 站到伏見站（約 ¥210），8 號出口再步行約 7 分。</div></div></div>
         <div class="item"><div class="time">晚餐後</div><div class="dot"></div><div class="content"><strong>綠洲21／中部電力 MIRAI TOWER 周邊散步</strong><p>抵達第一天不塞太滿，以夜景與城市散步收尾。</p><div class="transit-note"><b>🚇 交通：</b>伏見站 → 栄站｜地下鐵東山線｜1 站、免轉乘｜成人 ¥210；栄站出站即為榮商圈／Oasis 21 一帶。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Oasis+21+Nagoya">Google Maps ↗</a></div></div>
@@ -241,7 +274,13 @@ button,.btn{
       </header>
       <div class="timeline">
         <div class="item"><div class="time">上午｜親子</div><div class="dot"></div><div class="content"><span class="group family">👨‍👩‍👧 親子組</span><br><strong>東山動植物園</strong><p>以 3 歲小朋友為主的上午行程，動物園慢慢走，不趕場。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行約 7 分到伏見站 → 地下鐵東山線直達「東山公園站」｜約 15 分、免轉乘｜成人 ¥270；出站後步行前往園區。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Higashiyama+Zoo+and+Botanical+Gardens">Google Maps ↗</a></div></div>
-        <div class="item"><div class="time">上午｜大人</div><div class="dot"></div><div class="content"><span class="group adult">💑 情侶夫妻組</span><br><strong>大須觀音寺・大須商店街</strong><p>參拜＋商店街、小吃與逛街，節奏自由。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行到伏見站 → 地下鐵鶴舞線 1 站到「大須觀音站」｜約 2 分、免轉乘｜成人 ¥210；出站步行即可到大須觀音與商店街。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Osu+Kannon+Nagoya">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">上午｜大人</div><div class="dot"></div><div class="content"><span class="group adult">💑 情侶夫妻組</span><br><strong>大須觀音寺・大須商店街</strong><p>參拜＋商店街、小吃與逛街，節奏自由。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行到伏見站 → 地下鐵鶴舞線 1 站到「大須觀音站」｜約 2 分、免轉乘｜成人 ¥210；出站步行即可到大須觀音與商店街。</div><div class="spot-list">
+            <div class="spot-card"><b>KOMEHYO 名古屋本店</b><span>大須代表性的二手精品店，包包、腕錶、珠寶與中古精品最適合慢慢挖。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=KOMEHYO+Nagoya+Honten+Osu">Google Maps ↗</a></div>
+            <div class="spot-card"><b>Mandarake 名古屋店</b><span>漫畫、動漫、玩具與收藏品；想逛日本次文化很值得排。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mandarake+Nagoya+Osu">Google Maps ↗</a></div>
+            <div class="spot-card"><b>Strike Vintage</b><span>大須古著路線代表之一，偏美式古著與選品；週末午後再去較適合。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Strike+Vintage+Osu+Nagoya">Google Maps ↗</a></div>
+            <div class="spot-card"><b>コンパル 大須本店</b><span>名古屋老牌喫茶店，招牌炸蝦三明治；逛累可當休息點。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Compal+Osu+Nagoya">Google Maps ↗</a></div>
+          </div>
+          <a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Osu+Kannon+Nagoya">大須觀音 Google Maps ↗</a></div></div>
         <div class="item"><div class="time">下午會合</div><div class="dot"></div><div class="content"><strong>榮商圈集合・Alpen NAGOYA</strong><p>兩組下午在榮會合，一起逛 Alpen、百貨與周邊商圈。</p><div class="transit-note"><b>🚇 親子組：</b>東山公園站 → 栄站｜東山線直達｜約 12 分｜¥240。<br><b>🚇 情侶夫妻組：</b>大須觀音站 → 伏見站（鶴舞線）→ 栄站（東山線）｜轉乘 1 次｜¥210。<br><b>📍 Alpen：</b>從栄站 S7a/S7b 出口步行約 7 分；或矢場町站 6 號出口步行約 5 分。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Alpen+NAGOYA">Google Maps ↗</a></div></div>
       </div>
       <div class="hotelbar"><b>住宿</b><div>名古屋納屋橋大和 Roynet DEL style 飯店</div></div>
@@ -257,7 +296,15 @@ button,.btn{
         <div class="item transport"><div class="time">出發前</div><div class="dot"></div><div class="content"><strong>飯店 → 近鐵名古屋站</strong><p>建議預留行李移動與找月台時間，提早抵達。</p><div class="transit-note"><b>🚇 交通：</b>伏見站 → 名古屋站｜地下鐵東山線 1 站｜成人約 ¥210；抵達名古屋站後依指標步行至「近鐵名古屋站」。有大件行李時建議至少提早 30 分鐘到近鐵站。</div></div></div>
         <div class="item transport"><div class="time">10:25–11:40</div><div class="dot"></div><div class="content"><strong>島風號 Shimakaze・Premium Seat <span class="status ok">✓ 已購票</span></strong><p>近鐵名古屋 10:25 → 伊勢市 11:40。</p><div class="transit-note"><b>🎫 搭乘方式：</b>你們已買的是島風 Limited Express e-ticket／指定席。進站時仍要有「基本乘車資格」（KINTETSU RAIL PASS、IC 卡或基本乘車券其一）；到月台後依電子票上的車廂與座位直接入座，不需要換紙本特急券。手機需能即時開啟正式 e-ticket 畫面，查票時截圖或列印不算有效憑證。</div></div></div>
         <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>伊勢神宮・內宮</strong><p>抵達伊勢後前往內宮參拜。</p><div class="transit-note"><b>🚌 交通：</b>伊勢市站前 → 內宮前｜三重交通巴士｜約 13–20 分｜成人 ¥520；下車即到內宮／御祓町一帶。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ise+Jingu+Naiku">Google Maps ↗</a></div></div>
-        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>御祓町・おかげ横丁周邊</strong><p>內宮參拜後直接步行逛街、吃小吃與採買。</p><div class="transit-note"><b>🚶 交通：</b>與內宮相連，以步行移動即可，無需再搭車。回飯店時從「內宮前」搭三重交通回伊勢市站，成人 ¥520，再步行約 10 分至飯店。</div></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>御祓町・おかげ横丁周邊</strong><p>內宮參拜後直接步行逛街、吃小吃與採買。</p><div class="transit-note"><b>🚶 交通：</b>與內宮相連，以步行移動即可，無需再搭車。回飯店時從「內宮前」搭三重交通回伊勢市站，成人 ¥520，再步行約 10 分至飯店。</div>
+          <div class="spot-list">
+            <div class="spot-card"><b>赤福本店</b><span>必訪老店。10/19 已進入秋冬季，對面的本店別店舗從 10/17 起供應「赤福ぜんざい」。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Akafuku+Honten+Ise">Google Maps ↗</a></div>
+            <div class="spot-card"><b>豚捨</b><span>老舖精肉店，最適合邊走邊吃的是可樂餅；想吃牛肉料理也可內用。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Butasute+Okage+Yokocho">Google Maps ↗</a></div>
+            <div class="spot-card"><b>ふくすけ</b><span>想在這裡吃一碗伊勢烏龍麵，就選這家，屬於最經典的在地口味。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Fukusuke+Okage+Yokocho">Google Maps ↗</a></div>
+            <div class="spot-card"><b>五十鈴川カフェ</b><span>面五十鈴川的咖啡休息點，適合下午坐下來喝咖啡、吃甜點。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Isuzugawa+Cafe+Ise">Google Maps ↗</a></div>
+            <div class="spot-card"><b>くみひも平井</b><span>伊勢／三重工藝伴手禮，組紐小物比一般土產更有地方特色。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kumihimo+Hirai+Ise">Google Maps ↗</a></div>
+          </div>
+        </div></div>
       </div>
       <div class="hotelbar"><b>住宿</b><div>EXPERIENCE ISE MIYAMACHI HOTEL｜伊勢市站步行約 10 分／宮町站步行約 5 分</div></div>
     </article>
@@ -270,7 +317,12 @@ button,.btn{
       </header>
       <div class="timeline">
         <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>自由時間・整理行李・退房</strong><p>原訂二見浦／二見興玉神社／夫婦岩／富士見橋行程取消，上午保留輕鬆整理與休息。</p></div></div>
-        <div class="item transport"><div class="time">中午前</div><div class="dot"></div><div class="content"><strong>伊勢市 → 鳥羽站</strong><p>中午前抵達鳥羽站，前往 1 號出口集合。</p><div class="transit-note"><b>🚆 交通：</b>飯店 → 伊勢市站步行約 10 分；近鐵「伊勢市 → 鳥羽」約 17–22 分、通常可直達｜成人 ¥390。建議約 11:30 前後離開飯店，目標 12:20 前抵達鳥羽站，12:40 前到 1 號出口接駁點。</div></div></div>
+        <div class="item transport"><div class="time">中午前</div><div class="dot"></div><div class="content"><strong>伊勢市 → 鳥羽站</strong><p>中午前抵達鳥羽站，先寄放行李，再前往 1 號出口集合。</p><div class="transit-note"><b>🚆 交通：</b>飯店 → 伊勢市站步行約 10 分；近鐵「伊勢市 → 鳥羽」約 17–22 分、通常可直達｜成人 ¥390。建議約 11:20–11:30 離開飯店，目標 12:10–12:20 抵達鳥羽站，預留找置物櫃時間。</div>
+          <div class="luggage-note"><b>🧳 鳥羽站行李寄放：</b><br>
+          <b>首選：</b>近鐵鳥羽站「改札外 2F 待合室」置物櫃，出改札後往右側待合室方向；支援現金、IC、QR、信用卡。參考價格：小 ¥400／中 ¥600／大 ¥700／特大 ¥1,000。<br>
+          <b>第二選擇：</b>往 4 號出口自由通路，參考價格小 ¥400／中 ¥500／大 ¥600；或 3 號出口樓梯旁，小 ¥400／中 ¥600／大 ¥700。<br>
+          近鐵 2026/8 官方資料顯示鳥羽站共有特大 5、大 56、中 79、小 88 格。若 6 人大箱太多，可改用鳥羽一番街 1F/2F 或人工手荷物寄放當備案。寄好後再走到 <b>1 號出口</b>搭 12:45 海女接駁。</div>
+        </div></div>
         <div class="item transport"><div class="time">12:45</div><div class="dot"></div><div class="content"><strong>海女小屋接駁車 <span class="status ok">✓ 已預約</span></strong><p>鳥羽站 1 號出口下方集合，12:45 發車；請在 12:40 前到。</p><div class="transit-note"><b>🚌 交通：</b>海女小屋往返接駁已確認 7 位，這段不需另外研究電車轉乘。</div></div></div>
         <div class="item food"><div class="time">午餐</div><div class="dot"></div><div class="content"><strong>海女小屋 はちまんかまど</strong><p>海女文化與炭烤海鮮體驗。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hachiman+Kamado+Toba">Google Maps ↗</a></div></div>
         <div class="item transport"><div class="time">15:15</div><div class="dot"></div><div class="content"><strong>海女小屋接駁車返回鳥羽</strong><p>15:15 是「從海女小屋出發」的時間，不是抵達鳥羽站時間。</p><div class="transit-note"><b>🏨 接續住宿：</b>龜之井酒店鳥羽有鳥羽站 → 飯店免費接駁（14:30／15:30／17:15，需預約）。海女小屋 15:15 才出發，因此較實際的是視返回時間安排 17:15 接駁，或改搭計程車前往飯店。</div></div></div>
@@ -349,6 +401,11 @@ button,.btn{
       </header>
       <div class="timeline">
         <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>木津市場</strong><p>最後一天早上安排市場走走與採買。</p><div class="transit-note"><b>🚶 交通：</b>從飯店步行前往即可，建議把最後採買控制在午前～中午，之後回飯店整理行李。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kizu+Wholesale+Market+Osaka">Google Maps ↗</a></div></div>
+        <div class="item hotel"><div class="time">退房後</div><div class="dot"></div><div class="content"><strong>南海難波站｜行李寄放</strong><p>若退房後還要在難波活動，可先把行李放到南海難波站，17:05 搭 Rapi:t 前再取。</p>
+          <div class="luggage-note"><b>🧳 最推薦：2F 中央改札外 Coin Locker Room</b>｜靠近中央改札，之後取行李接 Rapi:t 最直覺。2026 現場資料：小 ¥500／中 ¥700／大 ¥1,200／特大 ¥1,500，約 5:30–24:10 可取放。<br>
+          <b>其他備案：</b>1F 銀行區旁：小 ¥500／中 ¥700／大 ¥1,200；3F 北改札・Swissôtel 入口方向：小 ¥500／中 ¥800／大 ¥1,200。<br>
+          若置物櫃滿，2F 中央改札附近另有人工行李寄放服務，參考約 ¥800／件。南海官方 2026 站內圖亦標示多處 Coin Locker／Baggage Storage。</div>
+        </div></div>
         <div class="item transport"><div class="time">16:20 左右</div><div class="dot"></div><div class="content"><strong>飯店 → 南海難波站</strong><p>預留拖行李、找月台與進站時間。</p><div class="transit-note"><b>🚶 交通：</b>ESLEAD HOTEL Namba East → 南海難波站南口約步行 10 分。建議最晚約 16:20–16:25 從飯店出發，讓 6 大 1 小有充足時間進站。</div></div></div>
         <div class="item transport"><div class="time">17:05</div><div class="dot"></div><div class="content"><strong>南海 Rapi:t → 關西國際機場 <span class="status ok">✓ 已預訂</span></strong><p>17:05 從「南海難波站」出發前往 KIX，車程約 37–40 分。</p><div class="transit-note"><b>🚆 交通／票價：</b>南海難波 → 關西機場｜Rapi:t 全車指定席。官方一般普通席為基本車資 ¥970＋特急料金 ¥700＝¥1,670；若使用 Rapi:t 電子優惠票，成人目前 ¥1,410。你們已完成預訂，當天直接依票券上的座位／進站方式搭乘即可。</div></div></div>
         <div class="item transport"><div class="time">20:45</div><div class="dot"></div><div class="content"><strong>關西機場 → 台北</strong><p>AirAsia X D7 379，結束 9 天 8 夜旅行。</p></div></div>
@@ -364,7 +421,62 @@ button,.btn{
     <div class="quick-card"><h3>🎟 已確認／待決定</h3><p>島風號 10:25 Premium 已購、海女小屋接駁 12:45／15:15、伊勢志摩 Liner 15:49、USJ 時段、蟹道樂 12:00、Rapi:t 17:05 已訂；teamLab 當天再決定。</p></div>
   </section>
 
-  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V3｜交通資訊版｜票價以 2026/10 查詢為準，實際仍以當日公告為準</div>
+  <div class="section-title"><h2>出國攜帶清單</h2><span>可直接勾選，勾選狀態會保留在自己的手機</span></div>
+  <section class="packing" id="packing-list">
+    <div class="pack-grid">
+      <div class="pack-group"><h3>🪪 證件・金錢</h3>
+        <label class="pack-item"><input type="checkbox" data-pack="passport">護照</label>
+        <label class="pack-item"><input type="checkbox" data-pack="cash">日幣現金</label>
+        <label class="pack-item"><input type="checkbox" data-pack="cards">信用卡／提款卡</label>
+        <label class="pack-item"><input type="checkbox" data-pack="tickets">機票、飯店、島風、Rapi:t 等預約 QR／電子票</label>
+        <label class="pack-item"><input type="checkbox" data-pack="insurance">旅遊保險資料／緊急聯絡資訊</label>
+        <label class="pack-item"><input type="checkbox" data-pack="ic">Suica／ICOCA／manaca 等 IC 卡</label>
+      </div>
+      <div class="pack-group"><h3>💊 藥品・隨身用品</h3>
+        <label class="pack-item"><input type="checkbox" data-pack="meds">固定口服藥／處方藥</label>
+        <label class="pack-item"><input type="checkbox" data-pack="basicmed">退燒止痛、腸胃、暈車等常備藥</label>
+        <label class="pack-item"><input type="checkbox" data-pack="kidsmed">兒童常備藥與體溫計</label>
+        <label class="pack-item"><input type="checkbox" data-pack="bandage">OK 繃／簡易藥膏</label>
+        <label class="pack-item"><input type="checkbox" data-pack="tissue">口罩、濕紙巾、衛生紙、乾洗手</label>
+        <label class="pack-item"><input type="checkbox" data-pack="toiletry">牙刷、保養／盥洗用品</label>
+      </div>
+      <div class="pack-group"><h3>🔌 3C・電力</h3>
+        <label class="pack-item"><input type="checkbox" data-pack="phone">手機</label>
+        <label class="pack-item"><input type="checkbox" data-pack="charger">充電器</label>
+        <label class="pack-item"><input type="checkbox" data-pack="cables">USB-C／Lightning 等充電線</label>
+        <label class="pack-item"><input type="checkbox" data-pack="powerbank">行動電源（放隨身行李）</label>
+        <label class="pack-item"><input type="checkbox" data-pack="wifi">eSIM／SIM／Wi-Fi</label>
+        <label class="pack-item"><input type="checkbox" data-pack="adapter">轉接頭（有三孔插頭設備時再帶）</label>
+      </div>
+      <div class="pack-group"><h3>👕 衣物・天氣</h3>
+        <label class="pack-item"><input type="checkbox" data-pack="clothes">換洗衣物／內衣襪</label>
+        <label class="pack-item"><input type="checkbox" data-pack="jacket">薄外套／可分層穿搭</label>
+        <label class="pack-item"><input type="checkbox" data-pack="shoes">好走的鞋</label>
+        <label class="pack-item"><input type="checkbox" data-pack="umbrella">摺疊傘</label>
+        <label class="pack-item"><input type="checkbox" data-pack="laundry">洗衣袋／髒衣袋</label>
+        <label class="pack-item"><input type="checkbox" data-pack="hat">帽子／防曬</label>
+      </div>
+      <div class="pack-group"><h3>👧 親子用品</h3>
+        <label class="pack-item"><input type="checkbox" data-pack="stroller">推車</label>
+        <label class="pack-item"><input type="checkbox" data-pack="kidclothes">小孩備用衣物</label>
+        <label class="pack-item"><input type="checkbox" data-pack="kidsnacks">小孩零食／水壺</label>
+        <label class="pack-item"><input type="checkbox" data-pack="blanket">薄毯／睡覺小物</label>
+        <label class="pack-item"><input type="checkbox" data-pack="raincover">推車雨罩</label>
+        <label class="pack-item"><input type="checkbox" data-pack="kidtoilet">如廁備品／濕紙巾／備用塑膠袋</label>
+      </div>
+      <div class="pack-group"><h3>🧳 行李・其他</h3>
+        <label class="pack-item"><input type="checkbox" data-pack="bags">可折疊購物袋／備用行李袋</label>
+        <label class="pack-item"><input type="checkbox" data-pack="lock">行李鎖／行李吊牌</label>
+        <label class="pack-item"><input type="checkbox" data-pack="organizer">收納袋／壓縮袋</label>
+        <label class="pack-item"><input type="checkbox" data-pack="bottle">環保水瓶</label>
+        <label class="pack-item"><input type="checkbox" data-pack="pen">原子筆</label>
+        <label class="pack-item"><input type="checkbox" data-pack="zipbag">夾鏈袋／塑膠袋</label>
+      </div>
+    </div>
+    <div class="pack-tip">提醒：行動電源不可放托運行李；處方藥建議保留原包裝。出發前一週可再依最新天氣刪減衣物。</div>
+  </section>
+
+  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V4｜天氣・必逛・行李寄放・攜帶清單｜價格與營業資訊仍以當日現場公告為準</div>
 </div>
 
 <script>
@@ -378,6 +490,59 @@ async function shareTrip(){
     }
   }catch(e){}
 }
+
+const weatherTrips=[
+  {id:"wx-nagoya",name:"名古屋",lat:35.1815,lon:136.9066,start:"2026-10-17",end:"2026-10-18",normal:"10 月平年：約 23°C / 15°C"},
+  {id:"wx-mie",name:"三重・伊勢鳥羽",lat:34.4817,lon:136.8430,start:"2026-10-19",end:"2026-10-21",normal:"鳥羽 10 月平年：約 22°C / 15°C"},
+  {id:"wx-osaka",name:"大阪",lat:34.6937,lon:135.5023,start:"2026-10-21",end:"2026-10-25",normal:"10 月平年：約 24°C / 16°C"}
+];
+function wxIcon(code){
+  if(code===0) return "☀️";
+  if([1,2].includes(code)) return "🌤️";
+  if(code===3) return "☁️";
+  if([45,48].includes(code)) return "🌫️";
+  if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code)) return "🌧️";
+  if([71,73,75,77,85,86].includes(code)) return "🌨️";
+  if([95,96,99].includes(code)) return "⛈️";
+  return "🌤️";
+}
+async function loadWeather(){
+  let updated=false;
+  for(const trip of weatherTrips){
+    const el=document.getElementById(trip.id);
+    try{
+      const url="https://api.open-meteo.com/v1/forecast?latitude="+trip.lat+"&longitude="+trip.lon+"&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=16";
+      const res=await fetch(url);
+      if(!res.ok) throw new Error("weather");
+      const d=(await res.json()).daily;
+      const rows=d.time.map((t,i)=>({t,hi:d.temperature_2m_max[i],lo:d.temperature_2m_min[i],pop:d.precipitation_probability_max[i],code:d.weather_code[i]}))
+        .filter(x=>x.t>=trip.start&&x.t<=trip.end);
+      if(rows.length){
+        const hi=Math.round(Math.max(...rows.map(x=>x.hi)));
+        const lo=Math.round(Math.min(...rows.map(x=>x.lo)));
+        const pop=Math.round(Math.max(...rows.map(x=>x.pop||0)));
+        const icon=wxIcon(rows[0].code);
+        el.querySelector(".weather-main").textContent=icon+" "+hi+"° / "+lo+"°";
+        el.querySelector(".weather-sub").textContent="目前可預報 "+rows.length+" 天｜最高降雨機率 "+pop+"%｜預報會隨開頁自動更新";
+      }else{
+        el.querySelector(".weather-main").textContent="📅 尚未進入逐日預報";
+        el.querySelector(".weather-sub").textContent=trip.normal+"｜進入 16 日預報範圍後會自動切換";
+      }
+      updated=true;
+    }catch(e){
+      el.querySelector(".weather-main").textContent="🌤 "+trip.normal.replace("10 月平年：","").replace("鳥羽 ","");
+      el.querySelector(".weather-sub").textContent="即時預報暫時無法載入，先顯示 1991–2020 平年值";
+    }
+  }
+  if(updated) document.getElementById("weather-updated").textContent="每次開啟自動抓最新 16 日預報";
+}
+loadWeather();
+
+document.querySelectorAll("[data-pack]").forEach(cb=>{
+  const key="japan-trip-pack-"+cb.dataset.pack;
+  cb.checked=localStorage.getItem(key)==="1";
+  cb.addEventListener("change",()=>localStorage.setItem(key,cb.checked?"1":"0"));
+});
 </script>
 </body>
 </html>
