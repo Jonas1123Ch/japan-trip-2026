@@ -126,6 +126,16 @@ button,.btn{
 .maps{
   display:inline-block;margin-top:5px;font-size:12px;color:#6e5548;text-decoration:none;border-bottom:1px dashed #b99a89
 }
+.transit-note{
+  margin-top:8px;padding:8px 10px;border-radius:10px;background:#f2f6f8;border:1px solid #dfe9ee;color:#53656e;font-size:12px;line-height:1.55
+}
+.transit-note b{color:#3f5f70}
+.status{display:inline-flex;align-items:center;gap:5px;margin-left:6px;padding:3px 7px;border-radius:999px;font-size:10px;font-weight:800;vertical-align:2px}
+.status.ok{background:#e9f5ed;color:#4b745d}
+.status.wait{background:#fff3dd;color:#896a34}
+.group{display:inline-block;margin-bottom:5px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800}
+.group.family{background:#e8f3ee;color:#4e7462}
+.group.adult{background:#f4eaf1;color:#795b70}
 .note{
   margin:3px 18px 18px;padding:12px 14px;border-radius:14px;background:#faf6f1;border:1px dashed #ddc9bd;font-size:13px;color:#655a55
 }
@@ -216,8 +226,9 @@ button,.btn{
       <div class="timeline">
         <div class="item transport"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>桃園機場 Check-in</strong><p>準備出發前往名古屋。</p></div></div>
         <div class="item food"><div class="time">午餐</div><div class="dot"></div><div class="content"><strong>飛機上不安排午餐</strong><p>建議登機前先準備簡單點心，尤其是小朋友。</p></div></div>
-        <div class="item transport"><div class="time">14:37 / 15:07</div><div class="dot"></div><div class="content"><strong>名鐵 μSKY 特急</strong><p>中部國際機場 → 名古屋市區，依實際出關時間選班次。</p></div></div>
-        <div class="item"><div class="time">晚餐後</div><div class="dot"></div><div class="content"><strong>綠洲21／中部電力 MIRAI TOWER 周邊散步</strong><p>抵達第一天不塞太滿，以夜景與城市散步收尾。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Oasis+21+Nagoya">Google Maps ↗</a></div></div>
+        <div class="item transport"><div class="time">抵達後</div><div class="dot"></div><div class="content"><strong>名鐵 μSKY 特急</strong><p>中部國際機場 → 名鐵名古屋，依實際出關時間選最近班次。</p><div class="transit-note"><b>🚆 交通：</b>中部國際機場站 → 名鐵名古屋站｜μSKY 全車指定席｜約 29–37 分｜成人 ¥1,430（基本車資 ¥980＋μticket ¥450）。到站後再買即可，不需先綁死班次。</div></div></div>
+        <div class="item hotel"><div class="time">入住</div><div class="dot"></div><div class="content"><strong>名古屋納屋橋大和 Roynet DEL style 飯店</strong><p>放行李、稍作休息。</p><div class="transit-note"><b>🚇 交通：</b>名鐵名古屋站 → 飯店可步行約 15 分；或從名古屋站搭地下鐵東山線 1 站到伏見站（約 ¥210），8 號出口再步行約 7 分。</div></div></div>
+        <div class="item"><div class="time">晚餐後</div><div class="dot"></div><div class="content"><strong>綠洲21／中部電力 MIRAI TOWER 周邊散步</strong><p>抵達第一天不塞太滿，以夜景與城市散步收尾。</p><div class="transit-note"><b>🚇 交通：</b>伏見站 → 栄站｜地下鐵東山線｜1 站、免轉乘｜成人 ¥210；栄站出站即為榮商圈／Oasis 21 一帶。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Oasis+21+Nagoya">Google Maps ↗</a></div></div>
       </div>
       <div class="hotelbar"><b>住宿</b><div>名古屋納屋橋大和 Roynet DEL style 飯店</div></div>
     </article>
@@ -225,13 +236,13 @@ button,.btn{
     <article class="day" id="day2">
       <header class="dayhead">
         <div class="daynum"><b>Day 2</b><span>10/18（日）</span></div>
-        <div class="daytitle"><h3>名古屋｜大須・東山・榮</h3><p>親子景點＋逛街日</p></div>
-        <div class="tags"><span class="tag">親子</span><span class="tag shop">購物</span></div>
+        <div class="daytitle"><h3>名古屋｜上午分組・下午榮會合</h3><p>親子組逛動物園；情侶夫妻組走大須，下午一起逛榮</p></div>
+        <div class="tags"><span class="tag">分組行動</span><span class="tag">親子</span><span class="tag shop">購物</span></div>
       </header>
       <div class="timeline">
-        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>大須商店街／大須觀音</strong><p>先走街區、吃小吃，再視體力前往下一站。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Osu+Kannon+Nagoya">Google Maps ↗</a></div></div>
-        <div class="item"><div class="time">上午～中午</div><div class="dot"></div><div class="content"><strong>東山動植物園</strong><p>3 歲小朋友的重點行程。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Higashiyama+Zoo+and+Botanical+Gardens">Google Maps ↗</a></div></div>
-        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>Alpen NAGOYA・榮商圈</strong><p>運動用品、百貨與榮一帶購物。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Alpen+NAGOYA">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">上午｜親子</div><div class="dot"></div><div class="content"><span class="group family">👨‍👩‍👧 親子組</span><br><strong>東山動植物園</strong><p>以 3 歲小朋友為主的上午行程，動物園慢慢走，不趕場。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行約 7 分到伏見站 → 地下鐵東山線直達「東山公園站」｜約 15 分、免轉乘｜成人 ¥270；出站後步行前往園區。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Higashiyama+Zoo+and+Botanical+Gardens">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">上午｜大人</div><div class="dot"></div><div class="content"><span class="group adult">💑 情侶夫妻組</span><br><strong>大須觀音寺・大須商店街</strong><p>參拜＋商店街、小吃與逛街，節奏自由。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行到伏見站 → 地下鐵鶴舞線 1 站到「大須觀音站」｜約 2 分、免轉乘｜成人 ¥210；出站步行即可到大須觀音與商店街。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Osu+Kannon+Nagoya">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">下午會合</div><div class="dot"></div><div class="content"><strong>榮商圈集合・Alpen NAGOYA</strong><p>兩組下午在榮會合，一起逛 Alpen、百貨與周邊商圈。</p><div class="transit-note"><b>🚇 親子組：</b>東山公園站 → 栄站｜東山線直達｜約 12 分｜¥240。<br><b>🚇 情侶夫妻組：</b>大須觀音站 → 伏見站（鶴舞線）→ 栄站（東山線）｜轉乘 1 次｜¥210。<br><b>📍 Alpen：</b>從栄站 S7a/S7b 出口步行約 7 分；或矢場町站 6 號出口步行約 5 分。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Alpen+NAGOYA">Google Maps ↗</a></div></div>
       </div>
       <div class="hotelbar"><b>住宿</b><div>名古屋納屋橋大和 Roynet DEL style 飯店</div></div>
     </article>
@@ -239,32 +250,33 @@ button,.btn{
     <article class="day" id="day3">
       <header class="dayhead">
         <div class="daynum"><b>Day 3</b><span>10/19（一）</span></div>
-        <div class="daytitle"><h3>名古屋 → 伊勢｜島風號</h3><p>搭行李移動，下午伊勢神宮</p></div>
-        <div class="tags"><span class="tag move">移動日・帶行李</span><span class="tag">Shimakaze</span></div>
+        <div class="daytitle"><h3>名古屋 → 伊勢｜島風號</h3><p>Premium Seat 已購票，下午伊勢神宮</p></div>
+        <div class="tags"><span class="tag move">移動日・帶行李</span><span class="tag">Shimakaze</span><span class="tag">已購票</span></div>
       </header>
       <div class="timeline">
-        <div class="item transport"><div class="time">10:25–11:40</div><div class="dot"></div><div class="content"><strong>島風號 Shimakaze</strong><p>近鐵名古屋 → 伊勢市。Premium Seat 為目前搶票目標。</p></div></div>
-        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>伊勢神宮・內宮</strong><p>抵達後安排伊勢代表性景點。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ise+Jingu+Naiku">Google Maps ↗</a></div></div>
-        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>厄除町商店</strong><p>接續內宮周邊散步與採買。</p></div></div>
+        <div class="item transport"><div class="time">出發前</div><div class="dot"></div><div class="content"><strong>飯店 → 近鐵名古屋站</strong><p>建議預留行李移動與找月台時間，提早抵達。</p><div class="transit-note"><b>🚇 交通：</b>伏見站 → 名古屋站｜地下鐵東山線 1 站｜成人約 ¥210；抵達名古屋站後依指標步行至「近鐵名古屋站」。有大件行李時建議至少提早 30 分鐘到近鐵站。</div></div></div>
+        <div class="item transport"><div class="time">10:25–11:40</div><div class="dot"></div><div class="content"><strong>島風號 Shimakaze・Premium Seat <span class="status ok">✓ 已購票</span></strong><p>近鐵名古屋 10:25 → 伊勢市 11:40。</p><div class="transit-note"><b>🎫 搭乘方式：</b>你們已買的是島風 Limited Express e-ticket／指定席。進站時仍要有「基本乘車資格」（KINTETSU RAIL PASS、IC 卡或基本乘車券其一）；到月台後依電子票上的車廂與座位直接入座，不需要換紙本特急券。手機需能即時開啟正式 e-ticket 畫面，查票時截圖或列印不算有效憑證。</div></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>伊勢神宮・內宮</strong><p>抵達伊勢後前往內宮參拜。</p><div class="transit-note"><b>🚌 交通：</b>伊勢市站前 → 內宮前｜三重交通巴士｜約 13–20 分｜成人 ¥520；下車即到內宮／御祓町一帶。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ise+Jingu+Naiku">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>御祓町・おかげ横丁周邊</strong><p>內宮參拜後直接步行逛街、吃小吃與採買。</p><div class="transit-note"><b>🚶 交通：</b>與內宮相連，以步行移動即可，無需再搭車。回飯店時從「內宮前」搭三重交通回伊勢市站，成人 ¥520，再步行約 10 分至飯店。</div></div></div>
       </div>
-      <div class="hotelbar"><b>住宿</b><div>EXPERIENCE ISE MIYAMACHI HOTEL</div></div>
+      <div class="hotelbar"><b>住宿</b><div>EXPERIENCE ISE MIYAMACHI HOTEL｜伊勢市站步行約 10 分／宮町站步行約 5 分</div></div>
     </article>
 
     <article class="day" id="day4">
       <header class="dayhead">
         <div class="daynum"><b>Day 4</b><span>10/20（二）</span></div>
-        <div class="daytitle"><h3>伊勢 → 二見浦 → 鳥羽</h3><p>海女小屋體驗＋鳥羽入住</p></div>
-        <div class="tags"><span class="tag move">移動日・帶行李</span><span class="tag">海女小屋</span></div>
+        <div class="daytitle"><h3>伊勢 → 鳥羽｜海女小屋體驗</h3><p>上午不排景點，中午前移動到鳥羽站</p></div>
+        <div class="tags"><span class="tag move">移動日・帶行李</span><span class="tag">海女小屋</span><span class="tag">二見浦取消</span></div>
       </header>
       <div class="timeline">
-        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>伊勢 → 二見浦</strong><p>二見興玉神社、夫婦岩、富士見橋、境內青蛙像。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Futami+Okitama+Shrine">Google Maps ↗</a></div></div>
-        <div class="item transport"><div class="time">中午前</div><div class="dot"></div><div class="content"><strong>搭 CAN 巴士前往鳥羽站</strong><p>抵達後前往鳥羽站 1 號出口集合。</p></div></div>
-        <div class="item transport"><div class="time">12:45</div><div class="dot"></div><div class="content"><strong>海女小屋接駁車</strong><p>鳥羽站 1 號出口出發。</p></div></div>
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>自由時間・整理行李・退房</strong><p>原訂二見浦／二見興玉神社／夫婦岩／富士見橋行程取消，上午保留輕鬆整理與休息。</p></div></div>
+        <div class="item transport"><div class="time">中午前</div><div class="dot"></div><div class="content"><strong>伊勢市 → 鳥羽站</strong><p>中午前抵達鳥羽站，前往 1 號出口集合。</p><div class="transit-note"><b>🚆 交通：</b>飯店 → 伊勢市站步行約 10 分；近鐵「伊勢市 → 鳥羽」約 17–22 分、通常可直達｜成人 ¥390。建議約 11:30 前後離開飯店，目標 12:20 前抵達鳥羽站，12:40 前到 1 號出口接駁點。</div></div></div>
+        <div class="item transport"><div class="time">12:45</div><div class="dot"></div><div class="content"><strong>海女小屋接駁車 <span class="status ok">✓ 已預約</span></strong><p>鳥羽站 1 號出口下方集合，12:45 發車；請在 12:40 前到。</p><div class="transit-note"><b>🚌 交通：</b>海女小屋往返接駁已確認 7 位，這段不需另外研究電車轉乘。</div></div></div>
         <div class="item food"><div class="time">午餐</div><div class="dot"></div><div class="content"><strong>海女小屋 はちまんかまど</strong><p>海女文化與炭烤海鮮體驗。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hachiman+Kamado+Toba">Google Maps ↗</a></div></div>
-        <div class="item transport"><div class="time">15:15</div><div class="dot"></div><div class="content"><strong>海女小屋接駁車返回鳥羽站</strong><p>回到鳥羽站 1 號出口。</p></div></div>
-        <div class="item food"><div class="time">晚餐</div><div class="dot"></div><div class="content"><strong>大助－鳥羽</strong><p>晚餐安排依現場／訂位狀況調整。</p></div></div>
+        <div class="item transport"><div class="time">15:15</div><div class="dot"></div><div class="content"><strong>海女小屋接駁車返回鳥羽</strong><p>15:15 是「從海女小屋出發」的時間，不是抵達鳥羽站時間。</p><div class="transit-note"><b>🏨 接續住宿：</b>龜之井酒店鳥羽有鳥羽站 → 飯店免費接駁（14:30／15:30／17:15，需預約）。海女小屋 15:15 才出發，因此較實際的是視返回時間安排 17:15 接駁，或改搭計程車前往飯店。</div></div></div>
+        <div class="item food"><div class="time">晚餐</div><div class="dot"></div><div class="content"><strong>大助－鳥羽</strong><p>晚餐安排依現場／訂位狀況調整；店址確認後可再補最順交通。</p></div></div>
       </div>
-      <div class="hotelbar"><b>住宿</b><div>龜之井酒店 鳥羽</div></div>
+      <div class="hotelbar"><b>住宿</b><div>龜之井酒店 鳥羽｜鳥羽站免費接駁約 10 分（需事前預約）</div></div>
     </article>
 
     <article class="day" id="day5">
@@ -274,10 +286,11 @@ button,.btn{
         <div class="tags"><span class="tag move">移動日・帶行李</span><span class="tag">伊勢志摩 Liner</span></div>
       </header>
       <div class="timeline">
-        <div class="item transport"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>鳥羽 → 伊勢</strong><p>回到伊勢市區。</p></div></div>
-        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>伊勢神宮・外宮</strong><p>外宮參拜。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ise+Jingu+Geku">Google Maps ↗</a></div></div>
-        <div class="item"><div class="time">中午</div><div class="dot"></div><div class="content"><strong>伊勢外宮表參道</strong><p>午餐與散步採買。</p></div></div>
-        <div class="item transport"><div class="time">15:49–17:40</div><div class="dot"></div><div class="content"><strong>伊勢志摩 Liner → 大阪難波</strong><p>車程約 1 小時 51 分。</p></div></div>
+        <div class="item transport"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>龜之井酒店 → 鳥羽站 → 伊勢市</strong><p>退房後回到伊勢市區。</p><div class="transit-note"><b>🚌＋🚆 交通：</b>飯店免費接駁車「9:30／10:00」出發至鳥羽站（需預約，約 10 分）→ 近鐵鳥羽站 → 伊勢市站｜約 20 分｜成人 ¥390。</div></div></div>
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>伊勢神宮・外宮</strong><p>外宮參拜。</p><div class="transit-note"><b>🚶 交通：</b>伊勢市站步行約 5–7 分可到外宮，這段不需搭車。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ise+Jingu+Geku">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">中午</div><div class="dot"></div><div class="content"><strong>伊勢外宮表參道</strong><p>午餐與散步採買。</p><div class="transit-note"><b>🚶 交通：</b>外宮 → 外宮表參道 → 伊勢市站皆在步行範圍，方便吃完午餐後直接回車站取行李／搭車。</div></div></div>
+        <div class="item transport"><div class="time">15:49–17:40</div><div class="dot"></div><div class="content"><strong>伊勢志摩 Liner → 大阪難波</strong><p>伊勢市 → 大阪難波，車程約 1 小時 51 分。</p><div class="transit-note"><b>🚆 交通／票價：</b>近鐵特急・伊勢志摩 Liner｜基本車資約 ¥2,170＋特急券約 ¥1,340。若你們最後使用 KINTETSU RAIL PASS 5day，基本車資部分由 Pass 涵蓋，仍需另外持有特急券。</div></div></div>
+        <div class="item hotel"><div class="time">抵達後</div><div class="dot"></div><div class="content"><strong>大阪難波 → ESLEAD HOTEL Namba East</strong><p>入住後在難波／日本橋周邊吃晚餐。</p><div class="transit-note"><b>🚶 交通：</b>從南海難波站南口到飯店約步行 10 分；飯店最近地鐵站為堺筋線「恵美須町站」，步行約 7 分。</div></div></div>
       </div>
       <div class="hotelbar"><b>住宿</b><div>ESLEAD HOTEL Namba East</div></div>
     </article>
@@ -289,6 +302,7 @@ button,.btn{
         <div class="tags"><span class="tag usj">USJ</span><span class="tag">萬聖節</span><span class="tag">親子＋大人</span></div>
       </header>
       <div class="timeline">
+        <div class="item transport"><div class="time">出發</div><div class="dot"></div><div class="content"><strong>飯店 → Universal City</strong><p>從飯店最近的恵美須町站出發。</p><div class="transit-note"><b>🚇＋JR：</b>恵美須町 → 動物園前（堺筋線）→ 步行轉 JR 新今宮 → 西九條（大阪環狀線）→ Universal City（JR 夢咲線）｜約 25–35 分｜成人約 ¥390。飯店官方也建議走這條方向前往 USJ。</div></div></div>
         <div class="item"><div class="time">11:30–12:30</div><div class="dot"></div><div class="content"><strong>任天堂園區</strong><p>進入 SUPER NINTENDO WORLD。</p></div></div>
         <div class="item"><div class="time">11:30–12:00</div><div class="dot"></div><div class="content"><strong>瑪利歐：庫巴挑戰</strong><p>依實際預約／快速通關時段進場。</p></div></div>
         <div class="item"><div class="time">12:00–12:30</div><div class="dot"></div><div class="content"><strong>耀西冒險</strong><p>親子較友善的園區設施。</p></div></div>
@@ -306,8 +320,8 @@ button,.btn{
         <div class="tags"><span class="tag shop">購物</span><span class="tag">彈性日</span></div>
       </header>
       <div class="timeline">
-        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>大阪梅田商圈逛街</strong><p>依同行者需求安排百貨、商場與午餐。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Umeda+Osaka">Google Maps ↗</a></div></div>
-        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>大阪梅田商圈續逛</strong><p>保留充足休息與購物時間。</p></div></div>
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>大阪梅田商圈逛街</strong><p>依同行者需求安排百貨、商場與午餐。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行約 7 分至恵美須町站 → 堺筋線到動物園前 → 轉御堂筋線到梅田｜約 19–25 分｜成人 ¥240。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Umeda+Osaka">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>大阪梅田商圈續逛</strong><p>保留充足休息與購物時間。</p><div class="transit-note"><b>🚇 回程：</b>梅田 → 動物園前（御堂筋線）→ 恵美須町（堺筋線）｜成人 ¥240，再步行約 7 分回飯店。</div></div></div>
       </div>
       <div class="hotelbar"><b>住宿</b><div>ESLEAD HOTEL Namba East</div></div>
     </article>
@@ -315,14 +329,14 @@ button,.btn{
     <article class="day" id="day8">
       <header class="dayhead">
         <div class="daynum"><b>Day 8</b><span>10/24（六）</span></div>
-        <div class="daytitle"><h3>難波・心齋橋・teamLab</h3><p>市區景點＋螃蟹道樂＋夜間藝術</p></div>
-        <div class="tags"><span class="tag shop">購物</span><span class="tag">已排餐廳</span><span class="tag">teamLab</span></div>
+        <div class="daytitle"><h3>難波・心齋橋・teamLab</h3><p>市區景點＋螃蟹道樂；teamLab 當天再決定</p></div>
+        <div class="tags"><span class="tag shop">購物</span><span class="tag">已排餐廳</span><span class="tag">teamLab 待決定</span></div>
       </header>
       <div class="timeline">
-        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>難波八阪神社</strong><p>著名獅子殿拍照景點。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Namba+Yasaka+Shrine">Google Maps ↗</a></div></div>
-        <div class="item food"><div class="time">12:00</div><div class="dot"></div><div class="content"><strong>蟹道樂 道頓堀中店</strong><p>午餐。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kani+Doraku+Dotonbori+Naka">Google Maps ↗</a></div></div>
-        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>心齋橋商圈</strong><p>最後一個完整購物日下午。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Shinsaibashi+Osaka">Google Maps ↗</a></div></div>
-        <div class="item"><div class="time">18:00</div><div class="dot"></div><div class="content"><strong>teamLab Botanical Garden Osaka</strong><p>大阪植物園夜間數位藝術體驗。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=teamLab+Botanical+Garden+Osaka">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>難波八阪神社</strong><p>著名獅子殿拍照景點。</p><div class="transit-note"><b>🚶 交通：</b>從 ESLEAD HOTEL Namba East 以步行最直覺，約 15–20 分；不必為了短距離特地搭地鐵。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Namba+Yasaka+Shrine">Google Maps ↗</a></div></div>
+        <div class="item food"><div class="time">12:00</div><div class="dot"></div><div class="content"><strong>蟹道樂 道頓堀中店</strong><p>午餐。</p><div class="transit-note"><b>🚶 交通：</b>難波八阪神社 → 道頓堀一帶建議直接步行，約 15–20 分，沿途可順便經過難波商圈。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kani+Doraku+Dotonbori+Naka">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>心齋橋商圈</strong><p>最後一個完整購物日下午。</p><div class="transit-note"><b>🚶 交通：</b>道頓堀 → 心齋橋筋商店街直接步行約 5–10 分即可，無需搭車。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Shinsaibashi+Osaka">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">晚上</div><div class="dot"></div><div class="content"><strong>teamLab Botanical Garden Osaka <span class="status wait">當天決定是否購票</span></strong><p>視當天體力、天氣與購物進度再決定是否前往，不先綁死。</p><div class="transit-note"><b>🚇 若前往：</b>心齋橋站 → 長居站｜大阪 Metro 御堂筋線直達｜約 16–17 分｜成人 ¥290；長居站出站後再步行前往長居植物園／teamLab。若不去，就留在心齋橋／難波自由活動。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=teamLab+Botanical+Garden+Osaka">Google Maps ↗</a></div></div>
       </div>
       <div class="hotelbar"><b>住宿</b><div>ESLEAD HOTEL Namba East</div></div>
     </article>
@@ -330,13 +344,14 @@ button,.btn{
     <article class="day" id="day9">
       <header class="dayhead">
         <div class="daynum"><b>Day 9</b><span>10/25（日）</span></div>
-        <div class="daytitle"><h3>大阪 → 關西機場 → 台北</h3><p>最後採買＋回台灣</p></div>
-        <div class="tags"><span class="tag move">移動日・回台灣</span></div>
+        <div class="daytitle"><h3>大阪 → 關西機場 → 台北</h3><p>最後採買＋17:05 Rapi:t 已預訂</p></div>
+        <div class="tags"><span class="tag move">移動日・回台灣</span><span class="tag">Rapi:t 已訂位</span></div>
       </header>
       <div class="timeline">
-        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>木津市場</strong><p>最後一天早上安排市場走走與採買。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kizu+Wholesale+Market+Osaka">Google Maps ↗</a></div></div>
-        <div class="item transport"><div class="time">下午～傍晚</div><div class="dot"></div><div class="content"><strong>難波 → 關西國際機場</strong><p>預計搭南海電鐵 Rapi:t，班次之後依航班倒推確認。</p></div></div>
-        <div class="item transport"><div class="time">返台</div><div class="dot"></div><div class="content"><strong>關西機場 → 台北</strong><p>結束 9 天 8 夜旅行。</p></div></div>
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>木津市場</strong><p>最後一天早上安排市場走走與採買。</p><div class="transit-note"><b>🚶 交通：</b>從飯店步行前往即可，建議把最後採買控制在午前～中午，之後回飯店整理行李。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kizu+Wholesale+Market+Osaka">Google Maps ↗</a></div></div>
+        <div class="item transport"><div class="time">16:20 左右</div><div class="dot"></div><div class="content"><strong>飯店 → 南海難波站</strong><p>預留拖行李、找月台與進站時間。</p><div class="transit-note"><b>🚶 交通：</b>ESLEAD HOTEL Namba East → 南海難波站南口約步行 10 分。建議最晚約 16:20–16:25 從飯店出發，讓 6 大 1 小有充足時間進站。</div></div></div>
+        <div class="item transport"><div class="time">17:05</div><div class="dot"></div><div class="content"><strong>南海 Rapi:t → 關西國際機場 <span class="status ok">✓ 已預訂</span></strong><p>17:05 從「南海難波站」出發前往 KIX，車程約 37–40 分。</p><div class="transit-note"><b>🚆 交通／票價：</b>南海難波 → 關西機場｜Rapi:t 全車指定席。官方一般普通席為基本車資 ¥970＋特急料金 ¥700＝¥1,670；若使用 Rapi:t 電子優惠票，成人目前 ¥1,410。你們已完成預訂，當天直接依票券上的座位／進站方式搭乘即可。</div></div></div>
+        <div class="item transport"><div class="time">20:45</div><div class="dot"></div><div class="content"><strong>關西機場 → 台北</strong><p>AirAsia X D7 379，結束 9 天 8 夜旅行。</p></div></div>
       </div>
     </article>
 
@@ -344,12 +359,12 @@ button,.btn{
 
   <div class="section-title"><h2>旅行重點快速看</h2><span>方便同行朋友先抓大方向</span></div>
   <section class="quick">
-    <div class="quick-card"><h3>🚆 三個主要移動日</h3><p><strong>10/19</strong> 名古屋→伊勢（島風號）<br><strong>10/20</strong> 伊勢→二見浦→鳥羽<br><strong>10/21</strong> 鳥羽／伊勢→大阪難波</p></div>
-    <div class="quick-card"><h3>👧 親子重點</h3><p>東山動植物園、二見浦、海女小屋、USJ 耀西冒險。行程中保留購物日與彈性日，避免每天高強度。</p></div>
-    <div class="quick-card"><h3>🎟 已有時間軸的行程</h3><p>島風號 10:25、海女小屋接駁 12:45／15:15、伊勢志摩 Liner 15:49、USJ 時段、蟹道樂 12:00、teamLab 18:00。</p></div>
+    <div class="quick-card"><h3>🚆 三個主要移動日</h3><p><strong>10/19</strong> 名古屋→伊勢（島風號 Premium 已購）<br><strong>10/20</strong> 伊勢→鳥羽（中午海女接駁）<br><strong>10/21</strong> 鳥羽→伊勢→大阪難波</p></div>
+    <div class="quick-card"><h3>👧 親子重點</h3><p>Day 2 上午親子組單獨去東山動植物園；另有海女小屋與 USJ 耀西冒險。Day 4 上午已改成自由時間，整體節奏更輕鬆。</p></div>
+    <div class="quick-card"><h3>🎟 已確認／待決定</h3><p>島風號 10:25 Premium 已購、海女小屋接駁 12:45／15:15、伊勢志摩 Liner 15:49、USJ 時段、蟹道樂 12:00、Rapi:t 17:05 已訂；teamLab 當天再決定。</p></div>
   </section>
 
-  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V2｜之後可持續依最新版行程表更新</div>
+  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V3｜交通資訊版｜票價以 2026/10 查詢為準，實際仍以當日公告為準</div>
 </div>
 
 <script>
