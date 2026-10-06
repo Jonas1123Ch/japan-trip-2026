@@ -64,13 +64,13 @@ button,.btn{
 .btn-ghost{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);color:#fff}
 
 .summary{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 10px
+  display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:10px 0 8px
 }
 .summary-card{
-  background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:14px 15px;box-shadow:0 8px 24px rgba(67,52,42,.04)
+  background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:8px 10px;box-shadow:0 5px 14px rgba(67,52,42,.035)
 }
-.summary-card b{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:3px}
-.summary-card strong{font-size:17px}
+.summary-card b{display:block;font-size:10px;color:var(--muted);font-weight:700;margin-bottom:1px}
+.summary-card strong{font-size:14px;line-height:1.25}
 
 .daynav{
   position:sticky;top:0;z-index:20;
@@ -188,7 +188,10 @@ button,.btn{
 @media(max-width:760px){
   .container{padding:12px 12px 65px}
   .hero{border-radius:23px;padding:24px 18px}
-  .summary{grid-template-columns:1fr 1fr}
+  .summary{grid-template-columns:1fr 1fr;gap:6px;margin:8px 0 6px}
+  .summary-card{padding:7px 9px;border-radius:12px}
+  .summary-card b{font-size:10px}
+  .summary-card strong{font-size:13px}
   .daynav{margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px}
   .dayhead{grid-template-columns:72px 1fr}
   .tags{grid-column:1/-1;justify-content:flex-start}
