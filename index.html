@@ -216,6 +216,7 @@ button,.btn{
     </div>
     <div class="actions">
       <button class="btn-light" onclick="shareTrip()">分享行程</button>
+      <a class="btn btn-ghost" href="packing.html">🧳 出國攜帶清單</a>
       <button class="btn-ghost" onclick="window.print()">列印 / 存成 PDF</button>
     </div>
   </section>
@@ -421,62 +422,8 @@ button,.btn{
     <div class="quick-card"><h3>🎟 已確認／待決定</h3><p>島風號 10:25 Premium 已購、海女小屋接駁 12:45／15:15、伊勢志摩 Liner 15:49、USJ 時段、蟹道樂 12:00、Rapi:t 17:05 已訂；teamLab 當天再決定。</p></div>
   </section>
 
-  <div class="section-title"><h2>出國攜帶清單</h2><span>可直接勾選，勾選狀態會保留在自己的手機</span></div>
-  <section class="packing" id="packing-list">
-    <div class="pack-grid">
-      <div class="pack-group"><h3>🪪 證件・金錢</h3>
-        <label class="pack-item"><input type="checkbox" data-pack="passport">護照</label>
-        <label class="pack-item"><input type="checkbox" data-pack="cash">日幣現金</label>
-        <label class="pack-item"><input type="checkbox" data-pack="cards">信用卡／提款卡</label>
-        <label class="pack-item"><input type="checkbox" data-pack="tickets">機票、飯店、島風、Rapi:t 等預約 QR／電子票</label>
-        <label class="pack-item"><input type="checkbox" data-pack="insurance">旅遊保險資料／緊急聯絡資訊</label>
-        <label class="pack-item"><input type="checkbox" data-pack="ic">Suica／ICOCA／manaca 等 IC 卡</label>
-      </div>
-      <div class="pack-group"><h3>💊 藥品・隨身用品</h3>
-        <label class="pack-item"><input type="checkbox" data-pack="meds">固定口服藥／處方藥</label>
-        <label class="pack-item"><input type="checkbox" data-pack="basicmed">退燒止痛、腸胃、暈車等常備藥</label>
-        <label class="pack-item"><input type="checkbox" data-pack="kidsmed">兒童常備藥與體溫計</label>
-        <label class="pack-item"><input type="checkbox" data-pack="bandage">OK 繃／簡易藥膏</label>
-        <label class="pack-item"><input type="checkbox" data-pack="tissue">口罩、濕紙巾、衛生紙、乾洗手</label>
-        <label class="pack-item"><input type="checkbox" data-pack="toiletry">牙刷、保養／盥洗用品</label>
-      </div>
-      <div class="pack-group"><h3>🔌 3C・電力</h3>
-        <label class="pack-item"><input type="checkbox" data-pack="phone">手機</label>
-        <label class="pack-item"><input type="checkbox" data-pack="charger">充電器</label>
-        <label class="pack-item"><input type="checkbox" data-pack="cables">USB-C／Lightning 等充電線</label>
-        <label class="pack-item"><input type="checkbox" data-pack="powerbank">行動電源（放隨身行李）</label>
-        <label class="pack-item"><input type="checkbox" data-pack="wifi">eSIM／SIM／Wi-Fi</label>
-        <label class="pack-item"><input type="checkbox" data-pack="adapter">轉接頭（有三孔插頭設備時再帶）</label>
-      </div>
-      <div class="pack-group"><h3>👕 衣物・天氣</h3>
-        <label class="pack-item"><input type="checkbox" data-pack="clothes">換洗衣物／內衣襪</label>
-        <label class="pack-item"><input type="checkbox" data-pack="jacket">薄外套／可分層穿搭</label>
-        <label class="pack-item"><input type="checkbox" data-pack="shoes">好走的鞋</label>
-        <label class="pack-item"><input type="checkbox" data-pack="umbrella">摺疊傘</label>
-        <label class="pack-item"><input type="checkbox" data-pack="laundry">洗衣袋／髒衣袋</label>
-        <label class="pack-item"><input type="checkbox" data-pack="hat">帽子／防曬</label>
-      </div>
-      <div class="pack-group"><h3>👧 親子用品</h3>
-        <label class="pack-item"><input type="checkbox" data-pack="stroller">推車</label>
-        <label class="pack-item"><input type="checkbox" data-pack="kidclothes">小孩備用衣物</label>
-        <label class="pack-item"><input type="checkbox" data-pack="kidsnacks">小孩零食／水壺</label>
-        <label class="pack-item"><input type="checkbox" data-pack="blanket">薄毯／睡覺小物</label>
-        <label class="pack-item"><input type="checkbox" data-pack="raincover">推車雨罩</label>
-        <label class="pack-item"><input type="checkbox" data-pack="kidtoilet">如廁備品／濕紙巾／備用塑膠袋</label>
-      </div>
-      <div class="pack-group"><h3>🧳 行李・其他</h3>
-        <label class="pack-item"><input type="checkbox" data-pack="bags">可折疊購物袋／備用行李袋</label>
-        <label class="pack-item"><input type="checkbox" data-pack="lock">行李鎖／行李吊牌</label>
-        <label class="pack-item"><input type="checkbox" data-pack="organizer">收納袋／壓縮袋</label>
-        <label class="pack-item"><input type="checkbox" data-pack="bottle">環保水瓶</label>
-        <label class="pack-item"><input type="checkbox" data-pack="pen">原子筆</label>
-        <label class="pack-item"><input type="checkbox" data-pack="zipbag">夾鏈袋／塑膠袋</label>
-      </div>
-    </div>
-    <div class="pack-tip">提醒：行動電源不可放托運行李；處方藥建議保留原包裝。出發前一週可再依最新天氣刪減衣物。</div>
-  </section>
 
-  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V4｜天氣・必逛・行李寄放・攜帶清單｜價格與營業資訊仍以當日現場公告為準</div>
+  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V5｜行程主頁＋獨立攜帶清單｜價格與營業資訊仍以當日現場公告為準</div>
 </div>
 
 <script>
@@ -538,11 +485,6 @@ async function loadWeather(){
 }
 loadWeather();
 
-document.querySelectorAll("[data-pack]").forEach(cb=>{
-  const key="japan-trip-pack-"+cb.dataset.pack;
-  cb.checked=localStorage.getItem(key)==="1";
-  cb.addEventListener("change",()=>localStorage.setItem(key,cb.checked?"1":"0"));
-});
 </script>
 </body>
 </html>
