@@ -219,7 +219,7 @@ button,.btn{
     <div class="kicker">Japan Family & Friends Trip · 2026</div>
     <h1>名古屋・伊勢志摩・大阪<br>9天8夜慢旅行</h1>
     <div class="weather-wrap">
-      <div class="weather-head"><b>🌤 旅行期間天氣</b><span id="weather-updated">接近出發會自動更新</span></div>
+      <div class="weather-head"><b>🌤 旅行期間天氣｜日本氣象廳 JMA</b><span id="weather-updated">每次開啟自動更新</span></div>
       <div class="weather-grid">
         <div class="weather-card" id="wx-nagoya"><b>名古屋｜10/17–10/18</b><div class="weather-main">載入中…</div><div class="weather-sub">10 月平年：約 23°C / 15°C</div></div>
         <div class="weather-card" id="wx-mie"><b>三重・伊勢鳥羽｜10/19–10/21</b><div class="weather-main">載入中…</div><div class="weather-sub">鳥羽 10 月平年：約 22°C / 15°C</div></div>
@@ -436,7 +436,7 @@ button,.btn{
   </section>
 
 
-  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V7｜交通車種更新＋伴手禮清單｜價格與營業資訊仍以當日現場公告為準</div>
+  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V8｜JMA 官方天氣＋交通車種＋伴手禮清單｜價格與營業資訊仍以當日現場公告為準</div>
 </div>
 <button class="back-top" id="back-top" aria-label="回到頂部" title="回到頂部">↑</button>
 
@@ -453,49 +453,137 @@ async function shareTrip(){
 }
 
 const weatherTrips=[
-  {id:"wx-nagoya",name:"名古屋",lat:35.1815,lon:136.9066,start:"2026-10-17",end:"2026-10-18",normal:"10 月平年：約 23°C / 15°C"},
-  {id:"wx-mie",name:"三重・伊勢鳥羽",lat:34.4817,lon:136.8430,start:"2026-10-19",end:"2026-10-21",normal:"鳥羽 10 月平年：約 22°C / 15°C"},
-  {id:"wx-osaka",name:"大阪",lat:34.6937,lon:135.5023,start:"2026-10-21",end:"2026-10-25",normal:"10 月平年：約 24°C / 16°C"}
+  {id:"wx-nagoya",name:"名古屋",office:"230000",shortArea:"西部",tempArea:"名古屋",start:"2026-10-17",end:"2026-10-18",normal:"10 月平年：約 23°C / 15°C"},
+  {id:"wx-mie",name:"三重・伊勢鳥羽",office:"240000",shortArea:"南部",tempArea:"津",start:"2026-10-19",end:"2026-10-21",normal:"鳥羽 10 月平年：約 22°C / 15°C",tempNote:"氣溫以 JMA 津代表點為準"},
+  {id:"wx-osaka",name:"大阪",office:"270000",shortArea:"大阪府",tempArea:"大阪",start:"2026-10-21",end:"2026-10-25",normal:"10 月平年：約 24°C / 16°C"}
 ];
-function wxIcon(code){
-  if(code===0) return "☀️";
-  if([1,2].includes(code)) return "🌤️";
-  if(code===3) return "☁️";
-  if([45,48].includes(code)) return "🌫️";
-  if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code)) return "🌧️";
-  if([71,73,75,77,85,86].includes(code)) return "🌨️";
-  if([95,96,99].includes(code)) return "⛈️";
+
+function jmaIcon(code){
+  const n=Number(code||0);
+  if(n>=100&&n<200) return "☀️";
+  if(n>=200&&n<300) return "☁️";
+  if(n>=300&&n<400) return "🌧️";
+  if(n>=400&&n<500) return "🌨️";
   return "🌤️";
 }
+function dateKey(v){return String(v||"").slice(0,10)}
+function daysInclusive(a,b){
+  return Math.round((new Date(b+"T00:00:00+09:00")-new Date(a+"T00:00:00+09:00"))/86400000)+1;
+}
+function pickArea(areas,name){
+  return (areas||[]).find(x=>x.area&&x.area.name===name)||(areas||[])[0]||null;
+}
+function addTemps(row,vals){
+  const nums=(vals||[]).map(Number).filter(Number.isFinite);
+  if(nums.length>=2){ row.lo=Math.min(...nums); row.hi=Math.max(...nums); }
+  else if(nums.length===1){ row.hi=nums[0]; }
+}
+async function loadJmaTrip(trip){
+  const res=await fetch("https://www.jma.go.jp/bosai/forecast/data/forecast/"+trip.office+".json",{cache:"no-store"});
+  if(!res.ok) throw new Error("JMA fetch failed");
+  const data=await res.json();
+  const map=new Map();
+
+  // JMA weekly forecast: tomorrow through 7 days ahead.
+  const weekly=data[1];
+  if(weekly&&weekly.timeSeries){
+    const wWeather=weekly.timeSeries[0];
+    const wTemps=weekly.timeSeries[1];
+    const wa=pickArea(wWeather&&wWeather.areas);
+    const ta=pickArea(wTemps&&wTemps.areas,trip.tempArea);
+    (wWeather&&wWeather.timeDefines||[]).forEach((t,i)=>{
+      const d=dateKey(t);
+      const row=map.get(d)||{date:d};
+      if(wa){
+        row.code=wa.weatherCodes&&wa.weatherCodes[i];
+        row.pop=Number(wa.pops&&wa.pops[i]);
+        row.rel=wa.reliabilities&&wa.reliabilities[i];
+      }
+      if(ta){
+        const lo=Number(ta.tempsMin&&ta.tempsMin[i]);
+        const hi=Number(ta.tempsMax&&ta.tempsMax[i]);
+        if(Number.isFinite(lo)) row.lo=lo;
+        if(Number.isFinite(hi)) row.hi=hi;
+      }
+      map.set(d,row);
+    });
+  }
+
+  // Short-range JMA forecast: lets the cards remain useful once the trip has started.
+  const short=data[0];
+  if(short&&short.timeSeries){
+    const sWeather=short.timeSeries[0];
+    const sPops=short.timeSeries[1];
+    const sTemps=short.timeSeries[2];
+    const swa=pickArea(sWeather&&sWeather.areas,trip.shortArea);
+    const spa=pickArea(sPops&&sPops.areas,trip.shortArea);
+    const sta=pickArea(sTemps&&sTemps.areas,trip.tempArea);
+
+    (sWeather&&sWeather.timeDefines||[]).forEach((t,i)=>{
+      const d=dateKey(t), row=map.get(d)||{date:d};
+      if(swa) row.code=swa.weatherCodes&&swa.weatherCodes[i];
+      map.set(d,row);
+    });
+
+    const popByDate={};
+    (sPops&&sPops.timeDefines||[]).forEach((t,i)=>{
+      const d=dateKey(t), v=Number(spa&&spa.pops&&spa.pops[i]);
+      if(Number.isFinite(v)) (popByDate[d]||(popByDate[d]=[])).push(v);
+    });
+    Object.keys(popByDate).forEach(d=>{
+      const row=map.get(d)||{date:d};
+      row.pop=Math.max(...popByDate[d]);
+      map.set(d,row);
+    });
+
+    const tempByDate={};
+    (sTemps&&sTemps.timeDefines||[]).forEach((t,i)=>{
+      const d=dateKey(t), v=Number(sta&&sta.temps&&sta.temps[i]);
+      if(Number.isFinite(v)) (tempByDate[d]||(tempByDate[d]=[])).push(v);
+    });
+    Object.keys(tempByDate).forEach(d=>{
+      const row=map.get(d)||{date:d};
+      addTemps(row,tempByDate[d]);
+      map.set(d,row);
+    });
+  }
+
+  return [...map.values()].filter(r=>r.date>=trip.start&&r.date<=trip.end).sort((a,b)=>a.date.localeCompare(b.date));
+}
+
 async function loadWeather(){
-  let updated=false;
+  let any=false, latestReport="";
   for(const trip of weatherTrips){
     const el=document.getElementById(trip.id);
     try{
-      const url="https://api.open-meteo.com/v1/forecast?latitude="+trip.lat+"&longitude="+trip.lon+"&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=16";
-      const res=await fetch(url);
-      if(!res.ok) throw new Error("weather");
-      const d=(await res.json()).daily;
-      const rows=d.time.map((t,i)=>({t,hi:d.temperature_2m_max[i],lo:d.temperature_2m_min[i],pop:d.precipitation_probability_max[i],code:d.weather_code[i]}))
-        .filter(x=>x.t>=trip.start&&x.t<=trip.end);
+      const rows=await loadJmaTrip(trip);
       if(rows.length){
-        const hi=Math.round(Math.max(...rows.map(x=>x.hi)));
-        const lo=Math.round(Math.min(...rows.map(x=>x.lo)));
-        const pop=Math.round(Math.max(...rows.map(x=>x.pop||0)));
-        const icon=wxIcon(rows[0].code);
-        el.querySelector(".weather-main").textContent=icon+" "+hi+"° / "+lo+"°";
-        el.querySelector(".weather-sub").textContent="目前可預報 "+rows.length+" 天｜最高降雨機率 "+pop+"%｜預報會隨開頁自動更新";
+        const his=rows.map(x=>x.hi).filter(Number.isFinite);
+        const los=rows.map(x=>x.lo).filter(Number.isFinite);
+        const pops=rows.map(x=>x.pop).filter(Number.isFinite);
+        const wettest=[...rows].sort((a,b)=>(Number(b.pop)||0)-(Number(a.pop)||0))[0]||rows[0];
+        const hi=his.length?Math.round(Math.max(...his)):null;
+        const lo=los.length?Math.round(Math.min(...los)):null;
+        const pop=pops.length?Math.round(Math.max(...pops)):null;
+        const reliabilities=[...new Set(rows.map(x=>x.rel).filter(Boolean))];
+        const tempText=(hi!==null&&lo!==null)?hi+"° / "+lo+"°":"JMA 官方預報";
+        el.querySelector(".weather-main").textContent=jmaIcon(wettest.code)+" "+tempText;
+        let sub="JMA 已涵蓋 "+rows.length+"/"+daysInclusive(trip.start,trip.end)+" 天";
+        if(pop!==null) sub+="｜最高降雨機率 "+pop+"%";
+        if(reliabilities.length) sub+="｜信賴度 "+reliabilities.join("/");
+        if(trip.tempNote) sub+="｜"+trip.tempNote;
+        el.querySelector(".weather-sub").textContent=sub;
       }else{
-        el.querySelector(".weather-main").textContent="📅 尚未進入逐日預報";
-        el.querySelector(".weather-sub").textContent=trip.normal+"｜進入 16 日預報範圍後會自動切換";
+        el.querySelector(".weather-main").textContent="📅 尚未進入 JMA 7日預報";
+        el.querySelector(".weather-sub").textContent=trip.normal+"｜進入日本氣象廳預報範圍後自動顯示";
       }
-      updated=true;
+      any=true;
     }catch(e){
       el.querySelector(".weather-main").textContent="🌤 "+trip.normal.replace("10 月平年：","").replace("鳥羽 ","");
-      el.querySelector(".weather-sub").textContent="即時預報暫時無法載入，先顯示 1991–2020 平年值";
+      el.querySelector(".weather-sub").textContent="日本氣象廳資料暫時無法載入｜先顯示平年值";
     }
   }
-  if(updated) document.getElementById("weather-updated").textContent="每次開啟自動抓最新 16 日預報";
+  if(any) document.getElementById("weather-updated").textContent="資料源：日本氣象廳 JMA｜自動更新";
 }
 loadWeather();
 
