@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#7e5f50">
+<title>手機版初版預覽｜名古屋・伊勢志摩・大阪 9天8夜</title>
+<style>
+:root{
+  --bg:#f7f3ee;
+  --paper:#fffdf9;
+  --ink:#2f2a27;
+  --muted:#7c726c;
+  --line:#eadfd8;
+  --rose:#d9a7a0;
+  --rose-soft:#f3d8d6;
+  --accent:#7e5f50;
+  --accent2:#9c7563;
+  --green:#567a68;
+  --blue:#55758d;
+  --gold:#a9824e;
+  --shadow:0 16px 42px rgba(75,54,42,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at top right,rgba(217,167,160,.18),transparent 30rem),
+    var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.65;
+}
+a{color:inherit}
+.container{max-width:1050px;margin:auto;padding:18px 18px 80px}
+.hero{
+  border-radius:30px;
+  background:linear-gradient(145deg,#77594c 0%,#94705f 48%,#af8877 100%);
+  color:white;
+  padding:30px 26px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  width:260px;height:260px;border-radius:50%;
+  right:-95px;top:-105px;
+  border:1px solid rgba(255,255,255,.25);
+  box-shadow:0 0 0 35px rgba(255,255,255,.04),0 0 0 70px rgba(255,255,255,.03);
+}
+.kicker{font-size:13px;letter-spacing:.14em;opacity:.78;text-transform:uppercase}
+h1{font-size:clamp(27px,5vw,44px);line-height:1.2;margin:7px 0 8px}
+.subtitle{font-size:15px;opacity:.9;margin:0;max-width:700px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;position:relative;z-index:2}
+.pill{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);padding:7px 11px;border-radius:999px;font-size:13px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px;position:relative;z-index:2}
+button,.btn{
+  appearance:none;border:0;border-radius:12px;padding:10px 14px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;
+}
+.btn-light{background:white;color:var(--accent)}
+.btn-ghost{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);color:#fff}
+
+.summary{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:10px 0 8px
+}
+.summary-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:8px 10px;box-shadow:0 5px 14px rgba(67,52,42,.035)
+}
+.summary-card b{display:block;font-size:10px;color:var(--muted);font-weight:700;margin-bottom:1px}
+.summary-card strong{font-size:14px;line-height:1.25}
+
+.daynav{
+  position:sticky;top:0;z-index:20;
+  margin:14px -18px 16px;padding:10px 18px;
+  background:rgba(247,243,238,.92);backdrop-filter:blur(10px);
+  overflow:auto;white-space:nowrap;border-bottom:1px solid rgba(234,223,216,.75)
+}
+.daynav a{
+  display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+  min-width:73px;margin-right:6px;padding:8px 9px;border-radius:13px;text-decoration:none;
+  background:#fff;border:1px solid var(--line);font-size:12px;color:var(--muted)
+}
+.daynav a b{color:var(--ink);font-size:13px}
+.section-title{display:flex;align-items:end;justify-content:space-between;margin:24px 2px 10px}
+.section-title h2{margin:0;font-size:22px}
+.section-title span{font-size:12px;color:var(--muted)}
+.days{display:grid;gap:14px}
+.day{
+  background:var(--paper);border:1px solid var(--line);border-radius:24px;box-shadow:0 10px 30px rgba(70,51,40,.05);overflow:hidden;
+  scroll-margin-top:95px;
+}
+.dayhead{
+  display:grid;grid-template-columns:92px 1fr auto;gap:13px;align-items:center;
+  padding:17px 18px;border-bottom:1px solid var(--line);
+}
+.daynum{
+  background:var(--rose-soft);border-radius:16px;padding:10px 8px;text-align:center;color:#6e4f47
+}
+.daynum b{display:block;font-size:20px;line-height:1.1}
+.daynum span{font-size:12px}
+.daytitle h3{margin:0;font-size:19px}
+.daytitle p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.tag{font-size:11px;font-weight:800;padding:5px 8px;border-radius:999px;background:#f1ece8;color:#695c55}
+.tag.move{background:#fff0ec;color:#a25747}
+.tag.usj{background:#eaf1f7;color:#456981}
+.tag.shop{background:#f4efe3;color:#856a3e}
+
+.timeline{padding:12px 18px 5px}
+.item{
+  display:grid;grid-template-columns:86px 16px 1fr;gap:10px;padding:11px 0;position:relative
+}
+.item:not(:last-child):before{
+  content:"";position:absolute;left:93px;top:32px;bottom:-8px;width:1px;background:#dfd3cc
+}
+.time{font-size:12px;color:var(--muted);padding-top:2px;font-weight:700}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--rose);margin-top:7px;position:relative;z-index:2;box-shadow:0 0 0 4px var(--paper)}
+.item.transport .dot{background:var(--blue)}
+.item.food .dot{background:var(--gold)}
+.item.hotel .dot{background:var(--green)}
+.content strong{font-size:15px}
+.content p{margin:2px 0;color:#5f5651;font-size:14px}
+.maps{
+  display:inline-block;margin-top:5px;font-size:12px;color:#6e5548;text-decoration:none;border-bottom:1px dashed #b99a89
+}
+.transit-note{
+  margin-top:8px;padding:8px 10px;border-radius:10px;background:#f2f6f8;border:1px solid #dfe9ee;color:#53656e;font-size:12px;line-height:1.55
+}
+.transit-note b{color:#3f5f70}
+.status{display:inline-flex;align-items:center;gap:5px;margin-left:6px;padding:3px 7px;border-radius:999px;font-size:10px;font-weight:800;vertical-align:2px}
+.status.ok{background:#e9f5ed;color:#4b745d}
+.status.wait{background:#fff3dd;color:#896a34}
+.group{display:inline-block;margin-bottom:5px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800}
+.group.family{background:#e8f3ee;color:#4e7462}
+.group.adult{background:#f4eaf1;color:#795b70}
+.note{
+  margin:3px 18px 18px;padding:12px 14px;border-radius:14px;background:#faf6f1;border:1px dashed #ddc9bd;font-size:13px;color:#655a55
+}
+.hotelbar{
+  margin:5px 18px 18px;padding:13px 14px;border-radius:15px;background:#edf5f0;border:1px solid #d7e8de;display:flex;gap:10px;align-items:flex-start
+}
+.hotelbar b{font-size:13px;color:#4f715f;min-width:58px}
+.hotelbar div{font-size:14px}
+
+.quick{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px
+}
+.quick-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px}
+.quick-card h3{margin:0 0 8px;font-size:16px}
+.quick-card p{font-size:13px;color:var(--muted);margin:0}
+.quick-card strong{color:var(--ink)}
+
+.weather-wrap{margin-top:18px;position:relative;z-index:2}
+.weather-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px;font-size:12px;opacity:.9}
+.weather-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.weather-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:15px;padding:11px 12px;min-height:92px}
+.weather-card b{display:block;font-size:13px;margin-bottom:4px}
+.weather-main{font-size:16px;font-weight:800}
+.weather-sub{font-size:11px;opacity:.82;margin-top:3px;line-height:1.45}
+.shopping-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}
+.shopping-tab{border:1px solid #d8c9c0;background:#fff;color:#6e5548;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800;cursor:pointer}
+.shopping-tab.active{background:#7e5f50;color:#fff;border-color:#7e5f50}
+.shopping-panel[hidden]{display:none}
+.shopping-panel-title{font-size:12px;color:#7c726c;margin:2px 0 8px}
+.spot-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+.spot-card{border:1px solid #eadfd8;background:#fcf9f5;border-radius:12px;padding:10px 11px}
+.spot-card b{display:block;font-size:13px}
+.spot-card span{display:block;margin-top:2px;color:#746963;font-size:12px;line-height:1.5}
+.spot-card a{display:inline-block;margin-top:5px;color:#6e5548;font-size:11px;text-decoration:none;border-bottom:1px dashed #b99a89}
+.luggage-note{margin-top:9px;padding:10px 11px;border-radius:12px;background:#f7f2ff;border:1px solid #e6dcf4;font-size:12px;color:#625b70;line-height:1.55}
+.packing{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 10px 30px rgba(70,51,40,.05)}
+.pack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pack-group{border:1px solid var(--line);border-radius:15px;padding:12px 13px;background:#fff}
+.pack-group h3{font-size:14px;margin:0 0 7px}
+.pack-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#5f5651;padding:4px 0}
+.pack-item input{margin-top:4px;accent-color:#7e5f50}
+.pack-tip{margin-top:12px;font-size:12px;color:var(--muted)}
+
+.footer{margin-top:28px;padding:20px 4px;color:var(--muted);font-size:12px;text-align:center}
+.back-top{
+  position:fixed;right:18px;bottom:20px;z-index:60;width:46px;height:46px;border-radius:50%;
+  border:1px solid rgba(126,95,80,.18);background:rgba(126,95,80,.94);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;
+  box-shadow:0 10px 24px rgba(62,44,35,.22);opacity:0;pointer-events:none;
+  transform:translateY(8px);transition:.2s ease
+}
+.back-top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.back-top:active{transform:translateY(1px) scale(.98)}
+.only-print{display:none}
+@media(max-width:760px){
+  .container{padding:12px 12px 65px}
+  .hero{border-radius:23px;padding:24px 18px}
+  .summary{grid-template-columns:1fr 1fr;gap:6px;margin:8px 0 6px}
+  .summary-card{padding:7px 9px;border-radius:12px}
+  .summary-card b{font-size:10px}
+  .summary-card strong{font-size:13px}
+  .daynav{margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px}
+  .dayhead{grid-template-columns:72px 1fr}
+  .tags{grid-column:1/-1;justify-content:flex-start}
+  .daynum b{font-size:18px}
+  .item{grid-template-columns:68px 14px 1fr;gap:8px}
+  .item:not(:last-child):before{left:74px}
+  .quick{grid-template-columns:1fr}
+  .weather-grid{grid-template-columns:1fr}
+  .spot-list{grid-template-columns:1fr}
+  .pack-grid{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff}
+  .container{max-width:none;padding:0}
+  .hero{box-shadow:none;border-radius:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .actions,.daynav{display:none}
+  .day{break-inside:avoid;box-shadow:none}
+  .only-print{display:block}
+}
+
+/* ===== Mobile readability preview overrides ===== */
+.mobile-preview-note{
+  margin:0 0 10px;padding:9px 12px;border-radius:12px;
+  background:#2f2a27;color:#fff;font-size:12px;font-weight:800;
+  text-align:center;letter-spacing:.02em
+}
+@media(max-width:760px){
+  body{line-height:1.72;-webkit-text-size-adjust:100%}
+  .container{padding:8px 10px 72px}
+  .mobile-preview-note{position:relative;z-index:3;margin-bottom:8px}
+
+  .hero{border-radius:20px;padding:20px 16px}
+  .kicker{font-size:11px;letter-spacing:.11em}
+  h1{font-size:clamp(26px,8vw,34px);line-height:1.17;margin:6px 0 8px}
+  .subtitle{font-size:14px;line-height:1.6}
+  .hero-meta{gap:6px;margin-top:13px}
+  .pill{font-size:11px;padding:6px 9px}
+
+  .actions{
+    display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px
+  }
+  .actions button,.actions .btn{
+    width:100%;min-height:44px;padding:9px 8px;border-radius:11px;
+    font-size:12px;display:flex;align-items:center;justify-content:center;text-align:center
+  }
+
+  .weather-wrap{margin-top:14px}
+  .weather-head{font-size:11px;align-items:flex-start}
+  .weather-grid{grid-template-columns:1fr;gap:6px}
+  .weather-card{min-height:0;padding:9px 10px;border-radius:12px}
+  .weather-card b{font-size:12px}
+  .weather-main{font-size:15px}
+  .weather-sub{font-size:11px;line-height:1.45}
+
+  .summary{grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+  .summary-card{padding:8px 9px}
+  .summary-card strong{font-size:13px}
+
+  .daynav{
+    top:0;margin:10px -10px 12px;padding:7px 10px;
+    scrollbar-width:none
+  }
+  .daynav::-webkit-scrollbar{display:none}
+  .daynav a{
+    min-width:64px;margin-right:5px;padding:7px 7px;border-radius:11px;
+    font-size:11px
+  }
+  .daynav a b{font-size:12px}
+
+  .section-title{margin:18px 2px 8px}
+  .section-title h2{font-size:19px}
+  .section-title span{font-size:11px}
+
+  .days{gap:11px}
+  .day{border-radius:18px;scroll-margin-top:74px}
+  .dayhead{
+    grid-template-columns:62px 1fr;gap:10px;padding:13px 13px
+  }
+  .daynum{border-radius:13px;padding:9px 6px}
+  .daynum b{font-size:17px}
+  .daynum span{font-size:11px}
+  .daytitle h3{font-size:17px;line-height:1.35}
+  .daytitle p{font-size:12px;line-height:1.5;margin-top:3px}
+  .tags{grid-column:1/-1;justify-content:flex-start;gap:5px}
+  .tag{font-size:10px;padding:4px 7px}
+
+  .timeline{padding:4px 13px 7px}
+  .item{
+    display:block;padding:12px 0;border-bottom:1px dashed #eadfd8
+  }
+  .item:last-child{border-bottom:0}
+  .item:not(:last-child):before{display:none}
+  .dot{display:none}
+  .time{
+    display:inline-flex;align-items:center;width:auto;
+    padding:4px 8px;border-radius:999px;background:#f2ece7;
+    color:#765f54;font-size:11px;line-height:1.2
+  }
+  .content{margin-top:7px}
+  .content strong{display:block;font-size:16px;line-height:1.45}
+  .content p{font-size:14px;line-height:1.7;margin:4px 0}
+  .maps{
+    display:inline-flex;align-items:center;min-height:36px;margin-top:6px;
+    font-size:12px;font-weight:700
+  }
+  .transit-note{
+    margin-top:8px;padding:10px 11px;border-radius:11px;
+    font-size:13px;line-height:1.65
+  }
+  .status{font-size:9px}
+  .group{font-size:10px}
+
+  .note{margin:5px 13px 14px;padding:11px 12px;font-size:13px;line-height:1.65}
+  .hotelbar{
+    margin:5px 13px 14px;padding:11px 12px;border-radius:13px;gap:8px
+  }
+  .hotelbar b{font-size:12px;min-width:48px}
+  .hotelbar div{font-size:13px;line-height:1.55}
+
+  .quick{grid-template-columns:1fr;gap:9px}
+  .quick-card{padding:13px;border-radius:15px}
+  .quick-card h3{font-size:15px}
+  .quick-card p{font-size:13px;line-height:1.65}
+
+  .shopping-tabs{
+    display:grid;grid-template-columns:1fr 1fr;gap:7px;
+    position:sticky;top:64px;z-index:12;
+    background:rgba(255,253,249,.96);backdrop-filter:blur(8px);
+    padding:7px 0;margin:7px 0 10px
+  }
+  .shopping-tab{
+    min-height:42px;padding:8px 7px;font-size:12px;border-radius:11px
+  }
+  .shopping-panel-title{font-size:12px;line-height:1.55}
+  .spot-list{grid-template-columns:1fr;gap:9px}
+  .spot-card{padding:12px 13px;border-radius:13px}
+  .spot-card b{font-size:14px;line-height:1.45}
+  .spot-card span{font-size:13px;line-height:1.68;margin-top:5px}
+  .spot-card a{font-size:12px;min-height:34px;padding-top:6px}
+
+  .luggage-note{font-size:13px;line-height:1.65}
+  .footer{margin-top:20px;padding:16px 4px;font-size:11px}
+  .back-top{right:14px;bottom:16px;width:48px;height:48px}
+}
+@media(max-width:380px){
+  .actions{grid-template-columns:1fr}
+  .weather-head{display:block}
+  .weather-head span{display:block;margin-top:2px}
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="mobile-preview-note">📱 手機版初版預覽｜正式首頁尚未變更</div>
+  <section class="hero">
+    <div class="kicker">Japan Family & Friends Trip · 2026</div>
+    <h1>名古屋・伊勢志摩・大阪<br>9天8夜慢旅行</h1>
+    <div class="weather-wrap">
+      <div class="weather-head"><b>🌤 旅行期間天氣｜日本氣象廳 JMA</b><span id="weather-updated">每次開啟自動更新</span></div>
+      <div class="weather-grid">
+        <div class="weather-card" id="wx-nagoya"><b>名古屋｜10/17–10/18</b><div class="weather-main">載入中…</div><div class="weather-sub">10 月平年：約 23°C / 15°C</div></div>
+        <div class="weather-card" id="wx-mie"><b>三重・伊勢鳥羽｜10/19–10/21</b><div class="weather-main">載入中…</div><div class="weather-sub">鳥羽 10 月平年：約 22°C / 15°C</div></div>
+        <div class="weather-card" id="wx-osaka"><b>大阪｜10/21–10/25</b><div class="weather-main">載入中…</div><div class="weather-sub">10 月平年：約 24°C / 16°C</div></div>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn-light" onclick="shareTrip()">分享行程</button>
+      <a class="btn btn-ghost" href="packing.html">🧳 出國攜帶清單</a>
+      <a class="btn btn-ghost" href="souvenirs.html">🎁 伴手禮清單</a>
+      <a class="btn btn-ghost" href="umeda-family.html">親子逛街順序</a>
+      <button class="btn-ghost" onclick="window.print()">列印 / 存成 PDF</button>
+    </div>
+  </section>
+
+  <section class="summary">
+    <div class="summary-card"><b>名古屋</b><strong>10/17–10/19</strong></div>
+    <div class="summary-card"><b>伊勢</b><strong>10/19–10/20</strong></div>
+    <div class="summary-card"><b>鳥羽</b><strong>10/20–10/21</strong></div>
+    <div class="summary-card"><b>大阪</b><strong>10/21–10/25</strong></div>
+  </section>
+
+  <nav class="daynav" aria-label="每日行程快速導覽">
+    <a href="#day1"><b>Day 1</b>10/17 六</a>
+    <a href="#day2"><b>Day 2</b>10/18 日</a>
+    <a href="#day3"><b>Day 3</b>10/19 一</a>
+    <a href="#day4"><b>Day 4</b>10/20 二</a>
+    <a href="#day5"><b>Day 5</b>10/21 三</a>
+    <a href="#day6"><b>Day 6</b>10/22 四</a>
+    <a href="#day7"><b>Day 7</b>10/23 五</a>
+    <a href="#day8"><b>Day 8</b>10/24 六</a>
+    <a href="#day9"><b>Day 9</b>10/25 日</a>
+  </nav>
+
+  <div class="section-title"><h2>每日行程</h2><span>依你提供的最新版表格整理</span></div>
+  <main class="days">
+
+    <article class="day" id="day1">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 1</b><span>10/17（六）</span></div>
+        <div class="daytitle"><h3>台北 → 名古屋｜抵達日</h3><p>機場移動＋名古屋夜景散步</p></div>
+        <div class="tags"><span class="tag move">移動日</span><span class="tag">輕鬆走</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item transport"><div class="time">09:00</div><div class="dot"></div><div class="content"><strong>台灣虎航 IT206｜桃園 → 名古屋</strong><p>2026/10/17（六）09:00 桃園國際機場 T1 起飛 → 12:55 名古屋中部國際機場 T2 抵達｜預計飛行約 3 小時 55 分。</p><div class="transit-note"><b>✈️ 航班：</b>TPE 桃園國際機場 Terminal 1 → NGO 中部國際機場 Terminal 2｜建議依航空公司規定預留報到與安檢時間。</div></div></div>
+        <div class="item food"><div class="time">午餐</div><div class="dot"></div><div class="content"><strong>飛機上不供餐</strong><p>登機前先備小點心；抵達中部國際機場後再正式吃午餐。</p></div></div>
+        <div class="item food"><div class="time">13:30～</div><div class="dot"></div><div class="content"><strong>中部國際機場午餐｜依當下排隊選擇</strong><p>從 T2 抵達後，若想快點吃可先走到 FLIGHT OF DREAMS；想吃名古屋代表料理則前往 T1 4F Sky Town。</p>
+          <div class="spot-list">
+            <div class="spot-card"><b>まるや本店｜鰻魚飯三吃</b><span>T1 4F｜10:00–21:30。第一餐就想吃名古屋名物可選這家。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Maruya+Honten+Centrair">Google Maps ↗</a></div>
+            <div class="spot-card"><b>矢場とん｜味噌豬排</b><span>T1 4F｜內用約 10:00 起。份量足、名古屋感很強。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Misokatsu+Yabaton+Centrair">Google Maps ↗</a></div>
+            <div class="spot-card"><b>若鯱家｜咖哩烏龍麵</b><span>T1 4F｜6:30–22:00。帶小孩也相對好處理。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Wakashachiya+Centrair">Google Maps ↗</a></div>
+            <div class="spot-card"><b>寿製麵｜讚岐烏龍</b><span>FLIGHT OF DREAMS 2F｜10:00–18:30。離 T2 較近、適合不想繞去 T1 時。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kotobuki+Seimen+Flight+of+Dreams">Google Maps ↗</a></div>
+          </div>
+        </div></div>
+        <div class="item transport"><div class="time">抵達後</div><div class="dot"></div><div class="content"><strong>名鐵 μSKY 特急</strong><p>中部國際機場 → 名鐵名古屋，依實際出關時間選最近班次。</p><div class="transit-note"><b>🚆 交通：</b>中部國際機場站 → 名鐵名古屋站｜μSKY 全車指定席｜約 29–37 分｜成人 ¥1,430（基本車資 ¥980＋μticket ¥450）。到站後再買即可，不需先綁死班次。</div></div></div>
+        <div class="item hotel"><div class="time">入住</div><div class="dot"></div><div class="content"><strong>名古屋納屋橋大和 Roynet DEL style 飯店</strong><p>放行李、稍作休息。</p><div class="transit-note"><b>🚇 交通：</b>名鐵名古屋站 → 飯店可步行約 15 分；或從名古屋站搭地下鐵東山線 1 站到伏見站（約 ¥210），8 號出口再步行約 7 分。</div></div></div>
+        <div class="item"><div class="time">晚餐後</div><div class="dot"></div><div class="content"><strong>綠洲21／中部電力 MIRAI TOWER 周邊散步</strong><p>抵達第一天不塞太滿，以夜景與城市散步收尾。</p><div class="transit-note"><b>🚇 交通：</b>伏見站 → 栄站｜地下鐵東山線｜1 站、免轉乘｜成人 ¥210；栄站出站即為榮商圈／Oasis 21 一帶。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Oasis+21+Nagoya">Google Maps ↗</a></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>名古屋納屋橋大和 Roynet DEL style 飯店</div></div>
+    </article>
+
+    <article class="day" id="day2">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 2</b><span>10/18（日）</span></div>
+        <div class="daytitle"><h3>名古屋｜上午分組・下午榮會合</h3><p>親子組逛動物園；情侶夫妻組走大須，下午一起逛榮</p></div>
+        <div class="tags"><span class="tag">分組行動</span><span class="tag">親子</span><span class="tag shop">購物</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item"><div class="time">上午｜親子</div><div class="dot"></div><div class="content"><span class="group family">👨‍👩‍👧 親子組</span><br><strong>東山動植物園</strong><p>以 3 歲小朋友為主的上午行程，動物園慢慢走，不趕場。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行約 7 分到伏見站 → 地下鐵東山線直達「東山公園站」｜約 15 分、免轉乘｜成人 ¥270；出站後步行前往園區。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Higashiyama+Zoo+and+Botanical+Gardens">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">上午｜大人</div><div class="dot"></div><div class="content"><span class="group adult">💑 情侶夫妻組</span><br><strong>大須觀音寺・大須商店街</strong><p>參拜＋商店街、小吃與逛街，節奏自由。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行到伏見站 → 地下鐵鶴舞線 1 站到「大須觀音站」｜約 2 分、免轉乘｜成人 ¥210；出站步行即可到大須觀音與商店街。</div><div class="spot-list">
+            <div class="spot-card"><b>KOMEHYO 名古屋本店</b><span>大須代表性的二手精品店，包包、腕錶、珠寶與中古精品最適合慢慢挖。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=KOMEHYO+Nagoya+Honten+Osu">Google Maps ↗</a></div>
+            <div class="spot-card"><b>Mandarake 名古屋店</b><span>漫畫、動漫、玩具與收藏品；想逛日本次文化很值得排。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mandarake+Nagoya+Osu">Google Maps ↗</a></div>
+            <div class="spot-card"><b>Strike Vintage</b><span>大須古著路線代表之一，偏美式古著與選品；週末午後再去較適合。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Strike+Vintage+Osu+Nagoya">Google Maps ↗</a></div>
+            <div class="spot-card"><b>コンパル 大須本店</b><span>名古屋老牌喫茶店，招牌炸蝦三明治；逛累可當休息點。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Compal+Osu+Nagoya">Google Maps ↗</a></div>
+          </div>
+          <a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Osu+Kannon+Nagoya">大須觀音 Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">下午會合</div><div class="dot"></div><div class="content"><strong>榮商圈集合・Alpen NAGOYA</strong><p>兩組下午在榮會合，一起逛 Alpen、百貨與周邊商圈。</p><div class="transit-note"><b>🚇 親子組：</b>東山公園站 → 栄站｜東山線直達｜約 12 分｜¥240。<br><b>🚇 情侶夫妻組：</b>大須觀音站 → 伏見站（鶴舞線）→ 栄站（東山線）｜轉乘 1 次｜¥210。<br><b>📍 Alpen：</b>從栄站 S7a/S7b 出口步行約 7 分；或矢場町站 6 號出口步行約 5 分。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Alpen+NAGOYA">Google Maps ↗</a></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>名古屋納屋橋大和 Roynet DEL style 飯店</div></div>
+    </article>
+
+    <article class="day" id="day3">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 3</b><span>10/19（一）</span></div>
+        <div class="daytitle"><h3>名古屋 → 伊勢｜島風號</h3><p>Premium Seat 已購票，下午伊勢神宮</p></div>
+        <div class="tags"><span class="tag move">移動日・帶行李</span><span class="tag">Shimakaze</span><span class="tag">已購票</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item transport"><div class="time">出發前</div><div class="dot"></div><div class="content"><strong>飯店 → 近鐵名古屋站</strong><p>建議預留行李移動與找月台時間，提早抵達。</p><div class="transit-note"><b>🚇 交通：</b>伏見站 → 名古屋站｜地下鐵東山線 1 站｜成人約 ¥210；抵達名古屋站後依指標步行至「近鐵名古屋站」。有大件行李時建議至少提早 30 分鐘到近鐵站。</div></div></div>
+        <div class="item transport"><div class="time">10:25–11:40</div><div class="dot"></div><div class="content"><strong>島風號 Shimakaze・Premium Seat <span class="status ok">✓ 已購票</span></strong><p>近鐵名古屋 10:25 → 伊勢市 11:40。</p><div class="transit-note"><b>🎫 搭乘方式：</b>你們已買的是島風 Limited Express e-ticket／指定席。進站時仍要有「基本乘車資格」（KINTETSU RAIL PASS、IC 卡或基本乘車券其一）；到月台後依電子票上的車廂與座位直接入座，不需要換紙本特急券。手機需能即時開啟正式 e-ticket 畫面，查票時截圖或列印不算有效憑證。</div></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>伊勢神宮・內宮</strong><p>抵達伊勢後前往內宮參拜。</p><div class="transit-note"><b>🚌 交通：</b>伊勢市站前 → 內宮前｜三重交通巴士｜約 13–20 分｜成人 ¥520；下車即到內宮／御祓町一帶。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ise+Jingu+Naiku">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>御祓町・おかげ横丁周邊</strong><p>內宮參拜後直接步行逛街、吃小吃與採買。</p><div class="transit-note"><b>🚶 交通：</b>與內宮相連，以步行移動即可，無需再搭車。回飯店時從「內宮前」搭三重交通回伊勢市站，成人 ¥520，再步行約 10 分至飯店。</div>
+          <div class="spot-list">
+            <div class="spot-card"><b>赤福本店</b><span>必訪老店。10/19 已進入秋冬季，對面的本店別店舗從 10/17 起供應「赤福ぜんざい」。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Akafuku+Honten+Ise">Google Maps ↗</a></div>
+            <div class="spot-card"><b>豚捨</b><span>老舖精肉店，最適合邊走邊吃的是可樂餅；想吃牛肉料理也可內用。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Butasute+Okage+Yokocho">Google Maps ↗</a></div>
+            <div class="spot-card"><b>ふくすけ</b><span>想在這裡吃一碗伊勢烏龍麵，就選這家，屬於最經典的在地口味。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Fukusuke+Okage+Yokocho">Google Maps ↗</a></div>
+            <div class="spot-card"><b>五十鈴川カフェ</b><span>面五十鈴川的咖啡休息點，適合下午坐下來喝咖啡、吃甜點。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Isuzugawa+Cafe+Ise">Google Maps ↗</a></div>
+            <div class="spot-card"><b>くみひも平井</b><span>伊勢／三重工藝伴手禮，組紐小物比一般土產更有地方特色。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kumihimo+Hirai+Ise">Google Maps ↗</a></div>
+          </div>
+        </div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>EXPERIENCE ISE MIYAMACHI HOTEL｜伊勢市站步行約 10 分／宮町站步行約 5 分</div></div>
+    </article>
+
+    <article class="day" id="day4">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 4</b><span>10/20（二）</span></div>
+        <div class="daytitle"><h3>伊勢 → 鳥羽｜海女小屋體驗</h3><p>上午不排景點，中午前移動到鳥羽站</p></div>
+        <div class="tags"><span class="tag move">移動日・帶行李</span><span class="tag">海女小屋</span><span class="tag">二見浦取消</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>自由時間・整理行李・退房</strong><p>原訂二見浦／二見興玉神社／夫婦岩／富士見橋行程取消，上午保留輕鬆整理與休息。</p></div></div>
+        <div class="item transport"><div class="time">中午前</div><div class="dot"></div><div class="content"><strong>伊勢市 → 鳥羽站</strong><p>中午前抵達鳥羽站，先寄放行李，再前往 1 號出口集合。</p><div class="transit-note"><b>🚆 交通：</b>飯店 → 伊勢市站步行約 10 分；近鐵「伊勢市 → 鳥羽」約 17–22 分、通常可直達｜成人 ¥390。建議約 11:20–11:30 離開飯店，目標 12:10–12:20 抵達鳥羽站，預留找置物櫃時間。</div>
+          <div class="luggage-note"><b>🧳 鳥羽站行李寄放：</b><br>
+          <b>首選：</b>近鐵鳥羽站「改札外 2F 待合室」置物櫃，出改札後往右側待合室方向；支援現金、IC、QR、信用卡。參考價格：小 ¥400／中 ¥600／大 ¥700／特大 ¥1,000。<br>
+          <b>第二選擇：</b>往 4 號出口自由通路，參考價格小 ¥400／中 ¥500／大 ¥600；或 3 號出口樓梯旁，小 ¥400／中 ¥600／大 ¥700。<br>
+          近鐵 2026/8 官方資料顯示鳥羽站共有特大 5、大 56、中 79、小 88 格。若 6 人大箱太多，可改用鳥羽一番街 1F/2F 或人工手荷物寄放當備案。寄好後再走到 <b>1 號出口</b>搭 12:45 海女接駁。</div>
+        </div></div>
+        <div class="item transport"><div class="time">12:45</div><div class="dot"></div><div class="content"><strong>海女小屋接駁車 <span class="status ok">✓ 已預約</span></strong><p>鳥羽站 1 號出口下方集合，12:45 發車；請在 12:40 前到。</p><div class="transit-note"><b>🚌 交通：</b>海女小屋往返接駁已確認 7 位，這段不需另外研究電車轉乘。</div></div></div>
+        <div class="item food"><div class="time">午餐</div><div class="dot"></div><div class="content"><strong>海女小屋 はちまんかまど</strong><p>海女文化與炭烤海鮮體驗。</p><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hachiman+Kamado+Toba">Google Maps ↗</a></div></div>
+        <div class="item transport"><div class="time">15:15</div><div class="dot"></div><div class="content"><strong>海女小屋接駁車返回鳥羽</strong><p>15:15 是「從海女小屋出發」的時間，不是抵達鳥羽站時間。</p><div class="transit-note"><b>🏨 接續住宿：</b>龜之井酒店鳥羽有鳥羽站 → 飯店免費接駁（14:30／15:30／17:15，需預約）。海女小屋 15:15 才出發，因此較實際的是視返回時間安排 17:15 接駁，或改搭計程車前往飯店。</div></div></div>
+        <div class="item food"><div class="time">晚餐</div><div class="dot"></div><div class="content"><strong>大助－鳥羽</strong><p>晚餐安排依現場／訂位狀況調整；店址確認後可再補最順交通。</p></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>龜之井酒店 鳥羽｜鳥羽站免費接駁約 10 分（需事前預約）</div></div>
+    </article>
+
+    <article class="day" id="day5">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 5</b><span>10/21（三）</span></div>
+        <div class="daytitle"><h3>鳥羽 → 伊勢 → 大阪難波</h3><p>外宮參拜後移動大阪</p></div>
+        <div class="tags"><span class="tag move">移動日・帶行李</span><span class="tag">Vista Car</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item transport"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>龜之井酒店 → 鳥羽站 → 伊勢市</strong><p>退房後回到伊勢市區。</p><div class="transit-note"><b>🚌＋🚆 交通：</b>飯店免費接駁車「9:30／10:00」出發至鳥羽站（需預約，約 10 分）→ 近鐵鳥羽站 → 伊勢市站｜約 20 分｜成人 ¥390。</div></div></div>
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>伊勢神宮・外宮</strong><p>外宮參拜。</p><div class="transit-note"><b>🚶 交通：</b>伊勢市站步行約 5–7 分可到外宮，這段不需搭車。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ise+Jingu+Geku">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">中午</div><div class="dot"></div><div class="content"><strong>伊勢外宮表參道</strong><p>午餐與散步採買。</p><div class="transit-note"><b>🚶 交通：</b>外宮 → 外宮表參道 → 伊勢市站皆在步行範圍，方便吃完午餐後直接回車站取行李／搭車。</div></div></div>
+        <div class="item transport"><div class="time">15:49～</div><div class="dot"></div><div class="content"><strong>近鐵特急 Vista Car → 大阪難波</strong><p>伊勢市 15:49 左右出發 → 大阪難波，車程約 1 小時 45 分前後。</p><div class="transit-note"><b>🚆 交通／票價：</b>依近鐵現行平日時刻表，15:49 左右往大阪難波的車種為 <b>Vista Car（V）</b>，不是伊勢志摩 Liner。基本車資約 ¥2,170＋特急券約 ¥1,340；若使用 KINTETSU RAIL PASS 5day，基本車資部分由 Pass 涵蓋，特急券仍需另外持有。</div></div></div>
+        <div class="item hotel"><div class="time">抵達後</div><div class="dot"></div><div class="content"><strong>大阪難波 → ESLEAD HOTEL Namba East</strong><p>入住後在難波／日本橋周邊吃晚餐。</p><div class="transit-note"><b>🚶 交通：</b>從南海難波站南口到飯店約步行 10 分；飯店最近地鐵站為堺筋線「恵美須町站」，步行約 7 分。</div></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>ESLEAD HOTEL Namba East</div></div>
+    </article>
+
+    <article class="day" id="day6">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 6</b><span>10/22（四）</span></div>
+        <div class="daytitle"><h3>日本環球影城｜萬聖節</h3><p>已排定遊樂設施時段</p></div>
+        <div class="tags"><span class="tag usj">USJ</span><span class="tag">萬聖節</span><span class="tag">親子＋大人</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item transport"><div class="time">出發</div><div class="dot"></div><div class="content"><strong>飯店 → Universal City</strong><p>從飯店最近的恵美須町站出發。</p><div class="transit-note"><b>🚇＋JR：</b>恵美須町 → 動物園前（堺筋線）→ 步行轉 JR 新今宮 → 西九條（大阪環狀線）→ Universal City（JR 夢咲線）｜約 25–35 分｜成人約 ¥390。飯店官方也建議走這條方向前往 USJ。</div></div></div>
+        <div class="item"><div class="time">11:30–12:30</div><div class="dot"></div><div class="content"><strong>任天堂園區</strong><p>進入 SUPER NINTENDO WORLD。</p></div></div>
+        <div class="item"><div class="time">11:30–12:00</div><div class="dot"></div><div class="content"><strong>瑪利歐：庫巴挑戰</strong><p>依實際預約／快速通關時段進場。</p></div></div>
+        <div class="item"><div class="time">12:00–12:30</div><div class="dot"></div><div class="content"><strong>耀西冒險</strong><p>親子較友善的園區設施。</p></div></div>
+        <div class="item"><div class="time">12:30–13:00</div><div class="dot"></div><div class="content"><strong>瘋狂礦車</strong><p>Donkey Kong 區域行程。</p></div></div>
+        <div class="item"><div class="time">14:00–14:30</div><div class="dot"></div><div class="content"><strong>小小兵：大壞蛋之路</strong><p>Minion 主題設施。</p></div></div>
+        <div class="item"><div class="time">16:00–16:30</div><div class="dot"></div><div class="content"><strong>鷹馬的飛行</strong><p>哈利波特園區設施。</p></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>ESLEAD HOTEL Namba East</div></div>
+    </article>
+
+    <article class="day" id="day7">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 7</b><span>10/23（五）</span></div>
+        <div class="daytitle"><h3>大阪梅田｜購物散步日</h3><p>可依「想買什麼」或「目前在哪一棟」兩種方式找店</p></div>
+        <div class="tags"><span class="tag shop">購物</span><span class="tag">可分組</span><span class="tag">親子</span><span class="tag">雙分類</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item"><div class="time">出發</div><div class="dot"></div><div class="content"><strong>飯店 → 大阪梅田</strong><p>先到梅田站／大阪站核心區。同行者可先看「依購物類型」，決定自己想逛什麼；到現場後再切「依百貨／商場」確認樓層。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行約 7 分至恵美須町站 → 堺筋線到動物園前 → 轉御堂筋線到梅田｜約 19–25 分｜成人 ¥240。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Umeda+Osaka">Google Maps ↗</a></div></div>
+
+        <div class="item"><div class="time">逛街分類</div><div class="dot"></div><div class="content"><strong>Day 7 梅田逛街指南</strong><p>同一批店用兩種方式整理。預設先看「依購物類型」，比較適合多人同行時分組。</p>
+          <div class="shopping-tabs" role="tablist" aria-label="Day 7 逛街分類">
+            <button class="shopping-tab active" id="tab-by-type" type="button" onclick="switchDay7Shopping('type')" aria-pressed="true">依購物類型</button>
+            <button class="shopping-tab" id="tab-by-mall" type="button" onclick="switchDay7Shopping('mall')" aria-pressed="false">依百貨／商場</button>
+          </div>
+
+          <div class="shopping-panel" id="shopping-by-type">
+            <div class="shopping-panel-title">想買什麼 → 直接看這一類，不必每棟百貨都逛。</div>
+            <div class="spot-list">
+              <div class="spot-card"><b>① 女生服飾品牌｜LUCUA 為主</b><span><b>LUCUA 2F：</b>FRAY I.D、Mila Owen、CLANE、Ameri VINTAGE、ROKU、MAISON SPECIAL WOMENS 等。<br><b>LUCUA 3F：</b>BEAMS、JOURNAL STANDARD、FREAK'S STORE、STUDIOUS。<br><b>6–7F：</b>LOWRYS FARM、EMODA、MURUA、URBAN RESEARCH、HARE、FRED PERRY 等。<br><b>有時間再加：</b>HEP FIVE，偏年輕女生與街頭流行。</span></div>
+
+              <div class="spot-card"><b>② 戶外・體育用品品牌</b><span><b>Alpen OSAKA：</b>1F HOKA、ASICS、On、Nike、New Balance 等跑鞋；4F Alpen Outdoors。<br><b>MIZUNO OSAKA CHAYAMACHI：</b>Mizuno 專門店，跑鞋與各項運動用品。<br><b>Grand Front：</b>ASICS GRAND FRONT OSAKA；另有 ARC'TERYX、THE NORTH FACE+、Gregory、mont-bell、New Balance、ASICS KIDS。<br><b>LUCUA 1100 6F：</b>Snow Peak、mont-bell、A&F COUNTRY、KEEN、MERRELL、FJÄLLRÄVEN、Gramicci。<br><b>LUCUA：</b>atmos（10/23 依改裝進度確認 5F 或 9F POP-UP）。</span></div>
+
+              <div class="spot-card"><b>③ MUJI・3COINS・Standard Products・DAISO・生活選物</b><span><b>LUCUA 8F：</b>MUJI＋3COINS+plus 同層，另外還有 Francfranc、MARKS & WEB、MOOMIN SHOP 等，效率很高。<br><b>梅田 DT Tower B2：</b>DAISO＋Standard Products＋THREEPPY 三個品牌集中同層，想一次掃生活雜貨最推薦。<br><b>DAISO LINKS UMEDA 5F：</b>如果原本就會去 Yodobashi／LINKS，可順便逛。<br><b>阪神梅田 6–7F：</b>Loft＋MUJI。<br><b>LUCUA 1100 7F：</b>KEYUCA、BASIC AND ACCENT、Wpc. 等日系生活選物；9F 可逛梅田蔦屋書店。</span></div>
+
+              <div class="spot-card"><b>④ 玩具・動漫・卡通類</b><span><b>LUCUA SOUTH 13F：</b>Nintendo OSAKA、Pokémon Center Osaka、CAPCOM、Tomica／Plarail、ONE PIECE。<br><b>Yodobashi Umeda 5F：</b>綜合玩具最完整，LEGO、Tomica／Plarail、麵包超人、益智玩具、桌遊、模型、卡牌、扭蛋；汪汪隊 PAW Patrol 也優先在這裡找。<br><b>Kiddy Land 大阪梅田：</b>角色娃娃、卡通雜貨、文具與小物。<br><b>Grand Front 北館 3F：</b>BorneLund 玩具店＋KID-O-KID，3 歲親子很適合。<br><b>阪急梅田 11F：</b>BorneLund Brainy Store、Atelier Niki Tiki、Sanrio，偏質感益智／木製玩具。</span></div>
+            </div>
+          </div>
+
+          <div class="shopping-panel" id="shopping-by-mall" hidden>
+            <div class="shopping-panel-title">人已經在這棟 → 直接看必逛樓層。</div>
+            <div class="spot-list">
+              <div class="spot-card"><b>LUCUA Osaka｜女生服飾・生活雜貨・atmos</b><span><b>2–3F：</b>女生服飾＋BEAMS／JOURNAL STANDARD／FREAK'S STORE／STUDIOUS。<br><b>8F：</b>MUJI、3COINS+plus、Francfranc 等生活雜貨。<br><b>atmos：</b>10/23 依改裝進度看 5F 新店或 9F POP-UP。</span></div>
+
+              <div class="spot-card"><b>LUCUA 1100｜戶外・生活選物</b><span><b>6F：</b>Snow Peak、mont-bell、A&F COUNTRY、KEEN、MERRELL、FJÄLLRÄVEN、Gramicci。<br><b>7F：</b>KEYUCA、BASIC AND ACCENT、Wpc.。<br><b>9F：</b>梅田蔦屋書店＋Starbucks。</span></div>
+
+              <div class="spot-card"><b>Grand Front Osaka｜ASICS・親子・戶外</b><span><b>Knowledge Capital 3F：</b>ASICS GRAND FRONT OSAKA。<br><b>北館 3F：</b>BorneLund KID-O-KID。<br><b>南館 4–5F：</b>ARC'TERYX、THE NORTH FACE+、Gregory、mont-bell、New Balance、ASICS KIDS 等。</span></div>
+
+              <div class="spot-card"><b>LUCUA SOUTH｜Nintendo・Pokémon</b><span><b>13F：</b>Nintendo OSAKA、Pokémon Center Osaka、CAPCOM STORE & CAFE、Tomica／Plarail、ONE PIECE 麥わら Store。<br><b>重點：</b>直接上 13F，不用每層逛。</span></div>
+
+              <div class="spot-card"><b>阪神梅田本店｜Loft・MUJI・伴手禮</b><span><b>B1：</b>VANI、DROOLY、551、甜點與食品伴手禮。<br><b>6F：</b>梅田 Loft、Baby & Kids、THE NORTH FACE、Columbia、Gregory。<br><b>7F：</b>MUJI。</span></div>
+
+              <div class="spot-card"><b>Yodobashi／LINKS UMEDA｜玩具・DAISO・戶外</b><span><b>Yodobashi 5F：</b>玩具、LEGO、Tomica／Plarail、麵包超人、模型、卡牌、扭蛋、遊戲。<br><b>LINKS 5F：</b>DAISO。<br><b>LINKS 6F：</b>石井 Sports，大型登山／戶外用品。</span></div>
+
+              <div class="spot-card"><b>茶屋町｜Alpen・Mizuno・Kiddy Land 周邊</b><span><b>Alpen OSAKA：</b>HOKA 等跑鞋＋戶外用品。<br><b>MIZUNO OSAKA CHAYAMACHI：</b>Mizuno 專門店。<br><b>阪急三番街／茶屋町周邊：</b>Kiddy Land 可安排在這一區一起逛。</span></div>
+
+              <div class="spot-card"><b>梅田 DT Tower B2｜生活雜貨三合一</b><span><b>同一層：</b>DAISO＋Standard Products＋THREEPPY。<br><b>定位：</b>如果同行友人只想買日系平價生活雜貨，這一站最省時間。</span></div>
+            </div>
+          </div>
+
+          <div class="transit-note"><b>👨‍👩‍👧 你們家的建議順序：</b>Alpen OSAKA → MIZUNO OSAKA CHAYAMACHI → Grand Front（ASICS＋親子）→ LUCUA 1100 → LUCUA（女生服飾／3COINS／MUJI／atmos）→ LUCUA SOUTH（Nintendo／Pokémon／Tomica）→ 阪神梅田。若女兒想看更多玩具，可在 Grand Front 後插入 Yodobashi Umeda 5F。</div>
+          <a class="maps" href="umeda-family.html">👨‍👩‍👧 親子逛街順序 →</a>
+        </div></div>
+
+        <div class="item"><div class="time">回程</div><div class="dot"></div><div class="content"><strong>梅田 → 飯店</strong><p>最後從阪神／梅田站一帶搭 Metro 回飯店。</p><div class="transit-note"><b>🚇 回程：</b>梅田 → 動物園前（御堂筋線）→ 恵美須町（堺筋線）｜成人 ¥240，再步行約 7 分回飯店。</div></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>ESLEAD HOTEL Namba East</div></div>
+    </article>
+
+    <article class="day" id="day8">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 8</b><span>10/24（六）</span></div>
+        <div class="daytitle"><h3>難波・心齋橋・teamLab</h3><p>市區景點＋螃蟹道樂；teamLab 當天再決定</p></div>
+        <div class="tags"><span class="tag shop">購物</span><span class="tag">已排餐廳</span><span class="tag">teamLab 待決定</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>難波八阪神社</strong><p>著名獅子殿拍照景點。</p><div class="transit-note"><b>🚶 交通：</b>從 ESLEAD HOTEL Namba East 以步行最直覺，約 15–20 分；不必為了短距離特地搭地鐵。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Namba+Yasaka+Shrine">Google Maps ↗</a></div></div>
+        <div class="item food"><div class="time">12:00</div><div class="dot"></div><div class="content"><strong>蟹道樂 道頓堀中店</strong><p>午餐。</p><div class="transit-note"><b>🚶 交通：</b>難波八阪神社 → 道頓堀一帶建議直接步行，約 15–20 分，沿途可順便經過難波商圈。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kani+Doraku+Dotonbori+Naka">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">下午</div><div class="dot"></div><div class="content"><strong>心齋橋商圈</strong><p>最後一個完整購物日下午。</p><div class="transit-note"><b>🚶 交通：</b>道頓堀 → 心齋橋筋商店街直接步行約 5–10 分即可，無需搭車。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Shinsaibashi+Osaka">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">晚上</div><div class="dot"></div><div class="content"><strong>teamLab Botanical Garden Osaka <span class="status wait">當天決定是否購票</span></strong><p>視當天體力、天氣與購物進度再決定是否前往，不先綁死。</p><div class="transit-note"><b>🚇 若前往：</b>心齋橋站 → 長居站｜大阪 Metro 御堂筋線直達｜約 16–17 分｜成人 ¥290；長居站出站後再步行前往長居植物園／teamLab。若不去，就留在心齋橋／難波自由活動。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=teamLab+Botanical+Garden+Osaka">Google Maps ↗</a></div></div>
+      </div>
+      <div class="hotelbar"><b>住宿</b><div>ESLEAD HOTEL Namba East</div></div>
+    </article>
+
+    <article class="day" id="day9">
+      <header class="dayhead">
+        <div class="daynum"><b>Day 9</b><span>10/25（日）</span></div>
+        <div class="daytitle"><h3>大阪 → 關西機場 → 台北</h3><p>最後採買＋17:05 Rapi:t 已預訂</p></div>
+        <div class="tags"><span class="tag move">移動日・回台灣</span><span class="tag">Rapi:t 已訂位</span></div>
+      </header>
+      <div class="timeline">
+        <div class="item"><div class="time">上午</div><div class="dot"></div><div class="content"><strong>木津市場</strong><p>最後一天早上安排市場走走與採買。</p><div class="transit-note"><b>🚶 交通：</b>從飯店步行前往即可，建議把最後採買控制在午前～中午，之後回飯店整理行李。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kizu+Wholesale+Market+Osaka">Google Maps ↗</a></div></div>
+        <div class="item hotel"><div class="time">退房後</div><div class="dot"></div><div class="content"><strong>南海難波站｜行李寄放</strong><p>若退房後還要在難波活動，可先把行李放到南海難波站，17:05 搭 Rapi:t 前再取。</p>
+          <div class="luggage-note"><b>🧳 最推薦：2F 中央改札外 Coin Locker Room</b>｜靠近中央改札，之後取行李接 Rapi:t 最直覺。2026 現場資料：小 ¥500／中 ¥700／大 ¥1,200／特大 ¥1,500，約 5:30–24:10 可取放。<br>
+          <b>其他備案：</b>1F 銀行區旁：小 ¥500／中 ¥700／大 ¥1,200；3F 北改札・Swissôtel 入口方向：小 ¥500／中 ¥800／大 ¥1,200。<br>
+          若置物櫃滿，2F 中央改札附近另有人工行李寄放服務，參考約 ¥800／件。南海官方 2026 站內圖亦標示多處 Coin Locker／Baggage Storage。</div>
+        </div></div>
+        <div class="item transport"><div class="time">16:20 左右</div><div class="dot"></div><div class="content"><strong>飯店 → 南海難波站</strong><p>預留拖行李、找月台與進站時間。</p><div class="transit-note"><b>🚶 交通：</b>ESLEAD HOTEL Namba East → 南海難波站南口約步行 10 分。建議最晚約 16:20–16:25 從飯店出發，讓 6 大 1 小有充足時間進站。</div></div></div>
+        <div class="item transport"><div class="time">17:05</div><div class="dot"></div><div class="content"><strong>南海 Rapi:t → 關西國際機場 <span class="status ok">✓ 已預訂</span></strong><p>17:05 從「南海難波站」出發前往 KIX，車程約 37–40 分。</p><div class="transit-note"><b>🚆 交通／票價：</b>南海難波 → 關西機場｜Rapi:t 全車指定席。官方一般普通席為基本車資 ¥970＋特急料金 ¥700＝¥1,670；若使用 Rapi:t 電子優惠票，成人目前 ¥1,410。你們已完成預訂，當天直接依票券上的座位／進站方式搭乘即可。</div></div></div>
+        <div class="item transport"><div class="time">20:55</div><div class="dot"></div><div class="content"><strong>AirAsia X AK177｜關西 → 桃園</strong><p>2026/10/25（日）20:55 關西國際機場 T1 起飛 → 23:15 桃園國際機場 T1 抵達｜預計飛行約 3 小時 20 分。</p><div class="transit-note"><b>✈️ 回程航班：</b>KIX 關西國際機場 Terminal 1 → TPE 桃園國際機場 Terminal 1。已依你最新版行程表，將原先 D7 379 改為 AK177。</div></div></div>
+      </div>
+    </article>
+
+  </main>
+
+  <div class="section-title"><h2>旅行重點快速看</h2><span>方便同行朋友先抓大方向</span></div>
+  <section class="quick">
+    <div class="quick-card"><h3>🚆 三個主要移動日</h3><p><strong>10/19</strong> 名古屋→伊勢（島風號 Premium 已購）<br><strong>10/20</strong> 伊勢→鳥羽（中午海女接駁）<br><strong>10/21</strong> 鳥羽→伊勢→大阪難波</p></div>
+    <div class="quick-card"><h3>👧 親子重點</h3><p>Day 2 上午親子組單獨去東山動植物園；另有海女小屋與 USJ 耀西冒險。Day 4 上午已改成自由時間，整體節奏更輕鬆。</p></div>
+    <div class="quick-card"><h3>🎟 已確認／待決定</h3><p>島風號 10:25 Premium 已購、海女小屋接駁 12:45／15:15、伊勢志摩 Liner 15:49、USJ 時段、蟹道樂 12:00、Rapi:t 17:05 已訂；teamLab 當天再決定。</p></div>
+  </section>
+
+
+  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V13｜梅田雙分類逛街指南｜價格與營業資訊仍以當日現場公告為準</div>
+</div>
+<button class="back-top" id="back-top" aria-label="回到頂部" title="回到頂部">↑</button>
+
+<script>
+async function shareTrip(){
+  const data={title:document.title,text:"名古屋・伊勢志摩・大阪 9天8夜行程",url:location.href};
+  try{
+    if(navigator.share){await navigator.share(data);}
+    else{
+      await navigator.clipboard.writeText(location.href);
+      alert("網址已複製！");
+    }
+  }catch(e){}
+}
+
+const weatherTrips=[
+  {id:"wx-nagoya",name:"名古屋",office:"230000",shortArea:"西部",tempArea:"名古屋",start:"2026-10-17",end:"2026-10-18",normal:"10 月平年：約 23°C / 15°C"},
+  {id:"wx-mie",name:"三重・伊勢鳥羽",office:"240000",shortArea:"南部",tempArea:"津",start:"2026-10-19",end:"2026-10-21",normal:"鳥羽 10 月平年：約 22°C / 15°C",tempNote:"氣溫以 JMA 津代表點為準"},
+  {id:"wx-osaka",name:"大阪",office:"270000",shortArea:"大阪府",tempArea:"大阪",start:"2026-10-21",end:"2026-10-25",normal:"10 月平年：約 24°C / 16°C"}
+];
+
+function jmaIcon(code){
+  const n=Number(code||0);
+  if(n>=100&&n<200) return "☀️";
+  if(n>=200&&n<300) return "☁️";
+  if(n>=300&&n<400) return "🌧️";
+  if(n>=400&&n<500) return "🌨️";
+  return "🌤️";
+}
+function dateKey(v){return String(v||"").slice(0,10)}
+function daysInclusive(a,b){
+  return Math.round((new Date(b+"T00:00:00+09:00")-new Date(a+"T00:00:00+09:00"))/86400000)+1;
+}
+function pickArea(areas,name){
+  return (areas||[]).find(x=>x.area&&x.area.name===name)||(areas||[])[0]||null;
+}
+function addTemps(row,vals){
+  const nums=(vals||[]).map(Number).filter(Number.isFinite);
+  if(nums.length>=2){ row.lo=Math.min(...nums); row.hi=Math.max(...nums); }
+  else if(nums.length===1){ row.hi=nums[0]; }
+}
+async function loadJmaTrip(trip){
+  const res=await fetch("https://www.jma.go.jp/bosai/forecast/data/forecast/"+trip.office+".json",{cache:"no-store"});
+  if(!res.ok) throw new Error("JMA fetch failed");
+  const data=await res.json();
+  const map=new Map();
+
+  // JMA weekly forecast: tomorrow through 7 days ahead.
+  const weekly=data[1];
+  if(weekly&&weekly.timeSeries){
+    const wWeather=weekly.timeSeries[0];
+    const wTemps=weekly.timeSeries[1];
+    const wa=pickArea(wWeather&&wWeather.areas);
+    const ta=pickArea(wTemps&&wTemps.areas,trip.tempArea);
+    (wWeather&&wWeather.timeDefines||[]).forEach((t,i)=>{
+      const d=dateKey(t);
+      const row=map.get(d)||{date:d};
+      if(wa){
+        row.code=wa.weatherCodes&&wa.weatherCodes[i];
+        row.pop=Number(wa.pops&&wa.pops[i]);
+        row.rel=wa.reliabilities&&wa.reliabilities[i];
+      }
+      if(ta){
+        const lo=Number(ta.tempsMin&&ta.tempsMin[i]);
+        const hi=Number(ta.tempsMax&&ta.tempsMax[i]);
+        if(Number.isFinite(lo)) row.lo=lo;
+        if(Number.isFinite(hi)) row.hi=hi;
+      }
+      map.set(d,row);
+    });
+  }
+
+  // Short-range JMA forecast: lets the cards remain useful once the trip has started.
+  const short=data[0];
+  if(short&&short.timeSeries){
+    const sWeather=short.timeSeries[0];
+    const sPops=short.timeSeries[1];
+    const sTemps=short.timeSeries[2];
+    const swa=pickArea(sWeather&&sWeather.areas,trip.shortArea);
+    const spa=pickArea(sPops&&sPops.areas,trip.shortArea);
+    const sta=pickArea(sTemps&&sTemps.areas,trip.tempArea);
+
+    (sWeather&&sWeather.timeDefines||[]).forEach((t,i)=>{
+      const d=dateKey(t), row=map.get(d)||{date:d};
+      if(swa) row.code=swa.weatherCodes&&swa.weatherCodes[i];
+      map.set(d,row);
+    });
+
+    const popByDate={};
+    (sPops&&sPops.timeDefines||[]).forEach((t,i)=>{
+      const d=dateKey(t), v=Number(spa&&spa.pops&&spa.pops[i]);
+      if(Number.isFinite(v)) (popByDate[d]||(popByDate[d]=[])).push(v);
+    });
+    Object.keys(popByDate).forEach(d=>{
+      const row=map.get(d)||{date:d};
+      row.pop=Math.max(...popByDate[d]);
+      map.set(d,row);
+    });
+
+    const tempByDate={};
+    (sTemps&&sTemps.timeDefines||[]).forEach((t,i)=>{
+      const d=dateKey(t), v=Number(sta&&sta.temps&&sta.temps[i]);
+      if(Number.isFinite(v)) (tempByDate[d]||(tempByDate[d]=[])).push(v);
+    });
+    Object.keys(tempByDate).forEach(d=>{
+      const row=map.get(d)||{date:d};
+      addTemps(row,tempByDate[d]);
+      map.set(d,row);
+    });
+  }
+
+  return [...map.values()].filter(r=>r.date>=trip.start&&r.date<=trip.end).sort((a,b)=>a.date.localeCompare(b.date));
+}
+
+async function loadWeather(){
+  let any=false, latestReport="";
+  for(const trip of weatherTrips){
+    const el=document.getElementById(trip.id);
+    try{
+      const rows=await loadJmaTrip(trip);
+      if(rows.length){
+        const his=rows.map(x=>x.hi).filter(Number.isFinite);
+        const los=rows.map(x=>x.lo).filter(Number.isFinite);
+        const pops=rows.map(x=>x.pop).filter(Number.isFinite);
+        const wettest=[...rows].sort((a,b)=>(Number(b.pop)||0)-(Number(a.pop)||0))[0]||rows[0];
+        const hi=his.length?Math.round(Math.max(...his)):null;
+        const lo=los.length?Math.round(Math.min(...los)):null;
+        const pop=pops.length?Math.round(Math.max(...pops)):null;
+        const reliabilities=[...new Set(rows.map(x=>x.rel).filter(Boolean))];
+        const tempText=(hi!==null&&lo!==null)?hi+"° / "+lo+"°":"JMA 官方預報";
+        el.querySelector(".weather-main").textContent=jmaIcon(wettest.code)+" "+tempText;
+        let sub="JMA 已涵蓋 "+rows.length+"/"+daysInclusive(trip.start,trip.end)+" 天";
+        if(pop!==null) sub+="｜最高降雨機率 "+pop+"%";
+        if(reliabilities.length) sub+="｜信賴度 "+reliabilities.join("/");
+        if(trip.tempNote) sub+="｜"+trip.tempNote;
+        el.querySelector(".weather-sub").textContent=sub;
+      }else{
+        el.querySelector(".weather-main").textContent="📅 尚未進入 JMA 7日預報";
+        el.querySelector(".weather-sub").textContent=trip.normal+"｜進入日本氣象廳預報範圍後自動顯示";
+      }
+      any=true;
+    }catch(e){
+      el.querySelector(".weather-main").textContent="🌤 "+trip.normal.replace("10 月平年：","").replace("鳥羽 ","");
+      el.querySelector(".weather-sub").textContent="日本氣象廳資料暫時無法載入｜先顯示平年值";
+    }
+  }
+  if(any) document.getElementById("weather-updated").textContent="資料源：日本氣象廳 JMA｜自動更新";
+}
+function switchDay7Shopping(mode){
+  const typePanel=document.getElementById("shopping-by-type");
+  const mallPanel=document.getElementById("shopping-by-mall");
+  const typeTab=document.getElementById("tab-by-type");
+  const mallTab=document.getElementById("tab-by-mall");
+  if(!typePanel||!mallPanel) return;
+  const byMall=mode==="mall";
+  typePanel.hidden=byMall;
+  mallPanel.hidden=!byMall;
+  typeTab.classList.toggle("active",!byMall);
+  mallTab.classList.toggle("active",byMall);
+  typeTab.setAttribute("aria-pressed",String(!byMall));
+  mallTab.setAttribute("aria-pressed",String(byMall));
+}
+
+const weatherPromise=loadWeather();
+
+function japanTodayKey(){
+  const parts=new Intl.DateTimeFormat("en-US",{
+    timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit"
+  }).formatToParts(new Date());
+  const get=t=>parts.find(p=>p.type===t)?.value||"";
+  return get("year")+"-"+get("month")+"-"+get("day");
+}
+
+function focusTodayItinerary(){
+  const navEntry=performance.getEntriesByType("navigation")[0];
+  const isReload=navEntry&&navEntry.type==="reload";
+
+  // A normal link with #dayX may intentionally open a specific day.
+  // But if the user reloads that page, always return to today's itinerary.
+  if(location.hash&&!isReload) return;
+
+  const dayByDate={
+    "2026-10-17":"day1",
+    "2026-10-18":"day2",
+    "2026-10-19":"day3",
+    "2026-10-20":"day4",
+    "2026-10-21":"day5",
+    "2026-10-22":"day6",
+    "2026-10-23":"day7",
+    "2026-10-24":"day8",
+    "2026-10-25":"day9"
+  };
+
+  const today=japanTodayKey();
+  const targetId=dayByDate[today];
+  if(!targetId) return;
+
+  const target=document.getElementById(targetId);
+  if(!target) return;
+
+  // Always place today's itinerary near the top when opening the homepage,
+  // and force it again on every reload during the trip.
+  target.scrollIntoView({behavior:"auto",block:"start"});
+  window.scrollBy({top:-64,left:0,behavior:"auto"});
+}
+
+window.addEventListener("load",()=>{
+  Promise.race([
+    weatherPromise.catch(()=>null),
+    new Promise(resolve=>setTimeout(resolve,1400))
+  ]).finally(()=>setTimeout(focusTodayItinerary,120));
+});
+
+const backTop=document.getElementById("back-top");
+window.addEventListener("scroll",()=>{
+  backTop.classList.toggle("show",window.scrollY>500);
+},{passive:true});
+backTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+
+</script>
+</body>
+</html>
+<!-- deployment-sync-v7-1: includes souvenirs.html -->
