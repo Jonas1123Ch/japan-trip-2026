@@ -453,7 +453,7 @@ button,.btn{
   </section>
 
 
-  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V9｜梅田商場攻略＋親子逛街順序｜價格與營業資訊仍以當日現場公告為準</div>
+  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V10｜當日行程自動定位＋梅田商場攻略｜價格與營業資訊仍以當日現場公告為準</div>
 </div>
 <button class="back-top" id="back-top" aria-label="回到頂部" title="回到頂部">↑</button>
 
@@ -602,7 +602,57 @@ async function loadWeather(){
   }
   if(any) document.getElementById("weather-updated").textContent="資料源：日本氣象廳 JMA｜自動更新";
 }
-loadWeather();
+const weatherPromise=loadWeather();
+
+function japanTodayKey(){
+  const parts=new Intl.DateTimeFormat("en-US",{
+    timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit"
+  }).formatToParts(new Date());
+  const get=t=>parts.find(p=>p.type===t)?.value||"";
+  return get("year")+"-"+get("month")+"-"+get("day");
+}
+
+function focusTodayItinerary(){
+  // If the URL already points to a specific section, respect that navigation.
+  if(location.hash) return;
+
+  const dayByDate={
+    "2026-10-17":"day1",
+    "2026-10-18":"day2",
+    "2026-10-19":"day3",
+    "2026-10-20":"day4",
+    "2026-10-21":"day5",
+    "2026-10-22":"day6",
+    "2026-10-23":"day7",
+    "2026-10-24":"day8",
+    "2026-10-25":"day9"
+  };
+
+  const today=japanTodayKey();
+  const targetId=dayByDate[today];
+  if(!targetId) return;
+
+  const storageKey="japan-trip-auto-focus-date";
+  try{
+    if(localStorage.getItem(storageKey)===today) return;
+  }catch(e){}
+
+  const target=document.getElementById(targetId);
+  if(!target) return;
+
+  // Wait until the first weather refresh/layout settles, then place today's card near the top.
+  target.scrollIntoView({behavior:"auto",block:"start"});
+  window.scrollBy({top:-64,left:0,behavior:"auto"});
+
+  try{ localStorage.setItem(storageKey,today); }catch(e){}
+}
+
+window.addEventListener("load",()=>{
+  Promise.race([
+    weatherPromise.catch(()=>null),
+    new Promise(resolve=>setTimeout(resolve,1400))
+  ]).finally(()=>setTimeout(focusTodayItinerary,120));
+});
 
 const backTop=document.getElementById("back-top");
 window.addEventListener("scroll",()=>{
