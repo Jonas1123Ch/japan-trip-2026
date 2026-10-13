@@ -339,6 +339,41 @@ button,.btn{
   .weather-head span{display:block;margin-top:2px}
 }
 
+
+/* Higashiyama Zoo: optional expanded half-day schedule, closed by default */
+.zoo-details{
+  margin-top:12px;
+  border:1px solid #decfc3;
+  background:#fffaf6;
+  border-radius:14px;
+  overflow:hidden;
+}
+.zoo-details summary{
+  list-style:none;display:flex;align-items:center;gap:10px;
+  padding:13px 14px;cursor:pointer;color:#6e5548;
+  -webkit-tap-highlight-color:transparent;
+}
+.zoo-details summary::-webkit-details-marker{display:none}
+.zoo-details summary::marker{content:""}
+.zoo-details summary:focus-visible{outline:3px solid #7e5f50;outline-offset:-3px}
+.zoo-details-icon{font-size:21px;flex:none}
+.zoo-details summary b{display:block;font-size:14px;line-height:1.45}
+.zoo-details summary small{display:block;font-size:11px;color:#7c726c;margin-top:3px;line-height:1.5}
+.zoo-details-chevron{
+  margin-left:auto;font-size:22px;line-height:1;
+  transition:transform .2s ease
+}
+.zoo-details[open] .zoo-details-chevron{transform:rotate(180deg)}
+.zoo-details-body{padding:1px 12px 12px;border-top:1px solid #eadfd8}
+.zoo-details-body .spot-list{margin-top:12px}
+@media(max-width:760px){
+  .zoo-details{margin-top:10px;border-radius:12px}
+  .zoo-details summary{min-height:64px;padding:12px 11px;gap:8px}
+  .zoo-details summary b{font-size:13px}
+  .zoo-details summary small{font-size:11px}
+  .zoo-details-body{padding:1px 9px 10px}
+}
+
 @media print{
   body{background:#fff}
   .container{max-width:none;padding:0}
@@ -425,6 +460,9 @@ button,.btn{
       </header>
       <div class="timeline">
         <div class="item"><div class="time">08:40–13:00｜親子</div><div class="dot"></div><div class="content"><span class="group family">👨‍👩‍👧 親子組</span><br><strong>東山動植物園｜3 歲半日精華版</strong><p>10/18（日）剛好是名古屋祭典免費開放日，預期人潮較多；目標是 09:00 開園就進場，中午吃完午餐後離開，不硬走完整座園區。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行約 7 分到伏見站 → 地下鐵東山線直達「東山公園站」｜約 15 分、免轉乘｜成人 ¥270；建議 08:40～08:50 抵達園區入口。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Higashiyama+Zoo+and+Botanical+Gardens">Google Maps ↗</a>
+          <details class="zoo-details">
+            <summary><span class="zoo-details-icon">🐨</span><span><b>展開東山動植物園詳細行程</b><small>09:00–13:00｜大象・無尾熊・長頸鹿・午餐（點此查看）</small></span><span class="zoo-details-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="zoo-details-body">
           <div class="spot-list">
             <div class="spot-card"><b>09:00｜開園進場</b><span>免費開放日可能較擁擠，先直攻親子必看動物，不把時間花在完整繞園。</span></div>
             <div class="spot-card"><b>09:05–09:35｜亞洲象</b><span>3 歲小朋友容易看懂、體型又有震撼感，適合當第一站。看到走動、吃東西就很值得。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Asian+Elephant+House+Higashiyama+Zoo+Nagoya">Google Maps ↗</a></div>
@@ -435,6 +473,8 @@ button,.btn{
             <div class="spot-card"><b>12:30–13:00｜離園 → 榮</b><span>午餐後就收尾，不特地跑植物園、Sky Tower 或完整遊樂園。東山公園站 → 栄站約 12 分，成人 ¥240。</span></div>
           </div>
           <div class="transit-note"><b>🎠 遊樂園取捨：</b>不列為必玩。若女兒當天精神很好、又很想坐遊具，最多加一項旋轉木馬或摩天輪；否則保留體力給下午榮商圈。<br><b>⭐ 半日成功標準：</b>看到「無尾熊＋亞洲象＋長頸鹿」就算完成，不需要追完整個動植物園。</div>
+            </div>
+          </details>
         </div></div>
         <div class="item"><div class="time">上午｜大人</div><div class="dot"></div><div class="content"><span class="group adult">💑 情侶夫妻組</span><br><strong>大須觀音寺・大須商店街</strong><p>參拜＋商店街、小吃與逛街，節奏自由。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行到伏見站 → 地下鐵鶴舞線 1 站到「大須觀音站」｜約 2 分、免轉乘｜成人 ¥210；出站步行即可到大須觀音與商店街。</div><div class="spot-list">
             <div class="spot-card"><b>KOMEHYO 名古屋本店</b><span>大須代表性的二手精品店，包包、腕錶、珠寶與中古精品最適合慢慢挖。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=KOMEHYO+Nagoya+Honten+Osu">Google Maps ↗</a></div>
