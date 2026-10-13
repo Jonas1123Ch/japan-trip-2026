@@ -208,6 +208,137 @@ button,.btn{
   .spot-list{grid-template-columns:1fr}
   .pack-grid{grid-template-columns:1fr}
 }
+
+/* ===== Mobile readability V2 ===== */
+.maps-inline{
+  display:inline-flex!important;align-items:center;gap:2px;
+  margin:0 0 0 6px!important;padding:2px 6px;border-radius:999px;
+  border:1px solid #ddcfc6!important;background:#fff7f3;
+  color:#76584b!important;font-size:10px!important;font-weight:800!important;
+  line-height:1.35!important;text-decoration:none!important;vertical-align:2px;
+}
+.day-collapse-toggle{display:none}
+
+@media(max-width:760px){
+  body{line-height:1.72;-webkit-text-size-adjust:100%}
+  .container{padding:8px 10px 72px}
+  .hero{border-radius:20px;padding:20px 16px}
+  .kicker{font-size:11px;letter-spacing:.11em}
+  h1{font-size:clamp(26px,8vw,34px);line-height:1.17;margin:6px 0 8px}
+  .subtitle{font-size:14px;line-height:1.6}
+  .hero-meta{gap:6px;margin-top:13px}
+  .pill{font-size:11px;padding:6px 9px}
+
+  .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+  .actions button,.actions .btn{
+    width:100%;min-height:44px;padding:9px 8px;border-radius:11px;
+    font-size:12px;display:flex;align-items:center;justify-content:center;text-align:center
+  }
+
+  .weather-wrap{margin-top:14px}
+  .weather-head{font-size:11px;align-items:flex-start}
+  .weather-grid{grid-template-columns:1fr;gap:6px}
+  .weather-card{min-height:0;padding:9px 10px;border-radius:12px}
+  .weather-card b{font-size:12px}
+  .weather-main{font-size:15px}
+  .weather-sub{font-size:11px;line-height:1.45}
+
+  .summary{grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+  .summary-card{padding:8px 9px}
+  .summary-card strong{font-size:13px}
+
+  .daynav{
+    top:0;margin:10px -10px 12px;padding:7px 10px;
+    scrollbar-width:none
+  }
+  .daynav::-webkit-scrollbar{display:none}
+  .daynav a{min-width:64px;margin-right:5px;padding:7px;border-radius:11px;font-size:11px}
+  .daynav a b{font-size:12px}
+
+  .section-title{margin:18px 2px 8px}
+  .section-title h2{font-size:19px}
+  .section-title span{font-size:11px}
+  .days{gap:11px}
+  .day{border-radius:18px;scroll-margin-top:74px}
+
+  .dayhead{
+    grid-template-columns:62px 1fr;gap:10px;padding:13px 48px 13px 13px;
+    position:relative
+  }
+  .daynum{border-radius:13px;padding:9px 6px}
+  .daynum b{font-size:17px}
+  .daynum span{font-size:11px}
+  .daytitle h3{font-size:17px;line-height:1.35}
+  .daytitle p{font-size:12px;line-height:1.5;margin-top:3px}
+  .tags{grid-column:1/-1;justify-content:flex-start;gap:5px}
+  .tag{font-size:10px;padding:4px 7px}
+
+  .day-collapse-toggle{
+    display:flex;position:absolute;right:11px;top:12px;
+    width:34px;height:34px;border-radius:10px;padding:0;
+    align-items:center;justify-content:center;
+    background:#f4ede8;color:#71594e;border:1px solid #e3d5cc;
+    font-size:20px;font-weight:500;line-height:1
+  }
+  .day.day-collapsed > :not(.dayhead){display:none!important}
+  .day.day-collapsed .dayhead{border-bottom:0}
+  .day.day-collapsed .daytitle p{display:none}
+  .day.day-collapsed .tags{display:none}
+
+  .timeline{padding:4px 13px 7px}
+  .item{display:block;padding:12px 0;border-bottom:1px dashed #eadfd8}
+  .item:last-child{border-bottom:0}
+  .item:not(:last-child):before{display:none}
+  .dot{display:none}
+  .time{
+    display:inline-flex;align-items:center;width:auto;
+    padding:4px 8px;border-radius:999px;background:#f2ece7;
+    color:#765f54;font-size:11px;line-height:1.2
+  }
+  .content{margin-top:7px}
+  .content strong{display:block;font-size:16px;line-height:1.5}
+  .content p{font-size:14px;line-height:1.7;margin:4px 0}
+  .maps{display:inline-flex;align-items:center;min-height:36px;margin-top:6px;font-size:12px;font-weight:700}
+  .maps-inline{
+    min-height:0!important;margin:0 0 0 5px!important;padding:3px 7px!important;
+    font-size:10px!important;vertical-align:2px
+  }
+  .transit-note{margin-top:8px;padding:10px 11px;border-radius:11px;font-size:13px;line-height:1.65}
+  .status{font-size:9px}
+  .group{font-size:10px}
+  .note{margin:5px 13px 14px;padding:11px 12px;font-size:13px;line-height:1.65}
+  .hotelbar{margin:5px 13px 14px;padding:11px 12px;border-radius:13px;gap:8px}
+  .hotelbar b{font-size:12px;min-width:48px}
+  .hotelbar div{font-size:13px;line-height:1.55}
+
+  .quick{grid-template-columns:1fr;gap:9px}
+  .quick-card{padding:13px;border-radius:15px}
+  .quick-card h3{font-size:15px}
+  .quick-card p{font-size:13px;line-height:1.65}
+
+  .shopping-tabs{
+    display:grid;grid-template-columns:1fr 1fr;gap:7px;
+    position:sticky;top:64px;z-index:12;
+    background:rgba(255,253,249,.96);backdrop-filter:blur(8px);
+    padding:7px 0;margin:7px 0 10px
+  }
+  .shopping-tab{min-height:42px;padding:8px 7px;font-size:12px;border-radius:11px}
+  .shopping-panel-title{font-size:12px;line-height:1.55}
+  .spot-list{grid-template-columns:1fr;gap:9px}
+  .spot-card{padding:12px 13px;border-radius:13px}
+  .spot-card b{font-size:14px;line-height:1.45}
+  .spot-card span{font-size:13px;line-height:1.68;margin-top:5px}
+  .spot-card a{font-size:12px;min-height:34px;padding-top:6px}
+  .luggage-note{font-size:13px;line-height:1.65}
+  .footer{margin-top:20px;padding:16px 4px;font-size:11px}
+  .back-top{right:14px;bottom:16px;width:48px;height:48px}
+}
+@media(max-width:380px){
+  .actions{grid-template-columns:1fr}
+  .weather-head{display:block}
+  .weather-head span{display:block;margin-top:2px}
+}
+
 @media print{
   body{background:#fff}
   .container{max-width:none;padding:0}
@@ -651,6 +782,82 @@ function switchDay7Shopping(mode){
   mallTab.setAttribute("aria-pressed",String(byMall));
 }
 
+
+function moveGoogleMapsNextToTitles(){
+  document.querySelectorAll('a.maps[href*="google.com/maps"]').forEach(a=>{
+    const host=a.closest(".content")||a.closest(".spot-card");
+    if(!host) return;
+    const title=host.matches(".spot-card")?host.querySelector("b"):host.querySelector("strong");
+    if(!title||title.contains(a)) return;
+    a.textContent="📍 Maps";
+    a.classList.add("maps-inline");
+    title.append(document.createTextNode(" "),a);
+  });
+}
+
+function setDayCollapsed(day,collapsed){
+  if(!day) return;
+  day.classList.toggle("day-collapsed",collapsed);
+  const btn=day.querySelector(".day-collapse-toggle");
+  if(btn){
+    btn.textContent=collapsed?"＋":"−";
+    btn.setAttribute("aria-expanded",String(!collapsed));
+    btn.setAttribute("aria-label",collapsed?"展開這天行程":"收合這天行程");
+  }
+}
+
+function setupMobileDayCards(){
+  const isMobile=window.matchMedia("(max-width:760px)").matches;
+  const days=[...document.querySelectorAll(".day")];
+
+  days.forEach(day=>{
+    const head=day.querySelector(".dayhead");
+    if(!head) return;
+    let btn=head.querySelector(".day-collapse-toggle");
+    if(!btn){
+      btn=document.createElement("button");
+      btn.type="button";
+      btn.className="day-collapse-toggle";
+      btn.addEventListener("click",e=>{
+        e.preventDefault();
+        e.stopPropagation();
+        setDayCollapsed(day,!day.classList.contains("day-collapsed"));
+      });
+      head.appendChild(btn);
+    }
+    if(!isMobile){
+      setDayCollapsed(day,false);
+      return;
+    }
+    setDayCollapsed(day,false);
+  });
+
+  if(!isMobile) return;
+
+  const today=japanTodayKey();
+  const tripDayByDate={
+    "2026-10-17":"day1","2026-10-18":"day2","2026-10-19":"day3",
+    "2026-10-20":"day4","2026-10-21":"day5","2026-10-22":"day6",
+    "2026-10-23":"day7","2026-10-24":"day8","2026-10-25":"day9"
+  };
+  const navEntry=performance.getEntriesByType("navigation")[0];
+  const isReload=navEntry&&navEntry.type==="reload";
+  const hashDay=location.hash&&/^#day\d+$/.test(location.hash)?location.hash.slice(1):null;
+  const targetId=(hashDay&&!isReload)?hashDay:tripDayByDate[today];
+
+  if(targetId){
+    days.forEach(day=>setDayCollapsed(day,day.id!==targetId));
+  }
+
+  document.querySelectorAll('.daynav a[href^="#day"]').forEach(link=>{
+    link.addEventListener("click",()=>{
+      const id=link.getAttribute("href").slice(1);
+      const target=document.getElementById(id);
+      if(target) setDayCollapsed(target,false);
+    });
+  });
+}
+
 const weatherPromise=loadWeather();
 
 function japanTodayKey(){
@@ -688,6 +895,10 @@ function focusTodayItinerary(){
   const target=document.getElementById(targetId);
   if(!target) return;
 
+  if(window.matchMedia("(max-width:760px)").matches){
+    document.querySelectorAll(".day").forEach(day=>setDayCollapsed(day,day!==target));
+  }
+
   // Always place today's itinerary near the top when opening the homepage,
   // and force it again on every reload during the trip.
   target.scrollIntoView({behavior:"auto",block:"start"});
@@ -695,6 +906,8 @@ function focusTodayItinerary(){
 }
 
 window.addEventListener("load",()=>{
+  moveGoogleMapsNextToTitles();
+  setupMobileDayCards();
   Promise.race([
     weatherPromise.catch(()=>null),
     new Promise(resolve=>setTimeout(resolve,1400))
