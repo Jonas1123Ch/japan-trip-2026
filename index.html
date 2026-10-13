@@ -453,7 +453,7 @@ button,.btn{
   </section>
 
 
-  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V10｜當日行程自動定位＋梅田商場攻略｜價格與營業資訊仍以當日現場公告為準</div>
+  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V11｜重新整理自動回今日＋梅田商場攻略｜價格與營業資訊仍以當日現場公告為準</div>
 </div>
 <button class="back-top" id="back-top" aria-label="回到頂部" title="回到頂部">↑</button>
 
@@ -613,8 +613,12 @@ function japanTodayKey(){
 }
 
 function focusTodayItinerary(){
-  // If the URL already points to a specific section, respect that navigation.
-  if(location.hash) return;
+  const navEntry=performance.getEntriesByType("navigation")[0];
+  const isReload=navEntry&&navEntry.type==="reload";
+
+  // A normal link with #dayX may intentionally open a specific day.
+  // But if the user reloads that page, always return to today's itinerary.
+  if(location.hash&&!isReload) return;
 
   const dayByDate={
     "2026-10-17":"day1",
@@ -632,19 +636,13 @@ function focusTodayItinerary(){
   const targetId=dayByDate[today];
   if(!targetId) return;
 
-  const storageKey="japan-trip-auto-focus-date";
-  try{
-    if(localStorage.getItem(storageKey)===today) return;
-  }catch(e){}
-
   const target=document.getElementById(targetId);
   if(!target) return;
 
-  // Wait until the first weather refresh/layout settles, then place today's card near the top.
+  // Always place today's itinerary near the top when opening the homepage,
+  // and force it again on every reload during the trip.
   target.scrollIntoView({behavior:"auto",block:"start"});
   window.scrollBy({top:-64,left:0,behavior:"auto"});
-
-  try{ localStorage.setItem(storageKey,today); }catch(e){}
 }
 
 window.addEventListener("load",()=>{
