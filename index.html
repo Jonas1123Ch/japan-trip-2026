@@ -160,6 +160,11 @@ button,.btn{
 .weather-card b{display:block;font-size:13px;margin-bottom:4px}
 .weather-main{font-size:16px;font-weight:800}
 .weather-sub{font-size:11px;opacity:.82;margin-top:3px;line-height:1.45}
+.shopping-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}
+.shopping-tab{border:1px solid #d8c9c0;background:#fff;color:#6e5548;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800;cursor:pointer}
+.shopping-tab.active{background:#7e5f50;color:#fff;border-color:#7e5f50}
+.shopping-panel[hidden]{display:none}
+.shopping-panel-title{font-size:12px;color:#7c726c;margin:2px 0 8px}
 .spot-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
 .spot-card{border:1px solid #eadfd8;background:#fcf9f5;border-radius:12px;padding:10px 11px}
 .spot-card b{display:block;font-size:13px}
@@ -383,37 +388,53 @@ button,.btn{
     <article class="day" id="day7">
       <header class="dayhead">
         <div class="daynum"><b>Day 7</b><span>10/23（五）</span></div>
-        <div class="daytitle"><h3>大阪梅田｜購物散步日</h3><p>百貨＋運動鞋品牌＋親子分流，依需求自由組合</p></div>
-        <div class="tags"><span class="tag shop">購物</span><span class="tag">可分組</span><span class="tag">親子</span><span class="tag">運動品牌</span></div>
+        <div class="daytitle"><h3>大阪梅田｜購物散步日</h3><p>可依「想買什麼」或「目前在哪一棟」兩種方式找店</p></div>
+        <div class="tags"><span class="tag shop">購物</span><span class="tag">可分組</span><span class="tag">親子</span><span class="tag">雙分類</span></div>
       </header>
       <div class="timeline">
-        <div class="item"><div class="time">出發</div><div class="dot"></div><div class="content"><strong>飯店 → 大阪梅田</strong><p>先到梅田站核心區，再由茶屋町開始一路往大阪站南側逛，減少回頭路。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行約 7 分至恵美須町站 → 堺筋線到動物園前 → 轉御堂筋線到梅田｜約 19–25 分｜成人 ¥240。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Umeda+Osaka">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">出發</div><div class="dot"></div><div class="content"><strong>飯店 → 大阪梅田</strong><p>先到梅田站／大阪站核心區。同行者可先看「依購物類型」，決定自己想逛什麼；到現場後再切「依百貨／商場」確認樓層。</p><div class="transit-note"><b>🚇 交通：</b>飯店步行約 7 分至恵美須町站 → 堺筋線到動物園前 → 轉御堂筋線到梅田｜約 19–25 分｜成人 ¥240。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Umeda+Osaka">Google Maps ↗</a></div></div>
 
-        <div class="item"><div class="time">運動品牌</div><div class="dot"></div><div class="content"><strong>Day 7 特別加入｜HOKA・Alpen・atmos・ASICS・Mizuno</strong><p>這幾個品牌都能安排在梅田步行圈，不需要另外跑心齋橋。</p>
-          <div class="spot-list">
-            <div class="spot-card"><b>Alpen OSAKA｜茶屋町・10:00–21:00</b><span><b>1F：</b>跑鞋／運動鞋主力樓層，可看 HOKA、ASICS、On、Nike、New Balance 等；想一次比較多品牌，這站最有效率。<br><b>2F：</b>籃球、排球、運動服飾。<br><b>3F：</b>足球、棒球、球類用品，亦有 Mizuno 系列。<br><b>4F：</b>Alpen Outdoors，戶外用品與服飾。<br><b>定位：</b>HOKA 在梅田不用特地找獨立店，先在 Alpen 1F 看最順。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Alpen+OSAKA+Umeda">Google Maps ↗</a></div>
-
-            <div class="spot-card"><b>MIZUNO OSAKA CHAYAMACHI｜茶屋町・11:00–20:00</b><span>地址在茶屋町 13-5，是 Mizuno 的大型專門店；跑鞋、棒球、足球、羽球、桌球、訓練用品都比一般百貨櫃完整。<br><b>定位：</b>如果真的想看 Mizuno，建議逛專門店，不只在 Alpen 順便看。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=MIZUNO+OSAKA+CHAYAMACHI">Google Maps ↗</a></div>
-
-            <div class="spot-card"><b>ASICS GRAND FRONT OSAKA｜Grand Front 3F</b><span>西日本大型 ASICS 直營店，以 Running、Training、SportStyle 為主，比百貨 ASICS 櫃位更完整。Grand Front 南館 5F 另外還有 ASICS KIDS。<br><b>定位：</b>想認真試 ASICS 跑鞋就把這站列必逛。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=ASICS+GRAND+FRONT+OSAKA">Google Maps ↗</a></div>
-
-            <div class="spot-card"><b>atmos LUCUA Osaka｜LUCUA</b><span><b>目前狀態：</b>原 LUCUA 5F 店正在改裝；截至 10/13 官方仍顯示一時休業，期間在 <b>LUCUA 9F</b> 設 POP-UP，原店預計 10 月中～下旬重新開幕。<br><b>10/23：</b>當天先看是否已回到 5F；若尚未復店，就直接上 9F POP-UP。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=atmos+LUCUA+Osaka">Google Maps ↗</a></div>
+        <div class="item"><div class="time">逛街分類</div><div class="dot"></div><div class="content"><strong>Day 7 梅田逛街指南</strong><p>同一批店用兩種方式整理。預設先看「依購物類型」，比較適合多人同行時分組。</p>
+          <div class="shopping-tabs" role="tablist" aria-label="Day 7 逛街分類">
+            <button class="shopping-tab active" id="tab-by-type" type="button" onclick="switchDay7Shopping('type')" aria-pressed="true">依購物類型</button>
+            <button class="shopping-tab" id="tab-by-mall" type="button" onclick="switchDay7Shopping('mall')" aria-pressed="false">依百貨／商場</button>
           </div>
-        </div></div>
 
-        <div class="item"><div class="time">商場攻略</div><div class="dot"></div><div class="content"><strong>梅田 5 棟重點商場｜特色＋必逛樓層</strong><p>同行友人可以先看自己想逛的類型，再決定要不要一起走完全程。</p>
-          <div class="spot-list">
-            <div class="spot-card"><b>LUCUA Osaka｜女生服飾・日系 Select Shop</b><span><b>2F：</b>FRAY I.D、Mila Owen、CLANE、Ameri VINTAGE。<br><b>3F：</b>BEAMS、JOURNAL STANDARD、FREAK'S STORE、STUDIOUS。<br><b>atmos：</b>10/23 依改裝進度看 5F 新店或 9F POP-UP。<br><b>6–7F：</b>LOWRYS FARM、EMODA、MURUA、URBAN RESEARCH、HARE、FRED PERRY 等。</span></div>
+          <div class="shopping-panel" id="shopping-by-type">
+            <div class="shopping-panel-title">想買什麼 → 直接看這一類，不必每棟百貨都逛。</div>
+            <div class="spot-list">
+              <div class="spot-card"><b>① 女生服飾品牌｜LUCUA 為主</b><span><b>LUCUA 2F：</b>FRAY I.D、Mila Owen、CLANE、Ameri VINTAGE、ROKU、MAISON SPECIAL WOMENS 等。<br><b>LUCUA 3F：</b>BEAMS、JOURNAL STANDARD、FREAK'S STORE、STUDIOUS。<br><b>6–7F：</b>LOWRYS FARM、EMODA、MURUA、URBAN RESEARCH、HARE、FRED PERRY 等。<br><b>有時間再加：</b>HEP FIVE，偏年輕女生與街頭流行。</span></div>
 
-            <div class="spot-card"><b>LUCUA 1100｜戶外・生活雜貨</b><span><b>6F：</b>Snow Peak、mont-bell、A&F COUNTRY、KEEN、MERRELL、FJÄLLRÄVEN、Gramicci。<br><b>7F：</b>KEYUCA、BASIC AND ACCENT、Wpc.、生活雜貨。<br><b>9F：</b>梅田蔦屋書店＋Starbucks。</span></div>
+              <div class="spot-card"><b>② 戶外・體育用品品牌</b><span><b>Alpen OSAKA：</b>1F HOKA、ASICS、On、Nike、New Balance 等跑鞋；4F Alpen Outdoors。<br><b>MIZUNO OSAKA CHAYAMACHI：</b>Mizuno 專門店，跑鞋與各項運動用品。<br><b>Grand Front：</b>ASICS GRAND FRONT OSAKA；另有 ARC'TERYX、THE NORTH FACE+、Gregory、mont-bell、New Balance、ASICS KIDS。<br><b>LUCUA 1100 6F：</b>Snow Peak、mont-bell、A&F COUNTRY、KEEN、MERRELL、FJÄLLRÄVEN、Gramicci。<br><b>LUCUA：</b>atmos（10/23 依改裝進度確認 5F 或 9F POP-UP）。</span></div>
 
-            <div class="spot-card"><b>LUCUA SOUTH｜Nintendo・Pokémon</b><span><b>13F：</b>Nintendo OSAKA、Pokémon Center Osaka、CAPCOM STORE & CAFE、Tomica／Plarail、ONE PIECE 麥わら Store。<br><b>重點：</b>直接上 13F，不用每層逛。</span></div>
+              <div class="spot-card"><b>③ MUJI・3COINS・Standard Products・DAISO・生活選物</b><span><b>LUCUA 8F：</b>MUJI＋3COINS+plus 同層，另外還有 Francfranc、MARKS & WEB、MOOMIN SHOP 等，效率很高。<br><b>梅田 DT Tower B2：</b>DAISO＋Standard Products＋THREEPPY 三個品牌集中同層，想一次掃生活雜貨最推薦。<br><b>DAISO LINKS UMEDA 5F：</b>如果原本就會去 Yodobashi／LINKS，可順便逛。<br><b>阪神梅田 6–7F：</b>Loft＋MUJI。<br><b>LUCUA 1100 7F：</b>KEYUCA、BASIC AND ACCENT、Wpc. 等日系生活選物；9F 可逛梅田蔦屋書店。</span></div>
 
-            <div class="spot-card"><b>Grand Front Osaka｜ASICS・親子・戶外</b><span><b>ASICS：</b>Knowledge Capital 3F ASICS GRAND FRONT OSAKA。<br><b>北館 3F：</b>Bornelund KID-O-KID。<br><b>南館 4–5F：</b>ARC'TERYX、THE NORTH FACE+、Gregory、mont-bell、New Balance、ASICS KIDS 等。<br><b>最適合：</b>小孩放電，大人同時逛運動／戶外。</span></div>
-
-            <div class="spot-card"><b>阪神梅田本店｜Loft・無印・親子・伴手禮</b><span><b>B1：</b>VANI、DROOLY、551、甜點與食品伴手禮。<br><b>6F：</b>梅田 Loft、Baby & Kids、THE NORTH FACE、Columbia、Gregory。<br><b>7F：</b>無印良品與生活用品。</span></div>
+              <div class="spot-card"><b>④ 玩具・動漫・卡通類</b><span><b>LUCUA SOUTH 13F：</b>Nintendo OSAKA、Pokémon Center Osaka、CAPCOM、Tomica／Plarail、ONE PIECE。<br><b>Yodobashi Umeda 5F：</b>綜合玩具最完整，LEGO、Tomica／Plarail、麵包超人、益智玩具、桌遊、模型、卡牌、扭蛋；汪汪隊 PAW Patrol 也優先在這裡找。<br><b>Kiddy Land 大阪梅田：</b>角色娃娃、卡通雜貨、文具與小物。<br><b>Grand Front 北館 3F：</b>BorneLund 玩具店＋KID-O-KID，3 歲親子很適合。<br><b>阪急梅田 11F：</b>BorneLund Brainy Store、Atelier Niki Tiki、Sanrio，偏質感益智／木製玩具。</span></div>
+            </div>
           </div>
-          <div class="transit-note"><b>👟 建議順路順序：</b>Alpen OSAKA → MIZUNO OSAKA CHAYAMACHI → Grand Front（ASICS）→ LUCUA 1100 → LUCUA（atmos）→ LUCUA SOUTH → 阪神梅田。</div>
+
+          <div class="shopping-panel" id="shopping-by-mall" hidden>
+            <div class="shopping-panel-title">人已經在這棟 → 直接看必逛樓層。</div>
+            <div class="spot-list">
+              <div class="spot-card"><b>LUCUA Osaka｜女生服飾・生活雜貨・atmos</b><span><b>2–3F：</b>女生服飾＋BEAMS／JOURNAL STANDARD／FREAK'S STORE／STUDIOUS。<br><b>8F：</b>MUJI、3COINS+plus、Francfranc 等生活雜貨。<br><b>atmos：</b>10/23 依改裝進度看 5F 新店或 9F POP-UP。</span></div>
+
+              <div class="spot-card"><b>LUCUA 1100｜戶外・生活選物</b><span><b>6F：</b>Snow Peak、mont-bell、A&F COUNTRY、KEEN、MERRELL、FJÄLLRÄVEN、Gramicci。<br><b>7F：</b>KEYUCA、BASIC AND ACCENT、Wpc.。<br><b>9F：</b>梅田蔦屋書店＋Starbucks。</span></div>
+
+              <div class="spot-card"><b>Grand Front Osaka｜ASICS・親子・戶外</b><span><b>Knowledge Capital 3F：</b>ASICS GRAND FRONT OSAKA。<br><b>北館 3F：</b>BorneLund KID-O-KID。<br><b>南館 4–5F：</b>ARC'TERYX、THE NORTH FACE+、Gregory、mont-bell、New Balance、ASICS KIDS 等。</span></div>
+
+              <div class="spot-card"><b>LUCUA SOUTH｜Nintendo・Pokémon</b><span><b>13F：</b>Nintendo OSAKA、Pokémon Center Osaka、CAPCOM STORE & CAFE、Tomica／Plarail、ONE PIECE 麥わら Store。<br><b>重點：</b>直接上 13F，不用每層逛。</span></div>
+
+              <div class="spot-card"><b>阪神梅田本店｜Loft・MUJI・伴手禮</b><span><b>B1：</b>VANI、DROOLY、551、甜點與食品伴手禮。<br><b>6F：</b>梅田 Loft、Baby & Kids、THE NORTH FACE、Columbia、Gregory。<br><b>7F：</b>MUJI。</span></div>
+
+              <div class="spot-card"><b>Yodobashi／LINKS UMEDA｜玩具・DAISO・戶外</b><span><b>Yodobashi 5F：</b>玩具、LEGO、Tomica／Plarail、麵包超人、模型、卡牌、扭蛋、遊戲。<br><b>LINKS 5F：</b>DAISO。<br><b>LINKS 6F：</b>石井 Sports，大型登山／戶外用品。</span></div>
+
+              <div class="spot-card"><b>茶屋町｜Alpen・Mizuno・Kiddy Land 周邊</b><span><b>Alpen OSAKA：</b>HOKA 等跑鞋＋戶外用品。<br><b>MIZUNO OSAKA CHAYAMACHI：</b>Mizuno 專門店。<br><b>阪急三番街／茶屋町周邊：</b>Kiddy Land 可安排在這一區一起逛。</span></div>
+
+              <div class="spot-card"><b>梅田 DT Tower B2｜生活雜貨三合一</b><span><b>同一層：</b>DAISO＋Standard Products＋THREEPPY。<br><b>定位：</b>如果同行友人只想買日系平價生活雜貨，這一站最省時間。</span></div>
+            </div>
+          </div>
+
+          <div class="transit-note"><b>👨‍👩‍👧 你們家的建議順序：</b>Alpen OSAKA → MIZUNO OSAKA CHAYAMACHI → Grand Front（ASICS＋親子）→ LUCUA 1100 → LUCUA（女生服飾／3COINS／MUJI／atmos）→ LUCUA SOUTH（Nintendo／Pokémon／Tomica）→ 阪神梅田。若女兒想看更多玩具，可在 Grand Front 後插入 Yodobashi Umeda 5F。</div>
           <a class="maps" href="umeda-family.html">👨‍👩‍👧 親子逛街順序 →</a>
         </div></div>
 
@@ -466,7 +487,7 @@ button,.btn{
   </section>
 
 
-  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V12｜梅田運動品牌＋親子逛街順序｜價格與營業資訊仍以當日現場公告為準</div>
+  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V13｜梅田雙分類逛街指南｜價格與營業資訊仍以當日現場公告為準</div>
 </div>
 <button class="back-top" id="back-top" aria-label="回到頂部" title="回到頂部">↑</button>
 
@@ -615,6 +636,21 @@ async function loadWeather(){
   }
   if(any) document.getElementById("weather-updated").textContent="資料源：日本氣象廳 JMA｜自動更新";
 }
+function switchDay7Shopping(mode){
+  const typePanel=document.getElementById("shopping-by-type");
+  const mallPanel=document.getElementById("shopping-by-mall");
+  const typeTab=document.getElementById("tab-by-type");
+  const mallTab=document.getElementById("tab-by-mall");
+  if(!typePanel||!mallPanel) return;
+  const byMall=mode==="mall";
+  typePanel.hidden=byMall;
+  mallPanel.hidden=!byMall;
+  typeTab.classList.toggle("active",!byMall);
+  mallTab.classList.toggle("active",byMall);
+  typeTab.setAttribute("aria-pressed",String(!byMall));
+  mallTab.setAttribute("aria-pressed",String(byMall));
+}
+
 const weatherPromise=loadWeather();
 
 function japanTodayKey(){
