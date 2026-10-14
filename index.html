@@ -374,6 +374,22 @@ button,.btn{
   .zoo-details-body{padding:1px 9px 10px}
 }
 
+
+/* Sakae shopping guide: collapsed by default, category switches on demand */
+.sakae-details{margin-top:12px}
+.sakae-intro{margin:11px 0 10px!important;color:#675b55;font-size:13px!important;line-height:1.65}
+.sakae-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:10px 0}
+.sakae-tab{min-height:42px;padding:8px 5px;border-radius:10px;font-size:12px;font-weight:800;background:white;border:1px solid #e1d2c8;color:#76594e;cursor:pointer}
+.sakae-tab.active{background:#7e5f50;color:#fff;border-color:#7e5f50}
+.sakae-panel[hidden]{display:none!important}
+.sakae-panel .spot-card b.sakae-floor{display:inline;color:#80624f;font-size:12px}
+.sakae-tip{margin:10px 0!important;padding:9px 11px;border-radius:10px;background:#fff0e7;font-size:12px!important;color:#735849!important}
+@media(max-width:760px){
+  .sakae-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .sakae-tab{min-height:43px;font-size:12px}
+  .sakae-intro{font-size:12px!important}
+  .sakae-panel .spot-card b.sakae-floor{font-size:12px}
+}
 @media print{
   body{background:#fff}
   .container{max-width:none;padding:0}
@@ -483,7 +499,46 @@ button,.btn{
             <div class="spot-card"><b>コンパル 大須本店</b><span>名古屋老牌喫茶店，招牌炸蝦三明治；逛累可當休息點。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Compal+Osu+Nagoya">Google Maps ↗</a></div>
           </div>
           <a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Osu+Kannon+Nagoya">大須觀音 Google Maps ↗</a></div></div>
-        <div class="item"><div class="time">下午會合</div><div class="dot"></div><div class="content"><strong>榮商圈集合・Alpen NAGOYA</strong><p>兩組下午在榮會合，一起逛 Alpen、百貨與周邊商圈。</p><div class="transit-note"><b>🚇 親子組：</b>東山公園站 → 栄站｜東山線直達｜約 12 分｜¥240。<br><b>🚇 情侶夫妻組：</b>大須觀音站 → 伏見站（鶴舞線）→ 栄站（東山線）｜轉乘 1 次｜¥210。<br><b>📍 Alpen：</b>從栄站 S7a/S7b 出口步行約 7 分；或矢場町站 6 號出口步行約 5 分。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Alpen+NAGOYA">Google Maps ↗</a></div></div>
+        <div class="item"><div class="time">下午會合</div><div class="dot"></div><div class="content"><strong>榮商圈集合・Alpen NAGOYA</strong><p>兩組下午在榮會合，一起逛 Alpen、百貨與周邊商圈。</p><div class="transit-note"><b>🚇 親子組：</b>東山公園站 → 栄站｜東山線直達｜約 12 分｜¥240。<br><b>🚇 情侶夫妻組：</b>大須觀音站 → 伏見站（鶴舞線）→ 栄站（東山線）｜轉乘 1 次｜¥210。<br><b>📍 Alpen：</b>從栄站 S7a/S7b 出口步行約 7 分；或矢場町站 6 號出口步行約 5 分。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Alpen+NAGOYA">Google Maps ↗</a>
+          <details class="zoo-details sakae-details">
+            <summary><span class="zoo-details-icon">🛍️</span><span><b>展開榮商圈逛街指南</b><small>女生服飾・運動戶外・兒童玩具・生活雜貨｜商場樓層與地圖</small></span><span class="zoo-details-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="zoo-details-body">
+              <p class="sakae-intro">下午建議先逛 Alpen NAGOYA、再逛 PARCO；女兒如果已經累了，這兩站就可以收工。想找特定類型的店，點下面分類即可。</p>
+              <div class="sakae-tabs" role="group" aria-label="榮商圈購物分類">
+                <button type="button" class="sakae-tab active" id="sakae-tab-women" aria-pressed="true" onclick="switchSakaeShopping('women')">👗 女生服飾</button>
+                <button type="button" class="sakae-tab" id="sakae-tab-sports" aria-pressed="false" onclick="switchSakaeShopping('sports')">🏃 運動戶外</button>
+                <button type="button" class="sakae-tab" id="sakae-tab-kids" aria-pressed="false" onclick="switchSakaeShopping('kids')">🧸 兒童玩具</button>
+                <button type="button" class="sakae-tab" id="sakae-tab-lifestyle" aria-pressed="false" onclick="switchSakaeShopping('lifestyle')">🏠 生活雜貨</button>
+              </div>
+              <section class="sakae-panel" id="sakae-panel-women" aria-label="女生服飾">
+                <div class="spot-list">
+                  <div class="spot-card"><b>名古屋 PARCO <a class="maps-inline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Nagoya+PARCO">📍 Maps</a></b><span><b class="sakae-floor">西館 2F</b>SNIDEL、Mila Owen、SNIDEL HOME。<br><b class="sakae-floor">西館 4F</b>MOUSSY、EMODA、JEANASIS、Chico。<br><b class="sakae-floor">南館 B1F～1F</b>JOURNAL STANDARD、IÉNA、SLOBE IÉNA 等日系選物。</span></div>
+                  <div class="spot-card"><b>LACHIC <a class="maps-inline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=LACHIC+Nagoya+Sakae">📍 Maps</a></b><span><b class="sakae-floor">2F</b>BEAMS、Ray BEAMS、UNITED ARROWS、ROKU、CLANE。<br><b class="sakae-floor">3F</b>TOMORROWLAND、SHIPS、Plage。<br><b class="sakae-floor">4F</b>green label relaxing、A.P.C.、Marimekko。</span></div>
+                </div>
+              </section>
+              <section class="sakae-panel" id="sakae-panel-sports" aria-label="運動戶外" hidden>
+                <div class="spot-list">
+                  <div class="spot-card"><b>Alpen NAGOYA <a class="maps-inline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Alpen+NAGOYA">📍 Maps</a></b><span><b class="sakae-floor">1F</b>HOKA、On、ASICS、Nike、New Balance 跑鞋。<br><b class="sakae-floor">2F～3F</b>運動服飾、健身、球類用品。<br><b class="sakae-floor">4F～5F</b>The North Face、Columbia、Patagonia、Snow Peak 等戶外服飾與露營用品。</span></div>
+                  <div class="spot-card"><b>LACHIC <a class="maps-inline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=LACHIC+Nagoya+Sakae">📍 Maps</a></b><span><b class="sakae-floor">4F～5F</b>The North Face、MAMMUT、HELLY HANSEN、SORA 等運動／戶外品牌與選品。</span></div>
+                  <div class="spot-card"><b>名古屋 PARCO <a class="maps-inline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Nagoya+PARCO">📍 Maps</a></b><span><b class="sakae-floor">西館 1F</b>atmos 球鞋。<br><b class="sakae-floor">東館 1F</b>La SESSIONS 可看 On、KEEN 等品牌。</span></div>
+                </div>
+              </section>
+              <section class="sakae-panel" id="sakae-panel-kids" aria-label="兒童玩具" hidden>
+                <div class="spot-list">
+                  <div class="spot-card"><b>名古屋 PARCO 東館 <a class="maps-inline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Nagoya+PARCO+East+Building">📍 Maps</a></b><span><b class="sakae-floor">2F</b>Pokémon Center Nagoya，寶可夢玩偶與周邊。<br><b class="sakae-floor">3F</b>Kiddy Land 與吉伊卡哇、史努比、Miffy、角落生物等角色商品。<br><b class="sakae-floor">B1F</b>魔法吉伊卡哇等主題商店。</span></div>
+                  <div class="spot-card"><b>名古屋 PARCO 西館 <a class="maps-inline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Nagoya+PARCO+West+Building">📍 Maps</a></b><span><b class="sakae-floor">8F</b>森林家族森之家 Premium、ONE PIECE、蠟筆小新等；森林家族適合帶 3 歲女兒看看。</span></div>
+                </div>
+                <p class="sakae-tip">🧸 想買汪汪隊、Tomica 或 LEGO 的一般玩具，可把大阪梅田 Yodobashi 5F 留作主要採買點。</p>
+              </section>
+              <section class="sakae-panel" id="sakae-panel-lifestyle" aria-label="生活雜貨" hidden>
+                <div class="spot-list">
+                  <div class="spot-card"><b>SKYLE <a class="maps-inline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=SKYLE+Nagoya+Sakae">📍 Maps</a></b><span><b class="sakae-floor">7F</b>DAISO、Standard Products、THREEPPY 集中同一層，很適合快速補齊收納、餐具、日用小物。</span></div>
+                  <div class="spot-card"><b>Maruei Galleria 丸榮 Galleria <a class="maps-inline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Maruei+Galleria+Nagoya">📍 Maps</a></b><span><b class="sakae-floor">2F</b>MUJI 無印良品，服飾、生活用品、兒童與旅行小物。</span></div>
+                </div>
+              </section>
+              <div class="transit-note"><b>🗺️ 推薦順序：</b>13:30 Alpen → 14:30 PARCO → 16:10 LACHIC → 17:20 SKYLE；Maruei Galleria 有空再補逛。以上為建議時段，品牌／樓層以 10/18 當天商場公告為準。</div>
+            </div>
+          </details></div></div>
       </div>
       <div class="hotelbar"><b>住宿</b><div>名古屋納屋橋大和 Roynet DEL style 飯店 <a class="maps-inline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=DEL+style+Nagoya+Nayabashi+by+Daiwa+Roynet+Hotel">📍 Maps</a></div></div>
     </article>
@@ -672,7 +727,7 @@ button,.btn{
   </section>
 
 
-  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V13｜梅田雙分類逛街指南｜價格與營業資訊仍以當日現場公告為準</div>
+  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V20｜榮商圈收合逛街指南｜價格與營業資訊仍以當日現場公告為準</div>
 </div>
 <button class="back-top" id="back-top" aria-label="回到頂部" title="回到頂部">↑</button>
 
@@ -820,6 +875,20 @@ async function loadWeather(){
     }
   }
   if(any) document.getElementById("weather-updated").textContent="資料源：日本氣象廳 JMA｜自動更新";
+}
+
+function switchSakaeShopping(mode){
+  const modes=["women","sports","kids","lifestyle"];
+  if(!modes.includes(mode)) return;
+  modes.forEach(name=>{
+    const panel=document.getElementById("sakae-panel-"+name);
+    const tab=document.getElementById("sakae-tab-"+name);
+    if(panel) panel.hidden=name!==mode;
+    if(tab){
+      tab.classList.toggle("active",name===mode);
+      tab.setAttribute("aria-pressed",String(name===mode));
+    }
+  });
 }
 function switchDay7Shopping(mode){
   const typePanel=document.getElementById("shopping-by-type");
