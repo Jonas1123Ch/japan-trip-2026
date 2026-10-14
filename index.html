@@ -390,6 +390,25 @@ button,.btn{
   .sakae-intro{font-size:12px!important}
   .sakae-panel .spot-card b.sakae-floor{font-size:12px}
 }
+
+/* μ-SKY airport purchase tutorial: compact, closed by default */
+.mu-sky-details .mu-ticket-price{display:flex;flex-wrap:wrap;align-items:center;gap:2px 10px;margin:12px 0 8px;padding:10px 12px;background:#f2f6f8;border:1px solid #dfe9ee;border-radius:11px}
+.mu-sky-details .mu-ticket-price b{font-size:14px;color:#3f5f70}
+.mu-sky-details .mu-ticket-price span{font-size:12px;color:#53656e;line-height:1.5}
+.mu-guide-label{font-size:13px!important;font-weight:800;color:#6e5548!important;margin:12px 0 6px!important}
+.mu-guide-steps{margin:0 0 10px;padding-left:23px;font-size:13px;color:#5f5651;line-height:1.7}
+.mu-guide-steps li{padding:4px 0 4px 2px}
+.mu-guide-steps li::marker{font-weight:800;color:#856454}
+.mu-sky-details .transit-note{margin-top:9px}
+.mu-guide-links{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 6px!important}
+.mu-guide-links a{display:inline-flex;align-items:center;padding:8px 10px;background:#fff;border:1px solid #d9c8bd;border-radius:10px;color:#6e5548;font-size:12px;text-decoration:none;font-weight:700}
+.mu-guide-foot{font-size:12px!important;color:#776659!important;line-height:1.65;margin:8px 0 0!important}
+@media(max-width:760px){
+  .mu-sky-details .mu-ticket-price{padding:9px}
+  .mu-guide-steps{font-size:13px;line-height:1.7;padding-left:21px}
+  .mu-guide-links{display:grid;grid-template-columns:1fr;gap:6px}
+  .mu-guide-links a{min-height:42px}
+}
 @media print{
   body{background:#fff}
   .container{max-width:none;padding:0}
@@ -461,7 +480,26 @@ button,.btn{
             <div class="spot-card"><b>寿製麵｜讚岐烏龍</b><span>FLIGHT OF DREAMS 2F｜10:00–18:30。離 T2 較近、適合不想繞去 T1 時。</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kotobuki+Seimen+Flight+of+Dreams">Google Maps ↗</a></div>
           </div>
         </div></div>
-        <div class="item transport"><div class="time">抵達後</div><div class="dot"></div><div class="content"><strong>名鐵 μSKY 特急</strong><p>中部國際機場 → 名鐵名古屋，依實際出關時間選最近班次。</p><div class="transit-note"><b>🚆 交通：</b>中部國際機場站 → 名鐵名古屋站｜μSKY 全車指定席｜約 29–37 分｜成人 ¥1,430（基本車資 ¥980＋μticket ¥450）。到站後再買即可，不需先綁死班次。</div></div></div>
+        <div class="item transport"><div class="time">抵達後</div><div class="dot"></div><div class="content"><strong>名鐵 μSKY 特急</strong><p>中部國際機場 → 名鐵名古屋，依實際出關時間選最近班次。</p><div class="transit-note"><b>🚆 交通：</b>中部國際機場站 → 名鐵名古屋站｜μSKY 全車指定席｜約 29–37 分｜成人 ¥1,430（基本車資 ¥980＋μticket ¥450）。到站後再買即可，不需先綁死班次。</div>
+          <details class="zoo-details mu-sky-details">
+            <summary><span class="zoo-details-icon">🎫</span><span><b>展開 μ-SKY 現場購票／搭乘教學</b><small>售票機操作・Suica 用法・6 人選座・1 號月台</small></span><span class="zoo-details-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="zoo-details-body">
+              <div class="mu-ticket-price"><b>🎟 成人單程：¥1,430</b><span>一般乘車票 ¥980 ＋ μticket 指定席 ¥450（兩種都必須有）</span></div>
+              <p class="mu-guide-label">① 機場現場售票機｜最推薦</p>
+              <ol class="mu-guide-steps">
+                <li>抵達 T2、通過入境與領行李後，往 <b>Access Plaza／名鐵中部國際機場站</b> 移動。售票機／μticket 售票處在 <b>驗票口左側</b>。</li>
+                <li>找觸控式售票機，依機型選英文介面（如有），點選 <b>「片道きっぷ＋特別車両券（ミューチケット）」</b>，一次購買普通車票與指定席券。</li>
+                <li>選目的地 <b>「名鉄名古屋」</b>、人數 <b>6 位大人</b>、預計搭乘的 μ-SKY 班次與座位；可以嘗試從座位表選相鄰位置，是否連座依餘位而定。</li>
+                <li>確認金額後付款。名鐵官方觸控機教學列出可使用 <b>現金或支援的交通 IC 卡</b>；實際以該機台顯示方式為準。</li>
+                <li>先取普通乘車票，記得再取 <b>μticket 指定席券</b>，不要漏拿第二種票。用普通車票進閘後，前往 <b>1 號月台</b>，依 μticket 上的車廂與座位搭車。</li>
+              </ol>
+              <div class="transit-note"><b>② 已有 Suica／交通 IC 卡：</b><br>一般車資 ¥980 可刷 IC 卡進、出站扣款；只需要在售票機購買 <b>¥450 的「特別車両券（μticket）」</b>，選班次與座位。<br><b>注意：</b>直接刷 Suica 進站不代表已買指定席；每位需要指定席的乘客都要有 μticket。</div>
+              <div class="transit-note"><b>👨‍👩‍👧 6 大 1 小提醒：</b><br>6 位大人成人票共需 6 組普通乘車票＋μticket。不同售票機可一次購買的人數上限可能不同，依畫面操作。<br>3 歲女兒若由大人陪同且<b>不另外佔指定座位</b>，一般可免費乘車；若要有獨立座位，需加購<b>兒童乘車票 ¥490＋μticket ¥450</b>。</div>
+              <p class="mu-guide-links"><a target="_blank" rel="noopener" href="https://www.meitetsu.co.jp/train/guidance/machine/touchpanel/index.html">📖 名鐵官方觸控售票機圖解 ↗</a><a target="_blank" rel="noopener" href="https://www.meitetsu.co.jp/cht/airport-access/index.html">🚉 名鐵官方繁中機場站／月台指引 ↗</a></p>
+              <p class="mu-guide-foot">⭐ 建議先吃完午餐、拿好行李再決定班次；μticket 只限指定列車使用，買完請留意出發時間。</p>
+            </div>
+          </details>
+        </div></div>
         <div class="item hotel"><div class="time">入住</div><div class="dot"></div><div class="content"><strong>名古屋納屋橋大和 Roynet DEL style 飯店</strong><p>放行李、稍作休息。</p><div class="transit-note"><b>🚇 交通：</b>名鐵名古屋站 → 飯店可步行約 15 分；或從名古屋站搭地下鐵東山線 1 站到伏見站（約 ¥210），8 號出口再步行約 7 分。</div></div></div>
         <div class="item"><div class="time">晚餐後</div><div class="dot"></div><div class="content"><strong>綠洲21／中部電力 MIRAI TOWER 周邊散步</strong><p>抵達第一天不塞太滿，以夜景與城市散步收尾。</p><div class="transit-note"><b>🚇 交通：</b>伏見站 → 栄站｜地下鐵東山線｜1 站、免轉乘｜成人 ¥210；栄站出站即為榮商圈／Oasis 21 一帶。</div><a class="maps" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Oasis+21+Nagoya">Google Maps ↗</a></div></div>
       </div>
@@ -727,7 +765,7 @@ button,.btn{
   </section>
 
 
-  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V20｜榮商圈收合逛街指南｜價格與營業資訊仍以當日現場公告為準</div>
+  <div class="footer">Nagoya · Ise-Shima · Osaka 2026｜行程網頁 V21｜μ-SKY 收合購票教學｜價格與營業資訊仍以當日現場公告為準</div>
 </div>
 <button class="back-top" id="back-top" aria-label="回到頂部" title="回到頂部">↑</button>
 
